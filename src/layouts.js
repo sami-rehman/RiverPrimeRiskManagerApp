@@ -11,6 +11,7 @@ import TradebookCharts from './TradebookCharts';
 import ECharts from './ECharts';
 import PieCharts from './PieCharts';
 import FunnelChart from './FunnelChart';
+import WatchList from "./WatchlistGrid";
 
 // const userColumnDefs = [
 //     { "field": "userId" },
@@ -75,48 +76,49 @@ console.log('userColumnDefs', userColumnDefs);
 
 const layouts = {
     LayoutOne: () => (
-        <BaseLayout cols="12" rows="9">
-            <div className="border border-gray-300 col-span-4 row-span-3 flex justify-center items-center p-2">
-                {/* <ChartSwitcher chartType="bar" /> */}
-                {/* <GridExample data={userData} columnDefs={userColumnDefs} /> */}
-                <VaRCharts />
-            </div>
-            <div className="border border-gray-300 col-span-4 row-span-3 col-start-5 flex justify-center items-center p-2">
-                {/* <ChartSwitcher chartType="line" /> */}
-                <DepositsWithdrawalsAccountCharts />
-            </div>
-            <div className="border border-gray-300 col-span-4 row-span-3 col-start-9 flex justify-center items-center">
-                {/* <ChartSwitcher chartType="pie" /> */}
-                <TradebookCharts />
-            </div>
-            <div className="border border-gray-300 col-span-3 row-span-3 row-start-4 flex justify-center items-center">
-                {/* <ChartSwitcher chartType="bar" /> */}
-                <ECharts />
-            </div>
-            <div className="border border-gray-300 col-span-3 row-span-3 col-start-4 row-start-4 flex justify-center items-center">
-                {/* <ChartSwitcher chartType="bar" /> */}
-                <PieCharts />
-            </div>
-            <div className="bg-gray-200 col-span-3 row-span-3 col-start-7 row-start-4 flex justify-center items-center">
-                {/* <ChartSwitcher chartType="line" /> */}
-                <VaRCharts />
-            </div>
-            <div className="bg-gray-200 col-span-3 row-span-3 col-start-10 row-start-4 flex justify-center items-center">
-                <ChartSwitcher chartType="bar" />
-            </div>
-            <div className="bg-gray-200 col-span-4 row-span-3 row-start-7 flex justify-center items-center">
-                {/* <ChartSwitcher chartType="line" /> */}
-                <GridExample data={userData} columnDefs={userColumnDefs} />
+        // <BaseLayout cols="12" rows="9">
+        //     <div className="border border-gray-300 col-span-4 row-span-3 flex justify-center items-center p-2">
+        //         {/* <ChartSwitcher chartType="bar" /> */}
+        //         {/* <GridExample data={userData} columnDefs={userColumnDefs} /> */}
+        //         <VaRCharts />
+        //     </div>
+        //     <div className="border border-gray-300 col-span-4 row-span-3 col-start-5 flex justify-center items-center p-2">
+        //         {/* <ChartSwitcher chartType="line" /> */}
+        //         <DepositsWithdrawalsAccountCharts />
+        //     </div>
+        //     <div className="border border-gray-300 col-span-4 row-span-3 col-start-9 flex justify-center items-center">
+        //         {/* <ChartSwitcher chartType="pie" /> */}
+        //         <TradebookCharts />
+        //     </div>
+        //     <div className="border border-gray-300 col-span-3 row-span-3 row-start-4 flex justify-center items-center">
+        //         {/* <ChartSwitcher chartType="bar" /> */}
+        //         <ECharts />
+        //     </div>
+        //     <div className="border border-gray-300 col-span-3 row-span-3 col-start-4 row-start-4 flex justify-center items-center">
+        //         {/* <ChartSwitcher chartType="bar" /> */}
+        //         <PieCharts />
+        //     </div>
+        //     <div className="bg-gray-200 col-span-3 row-span-3 col-start-7 row-start-4 flex justify-center items-center">
+        //         {/* <ChartSwitcher chartType="line" /> */}
+        //         <VaRCharts />
+        //     </div>
+        //     <div className="bg-gray-200 col-span-3 row-span-3 col-start-10 row-start-4 flex justify-center items-center">
+        //         <ChartSwitcher chartType="bar" />
+        //     </div>
+        //     <div className="bg-gray-200 col-span-4 row-span-3 row-start-7 flex justify-center items-center">
+        //         {/* <ChartSwitcher chartType="line" /> */}
+        //         <GridExample data={userData} columnDefs={userColumnDefs} />
 
-            </div>
-            <div className="bg-gray-200 col-span-4 row-span-3 col-start-5 row-start-7 flex justify-center items-center">
-                <ChartSwitcher chartType="bar" />
-            </div>
-            <div className="border border-gray-300 col-span-4 row-span-3 col-start-9 row-start-7 flex justify-center items-center">
-                {/* <ChartSwitcher chartType="pie" /> */}
-                <ECharts />
-            </div>
-        </BaseLayout>
+        //     </div>
+        //     <div className="bg-gray-200 col-span-4 row-span-3 col-start-5 row-start-7 flex justify-center items-center">
+        //         <ChartSwitcher chartType="bar" />
+        //     </div>
+        //     <div className="border border-gray-300 col-span-4 row-span-3 col-start-9 row-start-7 flex justify-center items-center">
+        //         {/* <ChartSwitcher chartType="pie" /> */}
+        //         <ECharts />
+        //     </div>
+        // </BaseLayout>
+        <WatchList/>
     ),
     LayoutTwo: () => (
         <BaseLayout cols="12" rows="12">
