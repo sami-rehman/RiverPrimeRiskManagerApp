@@ -1,64 +1,100 @@
-// 'ws://192.168.3.164:8081/ws/api_v1/watchlist
-
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 
+const numberFormatter = ({ value }) => {
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "decimal",
+    maximumFractionDigits: 4,
+  });
+  return value == null ? "" : formatter.format(value);
+};
+
 const StockGrid = () => {
   const [rowData, setRowData] = useState([]);
   const gridRef = useRef(null);
+  const dataMapRef = useRef(new Map());
+  const lastUpdateTimeRef = useRef(Date.now());
 
   const columnDefs = [
-    { field: 'symbol', headerName: 'Symbol' },
-    { field: 'bid', headerName: 'Bid' },
-    { field: 'ask', headerName: 'Ask' },
-    { field: 'volume', headerName: 'Volume' },
-    { field: 'datetime', headerName: 'DateTime' },
-
+    {
+      field: 's',
+      headerName: 'Symbol',
+      enableRowChangeFlash: true,
+    },
+    {
+      field: 'b',
+      headerName: 'Bid',
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
+      // enableCellChangeFlash: true, 
+      valueFormatter: numberFormatter,
+    },
+    {
+      field: 'a',
+      headerName: 'Ask',
+      cellRenderer: 'agAnimateShowChangeCellRenderer',
+      // enableCellChangeFlash: true, 
+      valueFormatter: numberFormatter,
+    },
   ];
 
-  useEffect(() => {
-    // Set up WebSocket connection
-    const socket = new WebSocket('ws://192.168.3.164:8081/ws/api_v1/watchlist');
+  const defaultColDef = useMemo(() => {
+    return {
+      filter: true,
+      flex: 1,
+    };
+  }, []);
 
-    socket.onmessage = (event) => {
+  useEffect(() => {
+    const socket = new WebSocket('wss://stream.binance.com:9443/ws/!ticker');
+
+    const handleMessage = (event) => {
       const data = JSON.parse(event.data);
-      // Handle data whether it's an object or an array
-      updateTable(data);
+      throttleUpdateTable(data);
     };
 
-    // Clean up the WebSocket connection when the component unmounts
+    socket.addEventListener('message', handleMessage);
+
     return () => {
+      socket.removeEventListener('message', handleMessage);
       socket.close();
     };
   }, []);
 
-  const updateTable = (data) => {
-    // Ensure data is an array, even if it is a single object
-    const incomingData = Array.isArray(data) ? data : [data];
+  const throttleUpdateTable = (data) => {
+    const currentTime = Date.now();
 
-    setRowData(prevData => {
-      // Create a map of existing data by symbol
-      const dataMap = new Map(prevData.map(item => [item.symbol, item]));
+    if (currentTime - lastUpdateTimeRef.current >= 500) {
+      lastUpdateTimeRef.current = currentTime;
 
-      // Update the map with new data
+      const incomingData = Array.isArray(data) ? data : [data];
+
       incomingData.forEach(item => {
-        dataMap.set(item.symbol, item);
+        // Convert bid and ask to numbers
+        item.b = parseFloat(item.b);
+        item.a = parseFloat(item.a);
+
+        dataMapRef.current.set(item.s, item);
       });
 
-      // Convert the map back to an array
-      return Array.from(dataMap.values());
-    });
+      setRowData(Array.from(dataMapRef.current.values()));
+    }
   };
 
   return (
-    <div className="ag-theme-alpine w-[100vw] h-[50vh] p-4">
+    <div className="ag-theme-quartz h-full w-full">
       <AgGridReact
         ref={gridRef}
+        defaultColDef={defaultColDef}
         columnDefs={columnDefs}
         rowData={rowData}
+        getRowId={(params) => params.data.s}
+        immutableData={true}
         onGridReady={(params) => params.api.sizeColumnsToFit()}
+        // pagination={true}
+        // paginationPageSize={7}
+        // paginationPageSizeSelector={[7, 14]}
       />
     </div>
   );
