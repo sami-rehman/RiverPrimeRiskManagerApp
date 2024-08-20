@@ -1,0 +1,16 @@
+.header-group-symbol-mapping {
+    @apply bg-gray-300;
+  }
+  
+  .header-group-spread-ratio {
+    @apply bg-gray-400; /* Background color for Spread Ratio group */
+  }
+  
+  .header-group-margins-conditions {
+    @apply bg-gray-300; /* Background color for Margins Conditions group */
+  }
+  
+  .header-group-fees {
+    @apply bg-gray-400; /* Background color for Fees group */
+  }
+  
