@@ -1,163 +1,155 @@
-// import React, { useEffect, useRef, useState } from 'react';
-// import {
-//     Chart,
-//     LineElement,
-//     PointElement,
-//     LineController,
-//     CategoryScale,
-//     LinearScale,
-//     Tooltip,
-//     Legend
-// } from 'chart.js';
+// import React, { useEffect, useRef } from "react";
+// import { createChart } from "lightweight-charts";
 
-// Chart.register(LineElement, PointElement, LineController, CategoryScale, LinearScale, Tooltip, Legend);
-
-// export const LineChart = ({ data }) => {
-//     const [chartData, setChartData] = useState({
-//         labels: [],
-//         datasets: [{
-//             label: 'Ask Price',
-//             data: [],
-//             fill: false,
-//             borderColor: 'rgb(75, 192, 192)',
-//             tension: 0.1
-//         }]
-//     });
-//     const chartRef = useRef(null);
-//     const chartInstance = useRef(null);
+// export function LineGraphRenderer({ data }) {
+//     const chartContainerRef = useRef();
+//     const chart = useRef();
+//     const lineSeries = useRef();
+//     const lastTimestampRef = useRef(null);
 
 //     useEffect(() => {
-//         // Convert the data values to numbers
-//         const newLabel = new Date(data.E).toLocaleTimeString();  // Convert timestamp to human-readable format
-//         const newData = Number(data.a);
+//         // Initialize the chart
+//         chart.current = createChart(chartContainerRef.current, {
+//             width: chartContainerRef.current.clientWidth,
+//             height: 50,
+//             layout: {
+//                 backgroundColor: '#000000',
+//                 textColor: '#ffffff',
+//                 visible:false,
+//                 attributionLogo: false
+//             },
+//             rightPriceScale: {
+//                 borderColor: '#888',
+//                 // visible:false
+//             },
+//             timeScale: {
+//                 borderColor: '#888',
+//                 visible:false
 
-//         setChartData(prevData => {
-//             const updatedLabels = [...prevData.labels, newLabel];
-//             const updatedData = [...prevData.datasets[0].data, newData];
-
-//             return {
-//                 labels: updatedLabels,
-//                 datasets: [{
-//                     ...prevData.datasets[0],
-//                     data: updatedData
-//                 }]
-//             };
+//             },
 //         });
-//     }, [data]);
 
-//     useEffect(() => {
-//         const ctx = chartRef.current.getContext('2d');
-
-//         if (chartInstance.current) {
-//             chartInstance.current.destroy();
-//         }
-
-//         chartInstance.current = new Chart(ctx, {
-//             type: 'line',
-//             data: chartData,
-//             options: {
-//                 plugins: {
-//                     legend: {
-//                         display: false, // Disable the legend
-//                     }
-//                 },
-//                 scales: {
-//                     x: {
-//                         type: 'category',
-//                         title: {
-//                             display: false,
-//                             text: 'Timestamp'
-//                         }
-//                     },
-//                     y: {
-//                         type: 'linear',
-//                         beginAtZero: true,
-//                         title: {
-//                             display: false,
-//                             text: 'Price'
-//                         }
-//                     }
-//                 }
-//             }
+//         lineSeries.current = chart.current.addLineSeries({
+//             color: '#00ff00',
+//             lineWidth: 1,
 //         });
 
 //         return () => {
-//             if (chartInstance.current) {
-//                 chartInstance.current.destroy();
-//             }
+//             chart.current.remove();
 //         };
-//     }, [chartData]);
+//     }, []);
 
-//     return <canvas ref={chartRef} className='w-[150]'></canvas>;
-// };
+//     useEffect(() => {
+//         if (data) {
+//             let tradeTime = new Date(data.E).getTime() / 1000; // Convert milliseconds to seconds
+
+//             // Ensure the time is unique by checking the last timestamp
+//             if (lastTimestampRef.current === tradeTime) {
+//                 tradeTime += 0.001; // Increment slightly if the timestamp is the same as the last one
+//             }
+
+//             lastTimestampRef.current = tradeTime;
+
+//             const askPrice = parseFloat(data.a);
+
+//             // Add new data point to the chart
+//             lineSeries.current.update({
+//                 time: tradeTime,
+//                 value: askPrice,
+//             });
+//         }
+//     }, [data]);
+
+//     return <div ref={chartContainerRef} style={{ position: 'relative', width: '250px', height: '100%' }} />;
+// }
+
+// const data = [
+//     { "time": 1724224201, "value": 0.00000590 },
+//     { "time": 1724224222, "value": 0.00000591 },
+//     { "time": 1724224233, "value": 0.00000592 },
+//     { "time": 1724224244, "value": 0.00000594 },
+//     { "time": 1724224255, "value": 0.00000595 },
+//     { "time": 1724224266, "value": 0.00000593 },
+//     { "time": 1724224277, "value": 0.00000592 },
+//     { "time": 1724224288, "value": 0.00000590 }
+// ];
+
+import React, { useEffect, useRef, useState } from "react";
+import { createChart } from "lightweight-charts";
+
+export function LineGraphRenderer({ data }) {
+    const chartContainerRef = useRef();
+    const chart = useRef();
+    const lineSeries = useRef();
+    const [dataPoints, setDataPoints] = useState([]);
+    const lastTimestampRef = useRef(null);
+    const [filteredDataPoints, setFilteredDataPoints] = useState([]);
+
+    useEffect(() => {
+        // Initialize the chart
+        chart.current = createChart(chartContainerRef.current, {
+            width: chartContainerRef.current.clientWidth,
+            // height: 50,
+            layout: {
+                backgroundColor: '#000000',
+                textColor: '#ffffff',
+                visible: false,
+                attributionLogo: false,
+            },
+            rightPriceScale: {
+                borderColor: '#888',
+                // visible: false,
+            },
+            timeScale: {
+                borderColor: '#888',
+                visible: false,
+            },
+        });
+
+        lineSeries.current = chart.current.addLineSeries({
+            color: '#00ff00',
+            lineWidth: 1,
+        });
+
+        return () => {
+            chart.current.remove();
+        };
+    }, []);
 
 
-import React, { useEffect, useRef } from 'react';
-import * as echarts from 'echarts';
+    useEffect(() => {
+            let tradeTime = new Date(data.E).getTime() / 1000; // Convert milliseconds to seconds
+            const askPrice = parseFloat(data.a);
 
-export const LineChart = () => {
-  const chartRef = useRef(null);
-  let data = [];
-  let now = new Date(1997, 9, 3);
-  const oneDay = 24 * 3600 * 1000;
-  let value = Math.random() * 1000;
+            // Ensure the time is unique by checking the last timestamp
+            if (lastTimestampRef.current && lastTimestampRef.current >= tradeTime) {
+                tradeTime = lastTimestampRef.current + 0.001; // Increment slightly to ensure uniqueness
+            }
 
-  function randomData() {
-    now = new Date(+now + oneDay);
-    value = value + Math.random() * 21 - 10;
-    return {
-      name: now.toString(),
-      value: [
-        [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
-        Math.round(value),
-      ],
-    };
-  }
+            lastTimestampRef.current = tradeTime;
 
-  for (let i = 0; i < 1000; i++) {
-    data.push(randomData());
-  }
+            // Create a new data point
+            const newDataPoint = {
+                time: tradeTime,
+                value: askPrice,
+            };
 
-  useEffect(() => {
-    const myChart = echarts.init(chartRef.current);
+            setFilteredDataPoints((prevDataPoints) => {
+                // Add the new data point to the existing array
+                const updatedDataPoints = [...prevDataPoints, newDataPoint];
 
-    const option = {
-      xAxis: {
-        type: 'time',
-      },
-      yAxis: {
-        type: 'value',
-      },
-      series: [
-        {
-          type: 'line',
-          showSymbol: false,
-          data: data,
-        },
-      ],
-    };
+                // Sort the data points by time
+                updatedDataPoints.sort((a, b) => a.time - b.time);
 
-    myChart.setOption(option);
+                return updatedDataPoints;
+            });
+    }, [data]);
 
-    const interval = setInterval(() => {
-      for (let i = 0; i < 5; i++) {
-        data.shift();
-        data.push(randomData());
-      }
-      myChart.setOption({
-        series: [
-          {
-            data: data,
-          },
-        ],
-      });
-    }, 99);
+    useEffect(() => {
+        if (filteredDataPoints.length > 0) {
+            lineSeries.current.setData(filteredDataPoints);
+        }
+    }, [filteredDataPoints]);
 
-    return () => {
-      clearInterval(interval);
-      myChart.dispose();
-    };
-  }, []);
-
-  return <div ref={chartRef} style={{ width: '100%', height: '400px' }} />;
-};
+    return <div ref={chartContainerRef} style={{ position: 'relative', width: '100%', height:'100%' }} />;
+}

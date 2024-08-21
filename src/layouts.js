@@ -12,7 +12,14 @@ import FunnelChart from './FunnelChart';
 import WatchList from "./WatchlistGrid";
 import { WatchListFirst } from './watchlistA/WatchListFirst';
 import './ag-grid-custom.css'
+import {LineGraphRenderer}  from "./graphs/LineGraphRenderer";
+import {TradingviewLineChart} from "./graphs/TradingviewLineChart"
 import { numberFormatter, LocalDateTimeRenderer } from './common/constant';
+import ActiveInstumentsChart from './ActiveInstumentsChart';
+import ConcentrationChart from './ConcentrationChart';
+import LPSymbolsCharts from './LPSymbolsCharts';
+import GroupsLpChart from './GroupsLpChart';
+import EChartsCandlestickChart from './EChartsCandlestickChart';
 
 
 const WatchListFirstColDefs = [
@@ -184,6 +191,118 @@ const WatchListSymbolMapColDefs = [
 
 ]
 
+const WatchListMarketColDefs = [
+    {
+        headerName: 'Market',
+        children: [
+          {
+            field: "s",
+            headerName: "MT Symbol",
+          },
+          {
+            field: "a",
+            headerName: "LTP",
+          },
+        ]
+      },
+      {
+        headerName: 'Book Exposure',
+        children: [
+          {
+            field: "s",
+            headerName: "A-Book",
+          },
+          {
+            field: "s",
+            headerName: "B-Book",
+          },
+          {
+            field: "s",
+            headerName: "C-Book",
+          }
+        ]
+      },
+      {
+        headerName: 'Predicted Hedge',
+        hide: true,
+        children: [
+          {
+            field: "b",
+            headerName: "Buy / Sell",
+          },
+          {
+            field: "b",
+            headerName: "H. Quantity",
+          },
+          {
+            field: "b",
+            headerName: "Entry",
+          },
+          {
+            field: "b",
+            headerName: "Take Profit",
+          },
+          {
+            field: "b",
+            headerName: "Stop Loss",
+          },
+          {
+            field: "b",
+            headerName: "Window",
+          },
+          {
+            field: "b",
+            headerName: "Expiry",
+          },
+          {
+            field: "b",
+            headerName: "Re-Entry",
+          },
+          {
+            field: "b",
+            headerName: "Confidence",
+          },
+          {
+            field: "b",
+            headerName: "Objective",
+          },
+          {
+            field: "b",
+            headerName: "Warning",
+          }
+        ]
+      },
+      {
+        headerName: 'Margins Conditions',
+        children: [
+          {
+            field: "b",
+            headerName: "SID-LP1",
+          },
+          {
+            field: "b",
+            headerName: "SID-LP2",
+          },
+          {
+            field: "b",
+            headerName: "SID-LP3",
+          }
+        ]
+      },
+      {
+        headerName: 'LPS',
+        children: [
+          {
+            field: "b",
+            headerName: "CMC | LMAX | PrimeXM | Equiti",
+          },
+        ]
+      },
+
+]
+
+
+
 const layouts = {
     LayoutOne: () => (
         <BaseLayout cols="12" rows="9">
@@ -200,24 +319,32 @@ const layouts = {
                 <ECharts />
             </div>
             <div className="border border-gray-300 col-span-3 row-span-3 col-start-4 row-start-4 flex justify-center items-center">
-            <ChartSwitcher chartType="line" />
+            <ActiveInstumentsChart/>
             </div>
             <div className="bg-gray-200 col-span-3 row-span-3 col-start-7 row-start-4 flex justify-center items-center">
                 <VaRCharts />
             </div>
             <div className="bg-gray-200 col-span-3 row-span-3 col-start-10 row-start-4 flex justify-center items-center">
-                <ChartSwitcher chartType="bar" />
+               <ConcentrationChart/>
             </div>
             <div className="bg-gray-200 col-span-4 row-span-3 row-start-7 flex justify-center items-center">
-            <ChartSwitcher chartType="pie" />
+            <EChartsCandlestickChart/>
             </div>
             <div className="bg-gray-200 col-span-4 row-span-3 col-start-5 row-start-7 flex justify-center items-center">
                 <WatchList />
             </div>
             <div className="border border-gray-300 col-span-4 row-span-3 col-start-9 row-start-7 flex justify-center items-center">
-                <ECharts />
+                <LPSymbolsCharts/>
             </div>
         </BaseLayout>
+
+        // <BaseLayout cols="12" rows="12">
+        // <div className="bg-gray-200 col-span-12 row-span-12 flex justify-center items-center">
+        //     <WatchListFirst/>
+        //     {/* <LineGraphRenderer /> */}
+        //     <TradingviewLineChart/>
+        // </div>
+        // </BaseLayout>
     ),
     LayoutTwo: () => (
         <BaseLayout cols="12" rows="12">
@@ -228,17 +355,18 @@ const layouts = {
                 <LongShortCharts />
             </div>
             <div className="border border-gray-300 col-span-12 row-span-6 row-start-7 flex justify-center items-center">
-            <WatchListFirst WatchListFirstColDefs={WatchListFirstColDefs}/>
+            <WatchListFirst WatchListFirstColDefs={WatchListSymbolMapColDefs}/>
             </div>
         </BaseLayout>
     ),
     LayoutThree: () => (
         <BaseLayout cols="12" rows="12">
             <div className="bg-gray-200 col-span-12 row-span-6 flex justify-center items-center">
-            <WatchListFirst WatchListFirstColDefs={WatchListSymbolMapColDefs}/>
+            <WatchListFirst WatchListFirstColDefs={WatchListMarketColDefs}    sideBar={true}/>
+            {/* <WatchListFirst WatchListFirstColDefs={WatchListSymbolMapColDefs}/> */}
             </div>
             <div className="bg-gray-200 col-span-6 row-span-6 row-start-7 flex justify-center items-center">
-                {/* <PieCharts /> */}
+                <PieCharts />
                 <WatchListFirst WatchListFirstColDefs={WatchListLTPColDefs}/>
             </div>
             <div className="bg-gray-200 col-span-6 row-span-6 col-start-7 row-start-7 flex justify-center items-center">
@@ -262,16 +390,16 @@ const layouts = {
                 <HighchartsComponent />
             </div>
             <div className="bg-gray-200 col-span-4 row-span-4 col-start-5 flex justify-center items-center">
-                <ChartSwitcher chartType="line" />
+              <ActiveInstumentsChart/>
             </div>
             <div className="bg-gray-200 col-span-4 row-span-4 col-start-9 flex justify-center items-center">
-                <ChartSwitcher chartType="line" />
+                <ConcentrationChart/>
             </div>
             <div className="bg-gray-200 col-span-4 row-span-4 row-start-5 flex justify-center items-center">
-                <ChartSwitcher chartType="line" />
+            <LPSymbolsCharts />
             </div>
             <div className="bg-gray-200 col-span-4 row-span-4 col-start-5 row-start-5 flex justify-center items-center">
-                <ChartSwitcher chartType="line" />
+            <EChartsCandlestickChart/>
             </div>
             <div className="bg-gray-200 col-span-4 row-span-4 col-start-9 row-start-5 flex justify-center items-center">
                 <ChartSwitcher chartType="line" />
@@ -294,8 +422,8 @@ const layouts = {
                 <ChartSwitcher chartType="line" />
             </div>
             <div className="bg-gray-200 col-span-4 row-span-8 col-start-7 row-start-1 flex justify-center items-center">
-                {/* <ChartSwitcher chartType="line" /> */}
-                <WatchList />
+               <LPSymbolsCharts />
+                {/* <WatchList /> */}
             </div>
         </div>
         // </BaseLayout>
@@ -303,7 +431,8 @@ const layouts = {
     LayoutSeven: () => (
         <BaseLayout cols="10" rows="8">
             <div className="bg-gray-200 col-span-4 row-span-8 flex justify-center items-center">
-            <WatchListFirst/>
+            {/* <WatchListFirst/> */}
+            <GroupsLpChart/>
             </div>
             <div className="bg-gray-200 col-span-3 row-span-4 col-start-5 flex justify-center items-center">
                 <ChartSwitcher chartType="line" />
@@ -449,7 +578,8 @@ const layouts = {
         </BaseLayout>
     ),
     LayoutSixteen: () => (
-        <BaseLayout cols="9" rows="9">
+        // <BaseLayout cols="9" rows="9">
+             <div className="grid grid-cols-9 grid-rows-9 gap-2 w-full h-full overflow-hidden">
             <div className="bg-gray-200 col-span-3 row-span-3 flex justify-center items-center">
                 <ChartSwitcher chartType="line" />
             </div>
@@ -477,7 +607,8 @@ const layouts = {
             <div className="bg-gray-200 col-span-3 row-span-3 col-start-7 row-start-7 flex justify-center items-center">
                 <ChartSwitcher chartType="line" />
             </div>
-        </BaseLayout>
+            </div>
+        // </BaseLayout>
     ),
     LayoutSeventeen: () => (
         <BaseLayout cols="12" rows="12">
@@ -518,8 +649,7 @@ const layouts = {
                 <ChartSwitcher chartType="line" />
             </div>
             <div className="bg-gray-200 col-span-3 row-span-3 row-start-10 flex justify-center items-center">
-                {/* <ChartSwitcher chartType="line" /> */}
-                <HighchartsComponent />
+                <ChartSwitcher chartType="line" />
             </div>
             <div className="bg-gray-200 col-span-3 row-span-3 col-start-4 row-start-10 flex justify-center items-center">
                 <ChartSwitcher chartType="line" />

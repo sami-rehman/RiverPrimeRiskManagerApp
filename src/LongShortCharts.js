@@ -139,7 +139,7 @@ const LongShortCharts = () => {
         };
     }, []);
 
-    return <div ref={chartRef} className='h-full w-full' />;
+    return <div ref={chartRef} className='h-full w-full p-2' />;
 };
 
 export default LongShortCharts;

@@ -11,11 +11,74 @@ import { LicenseManager } from "ag-grid-enterprise";
 
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
+import { numberFormatter, LocalDateTimeRenderer } from '../common/constant';
 
-// import {LineChart}  from "../graphs/LineGraphRenderer";
+import {LineGraphRenderer}  from "../graphs/LineGraphRenderer";
 
 
-export const WatchListFirst = ({WatchListFirstColDefs}) => {
+export const WatchListFirst = () => {
+
+const WatchListFirstColDefs = [
+        {
+            field: "s",
+            headerName: "MT Symbol",
+        },
+        {
+            headerName: "Ask",
+            field: "a",
+            // field:"p",
+            cellDataType: "number",
+            valueFormatter: numberFormatter,
+            cellRenderer: "agAnimateShowChangeCellRenderer",
+    
+        },
+        {
+            headerName: "Bid",
+            field: "b",
+            cellDataType: "number",
+            valueFormatter: numberFormatter,
+            cellRenderer: "agAnimateShowChangeCellRenderer",
+        },
+        {
+            headerName: "Spread",
+            cellDataType: "number",
+            valueGetter: ({ data }) =>
+                data && data.a - data.b,
+            valueFormatter: numberFormatter,
+            cellRenderer: "agAnimateShowChangeCellRenderer",
+        },
+        {
+            headerName: "High",
+            field: "h",
+            cellDataType: "number",
+            valueFormatter: numberFormatter,
+        },
+        {
+            headerName: "Low",
+            field: "l",
+            cellDataType: "number",
+             valueFormatter: numberFormatter,
+        },
+        {
+            headerName: "Change (%)",
+            field: "P",
+        },
+        // {
+        //     headerName: "Line Graph",
+        //     minWidth: 350,
+        //     cellRenderer: LineGraphRenderer,
+        //     cellRendererParams: (params) => ({
+        //       data: {
+        //         timestamps: params.data.E, 
+        //         asks: params.data.a, 
+        //         bids: params.data.b,
+        //         highs: params.data.h,
+        //         lows: params.data.l,
+        //         symbol: params.data.s
+        //       }
+        //     })
+        //   }
+    ];
 
     const colDefs = useMemo(()=>WatchListFirstColDefs)
 
@@ -53,9 +116,12 @@ export const WatchListFirst = ({WatchListFirstColDefs}) => {
         filter: true,
         enableRowGroup: true,
         enableValue: true,
+        enablePivot: true,
     }), []);
 
     const getRowId = useCallback(({ data: { s } }) => s, []);
+
+
     return (
         <div className="ag-theme-quartz h-full w-full">
             <AgGridReact
@@ -68,6 +134,7 @@ export const WatchListFirst = ({WatchListFirstColDefs}) => {
                 rowSelection={"multiple"}
                 suppressAggFuncInHeader
                 groupDefaultExpanded={-1}
+                // rowHeight={150}
                 immutableData={true}
                 pagination={true}
                 paginationPageSize={18}
