@@ -63,21 +63,21 @@ const WatchListFirstColDefs = [
             headerName: "Change (%)",
             field: "P",
         },
-        // {
-        //     headerName: "Line Graph",
-        //     minWidth: 350,
-        //     cellRenderer: LineGraphRenderer,
-        //     cellRendererParams: (params) => ({
-        //       data: {
-        //         timestamps: params.data.E, 
-        //         asks: params.data.a, 
-        //         bids: params.data.b,
-        //         highs: params.data.h,
-        //         lows: params.data.l,
-        //         symbol: params.data.s
-        //       }
-        //     })
-        //   }
+        {
+            headerName: "Line Graph",
+            minWidth: 350,
+            cellRenderer: LineGraphRenderer,
+            cellRendererParams: (params) => ({
+              data: {
+                timestamps: params.data.E, 
+                asks: params.data.a, 
+                bids: params.data.b,
+                highs: params.data.h,
+                lows: params.data.l,
+                symbol: params.data.s
+              }
+            })
+          }
     ];
 
     const colDefs = useMemo(()=>WatchListFirstColDefs)
