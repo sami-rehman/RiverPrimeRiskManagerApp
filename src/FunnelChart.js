@@ -22,6 +22,7 @@ const FunnelChart = () => {
             },
         ];
 
+        //   { date: '2020-08-01', group: 'Hedge', type: '本期', value: 46893 },
         const rawData = [
             { date: '2020-08-01', index: '投放点击用户数', type: '本期', value: 46893 },
             { date: '2020-08-01', index: '会场曝光用户数', type: '本期', value: 37896 },
@@ -84,7 +85,7 @@ const FunnelChart = () => {
 
         function getFillAttrs(cfg) {
             const defaultAttrs = {
-                lineWidth: 0,
+                lineWidth: 2,
                 fill: '#1890FF',
                 fillOpacity: 0.85,
             };
@@ -125,12 +126,12 @@ const FunnelChart = () => {
                     linkPath = this.parsePath(linkPath);
 
                     const [[, x1, y1], [, x2, y2]] = linkPath;
-                    group.addShape('path', {
-                        attrs: {
-                            path: linkPath,
-                            stroke: '#c5d0d9',
-                        },
-                    });
+                    // group.addShape('path', {
+                    //     attrs: {
+                    //         path: linkPath,
+                    //         stroke: '#c5d0d9',
+                    //     },
+                    // });
                     const text = group.addShape('text', {
                         attrs: {
                             x: (x1 + x2) / 2,

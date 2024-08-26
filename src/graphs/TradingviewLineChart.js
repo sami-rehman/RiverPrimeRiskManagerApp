@@ -9,7 +9,6 @@ export function TradingviewLineChart() {
     const lineSeries = useRef();
 
     useEffect(() => {
-        // Initialize the chart
         chart.current = createChart(chartContainerRef.current, {
             width: chartContainerRef.current.clientWidth,
             height: 50,
@@ -34,22 +33,22 @@ export function TradingviewLineChart() {
             lineWidth: 1,
         });
 
-        // WebSocket connection to Binance
         const ws = new WebSocket(BINANCE_WS_URL);
 
         ws.onmessage = (event) => {
             const message = JSON.parse(event.data);
+            // console.log('eventevent', message)
             const tradeTime = new Date(message.T);
             const askPrice = parseFloat(message.p);
 
-            // Add new data point to the chart
+            // console.log('askPrice2', askPrice)
+
             lineSeries.current.update({
-                time: tradeTime.getTime() / 1000, // Convert milliseconds to seconds
+                time: tradeTime.getTime() / 1000,
                 value: askPrice,
             });
         };
 
-        // Cleanup on unmount
         return () => {
             ws.close();
             chart.current.remove();

@@ -16,71 +16,9 @@ import { numberFormatter, LocalDateTimeRenderer } from '../common/constant';
 import {LineGraphRenderer}  from "../graphs/LineGraphRenderer";
 
 
-export const WatchListFirst = () => {
+export const WatchListFirst = ({WatchListColDefs, sideBar}) => {
 
-const WatchListFirstColDefs = [
-        {
-            field: "s",
-            headerName: "MT Symbol",
-        },
-        {
-            headerName: "Ask",
-            field: "a",
-            // field:"p",
-            cellDataType: "number",
-            valueFormatter: numberFormatter,
-            cellRenderer: "agAnimateShowChangeCellRenderer",
-    
-        },
-        {
-            headerName: "Bid",
-            field: "b",
-            cellDataType: "number",
-            valueFormatter: numberFormatter,
-            cellRenderer: "agAnimateShowChangeCellRenderer",
-        },
-        {
-            headerName: "Spread",
-            cellDataType: "number",
-            valueGetter: ({ data }) =>
-                data && data.a - data.b,
-            valueFormatter: numberFormatter,
-            cellRenderer: "agAnimateShowChangeCellRenderer",
-        },
-        {
-            headerName: "High",
-            field: "h",
-            cellDataType: "number",
-            valueFormatter: numberFormatter,
-        },
-        {
-            headerName: "Low",
-            field: "l",
-            cellDataType: "number",
-             valueFormatter: numberFormatter,
-        },
-        {
-            headerName: "Change (%)",
-            field: "P",
-        },
-        {
-            headerName: "Line Graph",
-            minWidth: 350,
-            cellRenderer: LineGraphRenderer,
-            cellRendererParams: (params) => ({
-              data: {
-                timestamps: params.data.E, 
-                asks: params.data.a, 
-                bids: params.data.b,
-                highs: params.data.h,
-                lows: params.data.l,
-                symbol: params.data.s
-              }
-            })
-          }
-    ];
-
-    const colDefs = useMemo(()=>WatchListFirstColDefs)
+    const colDefs = useMemo(()=>WatchListColDefs)
 
     LicenseManager.setLicenseKey("Using_this_{AG_Grid}_Enterprise_key_{AG-063926}_in_excess_of_the_licence_granted_is_not_permitted___Please_report_misuse_to_legal@ag-grid.com___For_help_with_changing_this_key_please_contact_info@ag-grid.com___{River_Prime}_is_granted_a_{Single_Application}_Developer_License_for_the_application_{River_Prime}_only_for_{1}_Front-End_JavaScript_developer___All_Front-End_JavaScript_developers_working_on_{River_Prime}_need_to_be_licensed___{River_Prime}_has_been_granted_a_Deployment_License_Add-on_for_{1}_Production_Environment___This_key_works_with_{AG_Grid}_Enterprise_versions_released_before_{23_July_2025}____[v3]_[01]_MTc1MzIyNTIwMDAwMA==1200d27c6f62377b36b8f92b7c13fe53");
 
@@ -112,7 +50,7 @@ const WatchListFirstColDefs = [
     };
 
     const defaultColDef = useMemo(() => ({
-        flex: 1,
+        // flex: 1,
         filter: true,
         enableRowGroup: true,
         enableValue: true,
@@ -121,7 +59,18 @@ const WatchListFirstColDefs = [
 
     const getRowId = useCallback(({ data: { s } }) => s, []);
 
+    const autoSizeStrategy = {
+        type: 'fitGridWidth',
+        defaultMinWidth: 135,
+        columnLimits: [
+            {
+                colId: 'MT Symbol',
+                minWidth: 100
+            }
+        ]
+    };
 
+   
     return (
         <div className="ag-theme-quartz h-full w-full">
             <AgGridReact
@@ -134,11 +83,12 @@ const WatchListFirstColDefs = [
                 rowSelection={"multiple"}
                 suppressAggFuncInHeader
                 groupDefaultExpanded={-1}
-                // rowHeight={150}
+                sideBar={sideBar}
                 immutableData={true}
                 pagination={true}
-                paginationPageSize={18}
-                paginationPageSizeSelector={[18, 50]}
+                paginationPageSize={7}
+                paginationPageSizeSelector={[7, 30]}
+                autoSizeStrategy={autoSizeStrategy}
             />
         </div>
     );

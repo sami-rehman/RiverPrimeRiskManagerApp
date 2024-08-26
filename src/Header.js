@@ -9,7 +9,7 @@ const Header = ({ setLayout }) => {
                 onChange={(e) => setLayout(e.target.value)}
             >
                 <option value="LayoutOne">Layout One</option>
-                {/* <option value="LayoutTwo">Layout Two</option>
+                <option value="LayoutTwo">Layout Two</option>
                 <option value="LayoutThree">Layout Three</option>
                 <option value="LayoutFour">Layout Four</option>
                 <option value="LayoutFive">Layout Five</option>
@@ -24,7 +24,7 @@ const Header = ({ setLayout }) => {
                 <option value="LayoutFourteen">Layout Fourteen</option>
                 <option value="LayoutFifteen">Layout Fifteen</option>
                 <option value="LayoutSixteen">Layout Sixteen</option>
-                <option value="LayoutSeventeen">Layout Seventeen</option> */}
+                <option value="LayoutSeventeen">Layout Seventeen</option>
 
             </select>
         </header>
