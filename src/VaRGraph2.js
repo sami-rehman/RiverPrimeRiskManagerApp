@@ -17,8 +17,9 @@ const VaRGraph2 = () => {
         },
       },
       grid: {
-        right: '25%',
-        bottom: 25,
+        // right: '15%',
+        containLabel: true,
+        bottom: 15,
       },
       legend: {
         data: ['Evaporation', 'Precipitation', 'Temperature'],

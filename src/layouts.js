@@ -394,7 +394,8 @@ const layouts = {
     LayoutFour: () => (
         <BaseLayout cols="12" rows="8">
             <div className="bg-gray-200 col-span-12 row-span-4 flex justify-center items-center">
-                <VaRCharts />
+                {/* <VaRCharts /> */}
+                <VaRGraph2/>
             </div>
             <div className="bg-gray-200 col-span-12 row-span-4 row-start-5 flex justify-center items-center">
                 <HighchartsComponent />
@@ -676,7 +677,8 @@ const layouts = {
                 <ChartSwitcher chartType="line" />
             </div>
             <div className="bg-gray-200 col-span-3 row-span-3 col-start-10 row-start-10 flex justify-center items-center">
-                <ChartSwitcher chartType="line" />
+                {/* <ChartSwitcher chartType="line" /> */}
+                <VaRGraph2/>
             </div>
         </BaseLayout>
     ),
