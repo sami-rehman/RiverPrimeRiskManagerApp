@@ -56,5 +56,10 @@ export function TradingviewLineChart() {
         };
     }, []);
 
-    return <div ref={chartContainerRef} style={{ position: 'relative', width: '250px' }} />;
+    return (
+    <div className="w-[250px] p-2">
+    <span>Live stream Line Chart </span>
+    <div ref={chartContainerRef} />
+    </div> 
+    )  
 }
