@@ -123,7 +123,7 @@ const VaRGraph2 = () => {
     };
   }, []);
 
-  return <div ref={chartRef} className='h-full w-full p-2' />;
+  return <div ref={chartRef} className='h-full w-full p-2'/>;
 };
 
 export default VaRGraph2;

@@ -106,7 +106,7 @@ const ConcentrationChart = () => {
     };
   }, []);
 
-  return <div ref={chartRef} className='h-full w-full p-2' />;
+  return <div ref={chartRef} className='h-full w-full' />;
 };
 
 export default ConcentrationChart;
