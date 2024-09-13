@@ -19,7 +19,7 @@ const ECharts = () => {
             data3.push(+(Math.random() + 0.3).toFixed(2));
         }
 
-        console.log('xAxisData', xAxisData, data1, data2, data3)
+        // console.log('xAxisData', xAxisData, data1, data2, data3)
 
         const emphasisStyle = {
             itemStyle: {

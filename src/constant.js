@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer
 } from 'recharts';
@@ -4342,4 +4342,2056 @@ export const shortData = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0.005, 0.005, 0.005, 0.005, 0.005, 0.001, 0, 0, 0,
+];
+
+export const GroupsLpChartData = {
+    backgroundColor: '#fff',
+  series: [
+      {
+        type: 'sankey',
+        left: 50.0,
+        top: 20.0,
+        right: 150.0,
+        bottom: 25.0,
+        data: [
+          {
+            name: 'Morangis',
+            itemStyle: {
+              color: '#8E562E',
+              borderColor: '#8E562E'
+            }
+          },
+          {
+            name: 'Metchosin',
+            itemStyle: {
+              color: '#C1504D',
+              borderColor: '#C1504D'
+            }
+          },
+          {
+            name: 'Kirkby',
+            itemStyle: {
+              color: '#CCAF0A',
+              borderColor: '#CCAF0A'
+            }
+          },
+          {
+            name: 'London',
+            itemStyle: {
+              color: '#956251',
+              borderColor: '#956251'
+            }
+          },
+          {
+            name: 'Offenbach',
+            itemStyle: {
+              color: '#C17529',
+              borderColor: '#C17529'
+            }
+          },
+          {
+            name: 'Warrington',
+            itemStyle: {
+              color: '#CEC597',
+              borderColor: '#CEC597'
+            }
+          },
+          {
+            name: 'Vancouver',
+            itemStyle: {
+              color: '#9F2936',
+              borderColor: '#9F2936'
+            }
+          },
+          {
+            name: 'SuperiorCard',
+            itemStyle: {
+              color: 'rgba(128,155,72,255)',
+              borderColor: 'rgba(128,155,72,255)'
+            }
+          },
+          {
+            name: 'Lille',
+            itemStyle: {
+              color: '#ac7430',
+              borderColor: '#ac7430'
+            }
+          },
+          {
+            name: 'Hamburg',
+            itemStyle: {
+              color: '#00BCF2',
+              borderColor: '#00BCF2'
+            }
+          },
+          {
+            name: 'Langley',
+            itemStyle: {
+              color: '#CD7B38',
+              borderColor: '#CD7B38'
+            }
+          },
+          {
+            name: 'Les Ulis',
+            itemStyle: {
+              color: '#424242',
+              borderColor: '#424242'
+            }
+          },
+          {
+            name: 'Saarbrücken',
+            itemStyle: {
+              color: '#f63185',
+              borderColor: '#f63185'
+            }
+          },
+          {
+            name: 'N. Vancouver',
+            itemStyle: {
+              color: '#9CBC59',
+              borderColor: '#9CBC59'
+            }
+          },
+          
+          {
+            name: 'Esher-Molesey',
+            itemStyle: {
+              color: '#3EC562',
+              borderColor: '#3EC562'
+            }
+          },
+          {
+            name: 'Hannover',
+            itemStyle: {
+              color: '#C3986D',
+              borderColor: '#C3986D'
+            }
+          },
+          {
+            name: 'Neunkirchen',
+            itemStyle: {
+              color: '#ff8b67',
+              borderColor: '#ff8b67'
+            }
+          },
+          {
+            name: 'Vista',
+            itemStyle: {
+              color: 'rgba(106,82,134,255)',
+              borderColor: 'rgba(106,82,134,255)'
+            }
+          },
+          {
+            name: 'Westminster',
+            itemStyle: {
+              color: '#1B587C',
+              borderColor: '#1B587C'
+            }
+          },
+          
+          {
+            name: 'Newcastle upon Tyne',
+            itemStyle: {
+              color: '#918485',
+              borderColor: '#918485'
+            }
+          },
+          
+          {
+            name: 'West Sussex',
+            itemStyle: {
+              color: '#B0E3C0',
+              borderColor: '#B0E3C0'
+            }
+          },
+          {
+            name: 'Oak Bay',
+            itemStyle: {
+              color: '#4BADC7',
+              borderColor: '#4BADC7'
+            }
+          },
+          {
+            name: 'Milton Keynes',
+            itemStyle: {
+              color: '#BA144C',
+              borderColor: '#BA144C'
+            }
+          },
+          {
+            name: 'Eilenburg',
+            itemStyle: {
+              color: '#F0A22E',
+              borderColor: '#F0A22E'
+            }
+          },
+          {
+            name: 'ColonialVoice',
+            itemStyle: {
+              color: 'rgba(64,105,157,255)',
+              borderColor: 'rgba(64,105,157,255)'
+            }
+          },
+          {
+            name: 'Liverpool',
+            itemStyle: {
+              color: '#A28E6A',
+              borderColor: '#A28E6A'
+            }
+          },
+          {
+            name: 'Calgary',
+            itemStyle: {
+              color: '#9F413E',
+              borderColor: '#9F413E'
+            }
+          },
+          {
+            name: 'CAD',
+            itemStyle: {
+              color: '#40699D',
+              borderColor: '#40699D'
+            }
+          },
+          {
+            name: 'Paris La Defense',
+            itemStyle: {
+              color: '#989391',
+              borderColor: '#989391'
+            }
+          },
+          {
+            name: "Villeneuve-d'Ascq",
+            itemStyle: {
+              color: '#886CE4',
+              borderColor: '#886CE4'
+            }
+          },
+          {
+            name: 'Gloucestershire',
+            itemStyle: {
+              color: '#964305',
+              borderColor: '#964305'
+            }
+          },
+          {
+            name: 'Gateshead',
+            itemStyle: {
+              color: '#485FB5',
+              borderColor: '#485FB5'
+            }
+          },
+          {
+            name: 'Salzgitter',
+            itemStyle: {
+              color: '#87a0c7',
+              borderColor: '#87a0c7'
+            }
+          },
+          {
+            name: 'Woolston',
+            itemStyle: {
+              color: '#FFE2C5',
+              borderColor: '#FFE2C5'
+            }
+          },
+          {
+            name: 'Frankfurt',
+            itemStyle: {
+              color: '#40699D',
+              borderColor: '#40699D'
+            }
+          },
+          {
+            name: 'Münster',
+            itemStyle: {
+              color: '#7e7eb2',
+              borderColor: '#7e7eb2'
+            }
+          },
+          {
+            name: 'York',
+            itemStyle: {
+              color: '#587C7D',
+              borderColor: '#587C7D'
+            }
+          },
+          {
+            name: 'High Wycombe',
+            itemStyle: {
+              color: '#F07F09',
+              borderColor: '#F07F09'
+            }
+          },
+          {
+            name: 'Stuttgart',
+            itemStyle: {
+              color: '#E3008C',
+              borderColor: '#E3008C'
+            }
+          },
+          {
+            name: 'Sooke',
+            itemStyle: {
+              color: '#4E8542',
+              borderColor: '#4E8542'
+            }
+          },
+          {
+            name: 'Essen',
+            itemStyle: {
+              color: '#B58B80',
+              borderColor: '#B58B80'
+            }
+          },
+          {
+            name: 'München',
+            itemStyle: {
+              color: '#4dc0a6',
+              borderColor: '#4dc0a6'
+            }
+          },
+          {
+            name: 'Haney',
+            itemStyle: {
+              color: '#6A5286',
+              borderColor: '#6A5286'
+            }
+          },
+          {
+            name: 'Port Hammond',
+            itemStyle: {
+              color: '#F89746',
+              borderColor: '#F89746'
+            }
+          },
+          {
+            name: 'Saint Ouen',
+            itemStyle: {
+              color: '#744DA9',
+              borderColor: '#744DA9'
+            }
+          },
+          {
+            name: 'Watford',
+            itemStyle: {
+              color: '#E8B7B7',
+              borderColor: '#E8B7B7'
+            }
+          },
+          {
+            name: 'GBP',
+            itemStyle: {
+              color: '#C32D2E',
+              borderColor: '#C32D2E'
+            }
+          },
+          {
+            name: 'Paderborn',
+            itemStyle: {
+              color: '#F0C42E',
+              borderColor: '#F0C42E'
+            }
+          },
+          {
+            name: 'Dunkerque',
+            itemStyle: {
+              color: '#881798',
+              borderColor: '#881798'
+            }
+          },
+          {
+            name: 'Colomiers',
+            itemStyle: {
+              color: '#efa835',
+              borderColor: '#efa835'
+            }
+          },
+          {
+            name: 'Oxford',
+            itemStyle: {
+              color: '#D8B25C',
+              borderColor: '#D8B25C'
+            }
+          },
+          {
+            name: 'Bury',
+            itemStyle: {
+              color: '#FEB80A',
+              borderColor: '#FEB80A'
+            }
+          },
+          {
+            name: 'Royal Oak',
+            itemStyle: {
+              color: '#009DD9',
+              borderColor: '#009DD9'
+            }
+          },
+          {
+            name: 'Shawnee',
+            itemStyle: {
+              color: '#F07F09',
+              borderColor: '#F07F09'
+            }
+          },
+          {
+            name: 'Lancaster',
+            itemStyle: {
+              color: '#D34817',
+              borderColor: '#D34817'
+            }
+          },
+          {
+            name: 'DEM',
+            itemStyle: {
+              color: '#4E342E',
+              borderColor: '#4E342E'
+            }
+          },
+          {
+            name: 'Grevenbroich',
+            itemStyle: {
+              color: '#FFA836',
+              borderColor: '#FFA836'
+            }
+          },
+          {
+            name: 'Distinguish',
+            itemStyle: {
+              color: 'rgba(159,65,62,255)',
+              borderColor: 'rgba(159,65,62,255)'
+            }
+          },
+          {
+            name: 'Cheltenham',
+            itemStyle: {
+              color: '#FF6551',
+              borderColor: '#FF6551'
+            }
+          },
+          {
+            name: 'Reading',
+            itemStyle: {
+              color: '#72A376',
+              borderColor: '#72A376'
+            }
+          },
+          {
+            name: 'Pantin',
+            itemStyle: {
+              color: '#69797E',
+              borderColor: '#69797E'
+            }
+          },
+          {
+            name: 'Kassel',
+            itemStyle: {
+              color: '#e65e20',
+              borderColor: '#e65e20'
+            }
+          },
+          {
+            name: 'FRF',
+            itemStyle: {
+              color: '#5ba33b',
+              borderColor: '#5ba33b'
+            }
+          },
+          {
+            name: 'Cergy',
+            itemStyle: {
+              color: '#B4009E',
+              borderColor: '#B4009E'
+            }
+          },
+          {
+            name: 'Paris',
+            itemStyle: {
+              color: '#666666',
+              borderColor: '#666666'
+            }
+          }
+        ],
+        links: [
+          {
+            source: 'FRF',
+            target: 'Colomiers',
+            value: 35
+          },
+          {
+            source: 'SuperiorCard',
+            target: 'FRF',
+            value: 894.5999908447266
+          },
+          {
+            source: 'DEM',
+            target: 'München',
+            value: 178.9199981689453
+          },
+          {
+            source: 'GBP',
+            target: 'Reading',
+            value: 188.52999836206436
+          },
+          {
+            source: 'CAD',
+            target: 'Shawnee',
+            value: 2346.919983509928
+          },
+          {
+            source: 'GBP',
+            target: 'Kirkby',
+            value: 753.4000000059605
+          },
+          {
+            source: 'FRF',
+            target: 'Roncq',
+            value: 178.9199981689453
+          },
+          {
+            source: 'GBP',
+            target: 'Peterborough',
+            value: 999.159998036921
+          },
+          {
+            source: 'DEM',
+            target: 'Frankfurt am Main',
+            value: 536.7599945068359
+          },
+          {
+            source: 'GBP',
+            target: 'Oxford',
+            value: 1831.3799968883395
+          },
+          {
+            source: 'Vista',
+            target: 'FRF',
+            value: 1789.1999816894531
+          },
+          {
+            source: 'CAD',
+            target: 'Langley',
+            value: 1274.8199949413538
+          },
+          {
+            source: 'DEM',
+            target: 'Offenbach',
+            value: 357.8399963378906
+          },
+          {
+            source: 'FRF',
+            target: "Villeneuve-d'Ascq",
+            value: 178.9199981689453
+          },
+          {
+            source: 'FRF',
+            target: 'Dunkerque',
+            value: 357.8399963378906
+          },
+          {
+            source: 'DEM',
+            target: 'Eilenburg',
+            value: 178.9199981689453
+          },
+          {
+            source: 'FRF',
+            target: 'Paris',
+            value: 1073.5199890136719
+          },
+          {
+            source: 'GBP',
+            target: 'Maidenhead',
+            value: 549.8400026857853
+          },
+          {
+            source: 'CAD',
+            target: 'Sooke',
+            value: 1764.499989286065
+          },
+          {
+            source: 'CAD',
+            target: 'Vancouver',
+            value: 1528.580000281334
+          },
+          {
+            source: 'DEM',
+            target: 'Hamburg',
+            value: 357.8399963378906
+          },
+          {
+            source: 'GBP',
+            target: 'London',
+            value: 9619
+          },
+          {
+            source: 'CAD',
+            target: 'Oak Bay',
+            value: 1565.109990529716
+          },
+          {
+            source: 'Distinguish',
+            target: 'FRF',
+            value: 2683.7999725341797
+          },
+          {
+            source: 'DEM',
+            target: 'Neunkirchen',
+            value: 178.9199981689453
+          },
+          {
+            source: 'FRF',
+            target: 'Cergy',
+            value: 178.9199981689453
+          },
+        
+          {
+            source: 'FRF',
+            target: 'Paris La Defense',
+            value: 178.9199981689453
+          },
+          {
+            source: 'CAD',
+            target: 'Westminster',
+            value: 1149.7999994903803
+          },
+          
+          {
+            source: 'GBP',
+            target: 'Saint Ouen',
+            value: 0.5899999737739563
+          },
+          {
+            source: 'FRF',
+            target: 'Lille',
+            value: 357.8399963378906
+          },
+          {
+            source: 'GBP',
+            target: 'Leeds',
+            value: 1356.6899970173836
+          },
+          {
+            source: 'FRF',
+            target: 'Morangis',
+            value: 357.8399963378906
+          },
+          
+          
+          {
+            source: 'Vista',
+            target: 'CAD',
+            value: 5369.929964579642
+          },
+          {
+            source: 'GBP',
+            target: 'Paris',
+            value: 0.6399999856948853
+          },
+          {
+            source: 'GBP',
+            target: 'Liverpool',
+            value: 857.1999968588352
+          },
+          {
+            source: 'GBP',
+            target: 'Stoke-on-Trent',
+            value: 1131.7099939212203
+          },
+          
+          {
+            source: 'CAD',
+            target: 'Langford',
+            value: 2343.4599857851863
+          },
+          {
+            source: 'DEM',
+            target: 'Kassel',
+            value: 536.7599945068359
+          },
+          {
+            source: 'GBP',
+            target: 'High Wycombe',
+            value: 216.83999809622765
+          },
+          {
+            source: 'CAD',
+            target: 'Port Hammond',
+            value: 1711.1399984136224
+          },
+          {
+            source: 'DEM',
+            target: 'Duesseldorf',
+            value: 178.9199981689453
+          },
+          {
+            source: 'GBP',
+            target: 'Gloucestershire',
+            value: 422.28999888151884
+          },
+          {
+            source: 'Distinguish',
+            target: 'GBP',
+            value: 10384.949975416064
+          },
+          {
+            source: 'FRF',
+            target: 'Roissy en Brie',
+            value: 178.9199981689453
+          },
+          {
+            source: 'GBP',
+            target: 'West Sussex',
+            value: 592.1700052022934
+          },
+          {
+            source: 'CAD',
+            target: 'Cliffside',
+            value: 2906.2699892893434
+          },
+          {
+            source: 'GBP',
+            target: 'Newcastle upon Tyne',
+            value: 1448.2899911925197
+          },
+          {
+            source: 'GBP',
+            target: 'Runcorn',
+            value: 1120.4800013303757
+          },
+          {
+            source: 'GBP',
+            target: 'W. York',
+            value: 612.1199932694435
+          },
+          {
+            source: 'GBP',
+            target: 'Woolston',
+            value: 833.3199937939644
+          },
+          {
+            source: 'DEM',
+            target: 'Frankfurt',
+            value: 715.6799926757812
+          },
+          {
+            source: 'CAD',
+            target: 'Colma',
+            value: 0.2199999988079071
+          },
+          {
+            source: 'DEM',
+            target: 'Essen',
+            value: 178.9199981689453
+          },
+         
+          {
+            source: 'GBP',
+            target: 'Cheltenham',
+            value: 573.0499979257584
+          },
+          {
+            source: 'CAD',
+            target: 'Haney',
+            value: 2310.4499812424183
+          },
+          {
+            source: 'FRF',
+            target: 'Saint Ouen',
+            value: 178.9199981689453
+          },
+         
+          {
+            source: 'DEM',
+            target: 'Salzgitter',
+            value: 178.9199981689453
+          },
+          {
+            source: 'ColonialVoice',
+            target: 'FRF',
+            value: 1610.2799835205078
+          },
+          {
+            source: 'DEM',
+            target: 'Stuttgart',
+            value: 357.8399963378906
+          },
+          {
+            source: 'FRF',
+            target: 'Saint-Denis',
+            value: 178.9199981689453
+          },
+          {
+            source: 'CAD',
+            target: 'Royal Oak',
+            value: 2128.459992274642
+          },
+          {
+            source: 'FRF',
+            target: 'Les Ulis',
+            value: 715.6799926757812
+          },
+          {
+            source: 'FRF',
+            target: 'Drancy',
+            value: 178.9199981689453
+          },
+          {
+            source: 'GBP',
+            target: 'Esher-Molesey',
+            value: 911.4700058028102
+          },
+          {
+            source: 'SuperiorCard',
+            target: 'CAD',
+            value: 7388.099954992533
+          },
+          {
+            source: 'GBP',
+            target: 'Bury',
+            value: 903.9400005489588
+          },
+          {
+            source: 'GBP',
+            target: 'Watford',
+            value: 1326.5300009772182
+          },
+          {
+            source: 'CAD',
+            target: 'Victoria',
+            value: 827.3899968340993
+          },
+          {
+            source: 'DEM',
+            target: 'Saarbrücken',
+            value: 178.9199981689453
+          },
+          {
+            source: 'GBP',
+            target: 'Lancaster',
+            value: 685.6899967193604
+          },
+          {
+            source: 'FRF',
+            target: 'Pantin',
+            value: 178.9199981689453
+          },
+          {
+            source: 'CAD',
+            target: 'Newton',
+            value: 1781.909985654056
+          },
+          {
+            source: 'CAD',
+            target: 'Calgary',
+            value: 361.3899962902069
+          },
+          {
+            source: 'DEM',
+            target: 'Münster',
+            value: 715.6799926757812
+          },
+          {
+            source: 'DEM',
+            target: 'Grevenbroich',
+            value: 536.7599945068359
+          },
+          {
+            source: 'DEM',
+            target: 'Paderborn',
+            value: 357.8399963378906
+          },
+          {
+            source: 'GBP',
+            target: 'York',
+            value: 3172.9999914616346
+          },
+          {
+            source: 'CAD',
+            target: 'Metchosin',
+            value: 1750.7899813987315
+          },
+          {
+            source: 'FRF',
+            target: 'Suresnes',
+            value: 357.8399963378906
+          },
+          {
+            source: 'FRF',
+            target: 'Versailles',
+            value: 894.5999908447266
+          },
+          {
+            source: 'DEM',
+            target: 'Erlangen',
+            value: 536.7599945068359
+          },
+          {
+            source: 'CAD',
+            target: 'Lebanon',
+            value: 0.8700000047683716
+          },
+          {
+            source: 'GBP',
+            target: 'Wokingham',
+            value: 812.6600027084351
+          },
+          {
+            source: 'GBP',
+            target: 'Cambridge',
+            value: 500.36999743431807
+          },
+          {
+            source: 'ColonialVoice',
+            target: 'GBP',
+            value: 8040.7799860313535
+          },
+          {
+            source: 'FRF',
+            target: 'Saint Germain en Laye',
+            value: 178.9199981689453
+          },
+          {
+            source: 'FRF',
+            target: 'Metz',
+            value: 178.9199981689453
+          },
+          {
+            source: 'FRF',
+            target: 'Orleans',
+            value: 357.8399963378906
+          },
+          {
+            source: 'GBP',
+            target: 'Milton Keynes',
+            value: 1648.2200061008334
+          },
+          {
+            source: 'GBP',
+            target: 'Warrington',
+            value: 2162.8300000429153
+          },
+          {
+            source: 'CAD',
+            target: 'N. Vancouver',
+            value: 1862.4599857926369
+          },
+          {
+            source: 'DEM',
+            target: 'Hannover',
+            value: 178.9199981689453
+          },
+          {
+            source: 'Vista',
+            target: 'GBP',
+            value: 9497.539981640875
+          },
+          {
+            source: 'DEM',
+            target: 'Werne',
+            value: 178.9199981689453
+          },
+          {
+            source: 'ColonialVoice',
+            target: 'DEM',
+            value: 1789.1999816894531
+          },
+          {
+            source: 'ColonialVoice',
+            target: 'CAD',
+            value: 7907.36997512728
+          },
+          {
+            source: 'GBP',
+            target: 'Gateshead',
+            value: 1425.7099913656712
+          },
+          {
+            source: 'Vista',
+            target: 'DEM',
+            value: 1968.1199798583984
+          }
+        ],
+        // emphasis: {
+        //   focus: 'adjacency'
+        // },
+        lineStyle: {
+          color: 'source',
+          curveness: 0.5
+        },
+        itemStyle: {
+          color: '#1f77b4',
+          borderColor: '#1f77b4'
+        },
+        label: {
+          color: 'rgba(0,0,0,0.7)',
+          fontFamily: 'Arial',
+          fontSize: 10
+        }
+      }
+    ],
+  };
+  
+  export   const rawDataPiechartEquity = [
+    // {
+    //     "login": "Totals",
+    //     "rid": 29039152,
+    //     "group": "0demo\\SINV\\PROdemo\\SINV\\PRIMEdemo\\RP\\Premiumdemo\\RP\\PROdemo\\SINV\\PROdemo\\SINV\\PROdemo\\SINV\\PROdemo\\SINV\\EXECUTIVEdemo\\SINV\\EXECUTIVEdemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\RP\\Primedemo\\HNINV\\RawRP\\IB\\old\\0C-15MU-15R-V2demo\\SINV\\PRIMEdemo\\SINV\\PRIMEdemo\\RP\\PROdemo\\RP\\PROdemo\\HNINV\\Standarddemo\\HNINV\\Rawdemo\\SINV\\PROdemo\\RP\\Primedemo\\HNINV\\Rawdemo\\RP\\Premiumdemo\\SINV\\EXECUTIVEdemo\\SINV\\PROdemo\\SINV\\PROdemo\\RP\\Premiumdemo\\RP\\Primedemo\\SINV\\PROdemo\\RP\\PROdemo\\RP\\PROdemo\\RP\\Premiumdemo\\SINV\\PROdemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\HNINV\\Standarddemo\\RP\\PROdemo\\RP\\IB\\00C-00M-00R-20SOdemo\\RP\\PROdemo\\SINV\\IB\\00C-10MU-20R-testdemo\\SINV\\EXECUTIVEdemo\\SINV\\PRIMEdemo\\RP\\Primedemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\RP\\PROdemo\\SINV\\PRIMEdemo\\HNINV\\Standarddemo\\SINV\\EXECUTIVEdemo\\SINV\\PRIMEdemo\\HNINV\\Rawdemo\\RP\\PROdemo\\HNINV\\Standarddemo\\RP\\Premiumdemo\\SINV\\PRO",
+    //     "equity": 10827931.45,
+    //     "volumeLots": 63.25,
+    //     "volumeNotional": 63250,
+    //     "realizedPL": -853157.24,
+    //     "unrealizedPL": -714765.65,
+    //     "marginUtilization": 75019.57999999999,
+    //     "marginFree": 9899560.04,
+    //     "marginLevel": 6045116.008684407,
+    //     "longs": 18,
+    //     "shorts": 57,
+    //     "naoi": -54.95000000000001,
+    //     "marginLeverage": 13400
+    // },
+    {
+        "login": 906137,
+        "rid": 500411,
+        "group": "demo\\SINV\\PRO",
+        "equity": 72.98,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": -46.26,
+        "unrealizedPL": 0,
+        "marginUtilization": 24.19,
+        "marginFree": 2.5300000000000002,
+        "rule": "Active",
+        "marginLevel": 110.4588673005374,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 909120,
+        "rid": 501547,
+        "group": "demo\\SINV\\PRIME",
+        "equity": 11771.53,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": -2905,
+        "unrealizedPL": 0,
+        "marginUtilization": 1450.4,
+        "marginFree": 7416.13,
+        "rule": "InActive",
+        "marginLevel": 611.3161886376172,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 904425,
+        "rid": 500355,
+        "group": "demo\\RP\\Premium",
+        "equity": 32.81,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 32.81,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 400
+    },
+    {
+        "login": 909694,
+        "rid": 500273,
+        "group": "demo\\RP\\PRO",
+        "equity": 5.11,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 5.11,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 400
+    },
+    {
+        "login": 906024,
+        "rid": 500410,
+        "group": "demo\\SINV\\PRO",
+        "equity": 102435.3,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 102435.3,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 904495,
+        "rid": 500402,
+        "group": "demo\\SINV\\PRO",
+        "equity": 10000,
+        "volumeLots": 1.01,
+        "volumeNotional": 1010,
+        "realizedPL": 839.44,
+        "unrealizedPL": 722.63,
+        "marginUtilization": 319.46,
+        "marginFree": 10519.98,
+        "rule": "InActive",
+        "marginLevel": 3393.050773179741,
+        "longs": 1,
+        "shorts": 1,
+        "naoi": 0.99,
+        "marginLeverage": 400
+    },
+    {
+        "login": 905175,
+        "rid": 500407,
+        "group": "demo\\SINV\\PRO",
+        "equity": 580.92,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 580.92,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 901764,
+        "rid": 501358,
+        "group": "demo\\SINV\\EXECUTIVE",
+        "equity": 10000,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 10000,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 400
+    },
+    {
+        "login": 121065,
+        "rid": 501354,
+        "group": "demo\\SINV\\EXECUTIVE",
+        "equity": 10000,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 10000,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 400
+    },
+    {
+        "login": 1010810,
+        "rid": 500382,
+        "group": "demo\\RP\\Prime",
+        "equity": 1000000,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 1000000,
+        "rule": "InActive",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 909458,
+        "rid": 501550,
+        "group": "demo\\SINV\\PRIME",
+        "equity": 11250.25,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 11250.25,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 908080,
+        "rid": 500376,
+        "group": "demo\\RP\\Prime",
+        "equity": 146.43,
+        "volumeLots": 0.02,
+        "volumeNotional": 20,
+        "realizedPL": 0.09,
+        "unrealizedPL": 3.2199999999999998,
+        "marginUtilization": 10.9,
+        "marginFree": 135.62,
+        "rule": "Active",
+        "marginLevel": 1344.2201834862385,
+        "longs": 2,
+        "shorts": 0,
+        "naoi": 0.02,
+        "marginLeverage": 100
+    },
+    {
+        "login": 905977,
+        "rid": 501541,
+        "group": "demo\\SINV\\PRIME",
+        "equity": 7.16,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 7.16,
+        "rule": "InActive",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 910548,
+        "rid": 500380,
+        "group": "demo\\RP\\Prime",
+        "equity": 11005.71,
+        "volumeLots": 0.09999999999999999,
+        "volumeNotional": 100,
+        "realizedPL": 0,
+        "unrealizedPL": -53.940000000000005,
+        "marginUtilization": 0,
+        "marginFree": 11005.71,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 10,
+        "shorts": 0,
+        "naoi": 0.09999999999999999,
+        "marginLeverage": 100
+    },
+    {
+        "login": 908660,
+        "rid": 500233,
+        "group": "demo\\HNINV\\Raw",
+        "equity": 7.58,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 7.58,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 908098,
+        "rid": 500401,
+        "group": "RP\\IB\\old\\0C-15MU-15R-V2",
+        "equity": 100000,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": -87029,
+        "unrealizedPL": 0,
+        "marginUtilization": 1015.08,
+        "marginFree": 11955.92,
+        "rule": "InActive",
+        "marginLevel": 1277.8303187926074,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 400
+    },
+    {
+        "login": 910178,
+        "rid": 501556,
+        "group": "demo\\SINV\\PRIME",
+        "equity": 3000,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 3000,
+        "rule": "InActive",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 909954,
+        "rid": 501555,
+        "group": "demo\\SINV\\PRIME",
+        "equity": 138.71,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 138.71,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 908278,
+        "rid": 500266,
+        "group": "demo\\RP\\PRO",
+        "equity": 36115.87,
+        "volumeLots": 11.500000000000002,
+        "volumeNotional": 11500,
+        "realizedPL": -5259.22,
+        "unrealizedPL": -16593.44,
+        "marginUtilization": 2039.18,
+        "marginFree": 28817.47,
+        "rule": "InActive",
+        "marginLevel": 1513.1891250404574,
+        "longs": 0,
+        "shorts": 12,
+        "naoi": -11.500000000000002,
+        "marginLeverage": 400
+    },
+    {
+        "login": 907649,
+        "rid": 500264,
+        "group": "demo\\RP\\PRO",
+        "equity": 3367.48,
+        "volumeLots": 0.01,
+        "volumeNotional": 10,
+        "realizedPL": 91,
+        "unrealizedPL": 41.1,
+        "marginUtilization": 7.42,
+        "marginFree": 3451.06,
+        "rule": "InActive",
+        "marginLevel": 46610.24258760108,
+        "longs": 0,
+        "shorts": 1,
+        "naoi": -0.01,
+        "marginLeverage": 400
+    },
+    {
+        "login": 910174,
+        "rid": 500238,
+        "group": "demo\\HNINV\\Standard",
+        "equity": 0.6,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 0.6,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 400
+    },
+    {
+        "login": 100845,
+        "rid": 500229,
+        "group": "demo\\HNINV\\Raw",
+        "equity": 1.03,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 1.03,
+        "rule": "InActive",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 904642,
+        "rid": 500403,
+        "group": "demo\\SINV\\PRO",
+        "equity": 2320534.36,
+        "volumeLots": 0.08,
+        "volumeNotional": 80,
+        "realizedPL": -266.25,
+        "unrealizedPL": -668.59,
+        "marginUtilization": 42.48,
+        "marginFree": 2320225.63,
+        "rule": "InActive",
+        "marginLevel": 5462024.741054614,
+        "longs": 0,
+        "shorts": 8,
+        "naoi": -0.08,
+        "marginLeverage": 400
+    },
+    {
+        "login": 1011068,
+        "rid": 500385,
+        "group": "demo\\RP\\Prime",
+        "equity": 100000,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 100000,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 908096,
+        "rid": 500232,
+        "group": "demo\\HNINV\\Raw",
+        "equity": 34057.83,
+        "volumeLots": 9.5,
+        "volumeNotional": 9500,
+        "realizedPL": -5723.43,
+        "unrealizedPL": -15424.340000000002,
+        "marginUtilization": 8282.14,
+        "marginFree": 20052.26,
+        "rule": "InActive",
+        "marginLevel": 342.1144776591558,
+        "longs": 0,
+        "shorts": 11,
+        "naoi": -9.5,
+        "marginLeverage": 100
+    },
+    {
+        "login": 909793,
+        "rid": 500357,
+        "group": "demo\\RP\\Premium",
+        "equity": 20,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 20,
+        "rule": "InActive",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 400
+    },
+    {
+        "login": 901508,
+        "rid": 501357,
+        "group": "demo\\SINV\\EXECUTIVE",
+        "equity": 5058.33,
+        "volumeLots": 0.04,
+        "volumeNotional": 40,
+        "realizedPL": 0,
+        "unrealizedPL": 3.4899999999999998,
+        "marginUtilization": 0,
+        "marginFree": 5058.33,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 2,
+        "shorts": 2,
+        "naoi": 0,
+        "marginLeverage": 400
+    },
+    {
+        "login": 906974,
+        "rid": 500416,
+        "group": "demo\\SINV\\PRO",
+        "equity": 100652.24,
+        "volumeLots": 0.1,
+        "volumeNotional": 100,
+        "realizedPL": 8.21,
+        "unrealizedPL": -94.29,
+        "marginUtilization": 21.84,
+        "marginFree": 100638.61,
+        "rule": "InActive",
+        "marginLevel": 460899.4963369963,
+        "longs": 0,
+        "shorts": 1,
+        "naoi": -0.1,
+        "marginLeverage": 100
+    },
+    {
+        "login": 905410,
+        "rid": 500408,
+        "group": "demo\\SINV\\PRO",
+        "equity": 10000,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 10000,
+        "rule": "InActive",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 910318,
+        "rid": 500367,
+        "group": "demo\\RP\\Premium",
+        "equity": 18486.24,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 18486.24,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 1011184,
+        "rid": 500388,
+        "group": "demo\\RP\\Prime",
+        "equity": 100000,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 100000,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 904684,
+        "rid": 500404,
+        "group": "demo\\SINV\\PRO",
+        "equity": 10000,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 10000,
+        "rule": "InActive",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 400
+    },
+    {
+        "login": 909171,
+        "rid": 500268,
+        "group": "demo\\RP\\PRO",
+        "equity": 111332.68,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 111332.68,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 400
+    },
+    {
+        "login": 905862,
+        "rid": 500263,
+        "group": "demo\\RP\\PRO",
+        "equity": 94952.31,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 94952.31,
+        "rule": "InActive",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 400
+    },
+    {
+        "login": 907894,
+        "rid": 500356,
+        "group": "demo\\RP\\Premium",
+        "equity": 119159.07,
+        "volumeLots": 15.88,
+        "volumeNotional": 15880,
+        "realizedPL": -6078.5,
+        "unrealizedPL": -21750.6,
+        "marginUtilization": 9268.91,
+        "marginFree": 103811.66,
+        "rule": "Active",
+        "marginLevel": 1219.9985758843275,
+        "longs": 0,
+        "shorts": 12,
+        "naoi": -15.88,
+        "marginLeverage": 100
+    },
+    {
+        "login": 906789,
+        "rid": 500414,
+        "group": "demo\\SINV\\PRO",
+        "equity": 10000,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 10000,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 910095,
+        "rid": 500377,
+        "group": "demo\\RP\\Prime",
+        "equity": 10001.34,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 10001.34,
+        "rule": "InActive",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 909913,
+        "rid": 501554,
+        "group": "demo\\SINV\\PRIME",
+        "equity": 211.06,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 211.06,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 908811,
+        "rid": 500235,
+        "group": "demo\\HNINV\\Standard",
+        "equity": 463312.72,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 463312.72,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 400
+    },
+    {
+        "login": 909578,
+        "rid": 500271,
+        "group": "demo\\RP\\PRO",
+        "equity": 100000,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 100000,
+        "rule": "InActive",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 400
+    },
+    {
+        "login": 908670,
+        "rid": 501619,
+        "group": "demo\\RP\\IB\\00C-00M-00R-20SO",
+        "equity": 99986.37,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 99986.37,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 910159,
+        "rid": 500275,
+        "group": "demo\\RP\\PRO",
+        "equity": 4.57,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 4.57,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 400
+    },
+    {
+        "login": 905461,
+        "rid": 501624,
+        "group": "demo\\SINV\\IB\\00C-10MU-20R-test",
+        "equity": 116638.8,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": -65652,
+        "unrealizedPL": 0,
+        "marginUtilization": 21593.16,
+        "marginFree": 29393.64,
+        "rule": "InActive",
+        "marginLevel": 236.12477284473417,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 903127,
+        "rid": 501359,
+        "group": "demo\\SINV\\EXECUTIVE",
+        "equity": 80018.62,
+        "volumeLots": 3.01,
+        "volumeNotional": 3010,
+        "realizedPL": 76958.98,
+        "unrealizedPL": 79516.11,
+        "marginUtilization": 1137.7,
+        "marginFree": 155645.31,
+        "rule": "InActive",
+        "marginLevel": 13780.698778236794,
+        "longs": 3,
+        "shorts": 0,
+        "naoi": 3.01,
+        "marginLeverage": 400
+    },
+    {
+        "login": 909787,
+        "rid": 501553,
+        "group": "demo\\SINV\\PRIME",
+        "equity": 3596.85,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": -652.3,
+        "unrealizedPL": 0,
+        "marginUtilization": 2717.97,
+        "marginFree": 226.58,
+        "rule": "InActive",
+        "marginLevel": 108.33636868692444,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 910526,
+        "rid": 500379,
+        "group": "demo\\RP\\Prime",
+        "equity": 241.7,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 241.7,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 1011093,
+        "rid": 500387,
+        "group": "demo\\RP\\Prime",
+        "equity": 5000,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 5000,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 200
+    },
+    {
+        "login": 907216,
+        "rid": 501543,
+        "group": "demo\\SINV\\PRIME",
+        "equity": 5429.82,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 5429.82,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 910041,
+        "rid": 500274,
+        "group": "demo\\RP\\PRO",
+        "equity": 0.99,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 0.99,
+        "rule": "InActive",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 400
+    },
+    {
+        "login": 909193,
+        "rid": 501549,
+        "group": "demo\\SINV\\PRIME",
+        "equity": 6537.69,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 6537.69,
+        "rule": "InActive",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 909871,
+        "rid": 500237,
+        "group": "demo\\HNINV\\Standard",
+        "equity": 152033.2,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": -136500,
+        "unrealizedPL": 0,
+        "marginUtilization": 5822.03,
+        "marginFree": 9711.17,
+        "rule": "InActive",
+        "marginLevel": 266.8004115403047,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 400
+    },
+    {
+        "login": 901042,
+        "rid": 501356,
+        "group": "demo\\SINV\\EXECUTIVE",
+        "equity": 99755.01,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 99755.01,
+        "rule": "InActive",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 400
+    },
+    {
+        "login": 908841,
+        "rid": 501546,
+        "group": "demo\\SINV\\PRIME",
+        "equity": 119375.26,
+        "volumeLots": 5,
+        "volumeNotional": 5000,
+        "realizedPL": 2055,
+        "unrealizedPL": -25125,
+        "marginUtilization": 12346.65,
+        "marginFree": 109083.61,
+        "rule": "InActive",
+        "marginLevel": 983.5077531152175,
+        "longs": 0,
+        "shorts": 1,
+        "naoi": -5,
+        "marginLeverage": 100
+    },
+    {
+        "login": 903756,
+        "rid": 500230,
+        "group": "demo\\HNINV\\Raw",
+        "equity": 100000,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 100000,
+        "rule": "Active",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 400
+    },
+    {
+        "login": 907802,
+        "rid": 500265,
+        "group": "demo\\RP\\PRO",
+        "equity": 5118167.56,
+        "volumeLots": 17,
+        "volumeNotional": 17000,
+        "realizedPL": -622998,
+        "unrealizedPL": -715342,
+        "marginUtilization": 8920.07,
+        "marginFree": 4486249.49,
+        "rule": "InActive",
+        "marginLevel": 50393.882110790604,
+        "longs": 0,
+        "shorts": 8,
+        "naoi": -17,
+        "marginLeverage": 400
+    },
+    {
+        "login": 910259,
+        "rid": 500239,
+        "group": "demo\\HNINV\\Standard",
+        "equity": 2296.29,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 2296.29,
+        "rule": "InActive",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 400
+    },
+    {
+        "login": 910566,
+        "rid": 500369,
+        "group": "demo\\RP\\Premium",
+        "equity": 0,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 0,
+        "rule": "InActive",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    },
+    {
+        "login": 905137,
+        "rid": 500405,
+        "group": "demo\\SINV\\PRO",
+        "equity": 1131.07,
+        "volumeLots": 0,
+        "volumeNotional": 0,
+        "realizedPL": 0,
+        "unrealizedPL": 0,
+        "marginUtilization": 0,
+        "marginFree": 1131.07,
+        "rule": "InActive",
+        "marginLevel": 0,
+        "longs": 0,
+        "shorts": 0,
+        "naoi": 0,
+        "marginLeverage": 100
+    }
 ];

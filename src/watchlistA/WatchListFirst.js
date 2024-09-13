@@ -62,12 +62,6 @@ export const WatchListFirst = ({WatchListColDefs, sideBar}) => {
     const autoSizeStrategy = {
         type: 'fitGridWidth',
         defaultMinWidth: 135,
-        columnLimits: [
-            {
-                colId: 'MT Symbol',
-                minWidth: 100
-            }
-        ]
     };
 
    
@@ -86,8 +80,8 @@ export const WatchListFirst = ({WatchListColDefs, sideBar}) => {
                 sideBar={sideBar}
                 immutableData={true}
                 pagination={true}
-                paginationPageSize={7}
-                paginationPageSizeSelector={[7, 30]}
+                // paginationPageSize={7}
+                // paginationPageSizeSelector={[7, 30]}
                 autoSizeStrategy={autoSizeStrategy}
             />
         </div>

@@ -159,8 +159,7 @@ const HighchartsComponent = () => {
 
     const options = {
         chart: {
-            type: 'spline',
-        },
+            type: 'spline', },
         title: {
             text: "United States of America's Inflation-related statistics",
             align: 'left',
@@ -292,7 +291,7 @@ const HighchartsComponent = () => {
 
     return (
 
-        <div className='w-full p-2'>
+        <div className='w-full h-full p-2'>
             <HighchartsReact highcharts={Highcharts} options={options} />
         </div>
     );

@@ -82,17 +82,17 @@ const ActiveInstumentsChart = () => {
           yAxis: {
             type: 'category',
             inverse: true,
-            max: 10,
+            max: 20,
             axisLabel: {
               show: true,
-              fontSize: 14,
+              fontSize: 10,
               formatter: function (value) {
                 return value + '{flag|' + getFlag(value) + '}';
               },
               rich: {
                 flag: {
-                  fontSize: 15,
-                  padding: 5
+                  fontSize: 10,
+                  padding: 3
                 }
               }
             },
@@ -119,7 +119,8 @@ const ActiveInstumentsChart = () => {
                 position: 'right',
                 valueAnimation: true,
                 fontFamily: 'monospace'
-              }
+              },
+              barWidth: 5,
             }
           ],
           animationDuration: 0,

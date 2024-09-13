@@ -56,6 +56,7 @@ const WatchListFirstColDefs = [
         field: "h",
         cellDataType: "number",
         valueFormatter: numberFormatter,
+        
     },
     {
         headerName: "Low",
@@ -68,8 +69,6 @@ const WatchListFirstColDefs = [
         field: "P",
     }
 ];
-
-
   
 const WatchListLTPColDefs = [
     {
@@ -95,7 +94,7 @@ const WatchListLTPColDefs = [
         headerName: "Account",
         field: "L",
         cellDataType: "number",
-        valueFormatter: numberFormatter,
+        // valueFormatter: numberFormatter,
         cellRenderer: "agAnimateShowChangeCellRenderer",
     },
     {
@@ -357,9 +356,10 @@ const layouts = {
 
         // <BaseLayout cols="12" rows="12">
         // <div className="bg-gray-200 col-span-12 row-span-12 flex justify-center items-center">
-        //     <WatchListFirst/>
+        //     {/* <WatchListFirst/> */}
         //     {/* <LineGraphRenderer /> */}
-        //     <TradingviewLineChart/>
+        //     {/* <TradingviewLineChart/> */}
+        //     {/* <ConcentrationChart/> */}
         // </div>
         // </BaseLayout>
     ),
@@ -674,7 +674,7 @@ const layouts = {
                 <ChartSwitcher chartType="line" />
             </div>
             <div className="bg-gray-200 col-span-3 row-span-3 col-start-7 row-start-10 flex justify-center items-center">
-                <ChartSwitcher chartType="line" />
+                <ChartSwitcher chartType="pie" />
             </div>
             <div className="bg-gray-200 col-span-3 row-span-3 col-start-10 row-start-10 flex justify-center items-center">
                 {/* <ChartSwitcher chartType="line" /> */}

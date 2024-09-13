@@ -151,7 +151,7 @@ import { createChart } from "lightweight-charts";
 
 export function LineGraphRenderer({ data }) {
 
-    console.log('Render Fire')
+    // console.log('Render Fire')
 
     // console.log('Seventevent',data)
     const chartContainerRef = useRef();
