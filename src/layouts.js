@@ -341,16 +341,16 @@ const layouts = {
                <VaRGraph2/>
             </div>
             <div className="bg-gray-200 col-span-3 row-span-3 col-start-10 row-start-4 flex justify-center items-center">
-               <ConcentrationChart/>
+               {/* <ConcentrationChart/> */}
             </div>
             <div className="bg-gray-200 col-span-4 row-span-3 row-start-7 flex justify-center items-center">
-            <EChartsCandlestickChart/>
+            {/* <EChartsCandlestickChart/> */}
             </div>
             <div className="bg-gray-200 col-span-4 row-span-3 col-start-5 row-start-7 flex justify-center items-center">
-                <WatchList />
+                {/* <WatchList /> */}
             </div>
             <div className="border border-gray-300 col-span-4 row-span-3 col-start-9 row-start-7 flex justify-center items-center">
-                <LPSymbolsCharts/>
+                {/* <LPSymbolsCharts/> */}
             </div>
         </BaseLayout>
 
@@ -395,10 +395,11 @@ const layouts = {
         <BaseLayout cols="12" rows="8">
             <div className="bg-gray-200 col-span-12 row-span-4 flex justify-center items-center">
                 {/* <VaRCharts /> */}
-                <VaRGraph2/>
+                {/* <VaRGraph2/> */}
+                <HighchartsComponent />
             </div>
             <div className="bg-gray-200 col-span-12 row-span-4 row-start-5 flex justify-center items-center">
-                <HighchartsComponent />
+                {/* <HighchartsComponent /> */}
             </div>
         </BaseLayout>
     ),

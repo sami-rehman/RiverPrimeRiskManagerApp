@@ -1,51 +1,33 @@
-import React, { useState, useEffect } from "react";
-import TradebookCharts from "./TradebookCharts";
-import GroupsLpChart from "./GroupsLpChart";
+import React, { useState } from "react";
 import { WatchListTradingAccount } from "./grid/WatchListTradingAccount";
 import { ReactComponent as MaximizeIcon } from "./assets/icons/maximizeIcon.svg";
 import { ReactComponent as MinimizeIcon } from "./assets/icons/minimizeIcon.svg";
-// import ChartSwitcher from "./ChartSwitcher";
 import HighchartsComponent from "./HighchartsComponent";
-import TradingAccountPieChart from "./graphs/TradingAccountPieChart";
+import PieHighCharts from "./graphs/PieHighCharts";
 
-const TradingAccountWin = ({ windowSize }) => {
+const TradingAccountWin = React.memo(() => {
   const [maximizedItem, setMaximizedItem] = useState("");
-  const [reloadKey, setReloadKey] = useState(0);
 
   const openMaximizedPopup = (item) => {
     setMaximizedItem(item);
   };
 
   const closeMaximizedPopup = () => {
-    setMaximizedItem(null);
+    setMaximizedItem("");
   };
 
   const renderContent = () => {
     switch (maximizedItem) {
       case "watchListTradingAccount":
         return <WatchListTradingAccount />;
-      case "pieChart":
-        return <TradingAccountPieChart/>;
-      case "groupsLpChart":
-        return <GroupsLpChart />;
-      case "tradebookCharts":
-        return <TradebookCharts />;
       default:
         return null;
     }
   };
 
-  // Effect to reload the component when windowSize changes
-  useEffect(() => {
-    setReloadKey((prevKey) => prevKey + 1);
-  }, [windowSize]);
-
-  // console.log("windowSize", windowSize);
-
   return (
     <div className="relative">
       <div
-        key={reloadKey}
         className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10 p-2"
       >
         <div className="bg-white w-full h-full flex flex-col">
@@ -63,38 +45,14 @@ const TradingAccountWin = ({ windowSize }) => {
             </div>
 
             <div className="col-span-3 row-span-6 row-start-7 bg-gray-200 relative">
-              <button
-                onClick={() => openMaximizedPopup("pieChart")}
-                className="absolute top-0 right-0 text-gray-700 bg-gray-300 hover:bg-gray-200 hover:text-gray-900 rounded-sm z-10"
-              >
-                <MaximizeIcon className="w-4 h-4" />
-              </button>
-              <div className="w-full h-full">
-              {/* <ChartSwitcher chartType='pie'/> */}
-              <TradingAccountPieChart/>
-              </div>
+                <PieHighCharts/>
             </div>
+
             <div className="col-span-6 row-span-6 col-start-4 row-start-7 bg-gray-200 relative">
-              <button
-                onClick={() => openMaximizedPopup("groupsLpChart")}
-                className="absolute top-0 right-0 text-gray-700 bg-gray-300 hover:bg-gray-200 hover:text-gray-900 rounded-sm z-10"
-              >
-                <MaximizeIcon className="w-4 h-4" />
-              </button>
-              <div className="w-full h-full">
-              {/* <HighchartsComponent/> */}
-              </div>
+                <HighchartsComponent />
             </div>
 
             <div className="col-span-3 row-span-6 col-start-10 row-start-7 bg-gray-200 relative">
-              <button
-                onClick={() => openMaximizedPopup("groupsLpChart")}
-                className="absolute top-0 right-0 text-gray-700 bg-gray-300 hover:bg-gray-200 hover:text-gray-900 rounded-sm z-10"
-              >
-                <MaximizeIcon className="w-4 h-4" />
-              </button>
-              <div className="w-full h-full">
-              </div>
             </div>
           </div>
         </div>
@@ -118,6 +76,6 @@ const TradingAccountWin = ({ windowSize }) => {
       )}
     </div>
   );
-};
+});
 
 export default TradingAccountWin;

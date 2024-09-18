@@ -90,7 +90,7 @@ export const userData = [
         "company": null,
         "account": "",
         "leverage": 100,
-        "limitPositionsValue": 0.0,
+        "limitpositionssValue": 0.0,
         "limitOrders": 0,
         "balance": 0.0,
         "credit": 0.0,
@@ -115,7 +115,7 @@ export const userData = [
         "company": null,
         "account": "",
         "leverage": 100,
-        "limitPositionsValue": 0.0,
+        "limitpositionssValue": 0.0,
         "limitOrders": 0,
         "balance": 0.0,
         "credit": 0.0,
@@ -140,7 +140,7 @@ export const userData = [
         "company": null,
         "account": "",
         "leverage": 100,
-        "limitPositionsValue": 0.0,
+        "limitpositionssValue": 0.0,
         "limitOrders": 0,
         "balance": 0.0,
         "credit": 0.0,
@@ -165,7 +165,7 @@ export const userData = [
         "company": null,
         "account": "",
         "leverage": 100,
-        "limitPositionsValue": 0.0,
+        "limitpositionssValue": 0.0,
         "limitOrders": 0,
         "balance": 0.0,
         "credit": 0.0,
@@ -190,7 +190,7 @@ export const userData = [
         "company": null,
         "account": "",
         "leverage": 100,
-        "limitPositionsValue": 0.0,
+        "limitpositionssValue": 0.0,
         "limitOrders": 0,
         "balance": 0.0,
         "credit": 0.0,
@@ -215,7 +215,7 @@ export const userData = [
         "company": null,
         "account": "",
         "leverage": 100,
-        "limitPositionsValue": 0.0,
+        "limitpositionssValue": 0.0,
         "limitOrders": 0,
         "balance": 0.0,
         "credit": 0.0,
@@ -240,7 +240,7 @@ export const userData = [
         "company": null,
         "account": "",
         "leverage": 100,
-        "limitPositionsValue": 0.0,
+        "limitpositionssValue": 0.0,
         "limitOrders": 0,
         "balance": 0.0,
         "credit": 0.0,
@@ -265,7 +265,7 @@ export const userData = [
         "company": null,
         "account": "",
         "leverage": 100,
-        "limitPositionsValue": 0.0,
+        "limitpositionssValue": 0.0,
         "limitOrders": 0,
         "balance": 0.0,
         "credit": 0.0,
@@ -290,7 +290,7 @@ export const userData = [
         "company": null,
         "account": "",
         "leverage": 100,
-        "limitPositionsValue": 0.0,
+        "limitpositionssValue": 0.0,
         "limitOrders": 0,
         "balance": 0.0,
         "credit": 0.0,
@@ -315,7 +315,7 @@ export const userData = [
         "company": null,
         "account": "",
         "leverage": 100,
-        "limitPositionsValue": 0.0,
+        "limitpositionssValue": 0.0,
         "limitOrders": 0,
         "balance": 0.0,
         "credit": 0.0,
@@ -340,7 +340,7 @@ export const userData = [
         "company": null,
         "account": "",
         "leverage": 100,
-        "limitPositionsValue": 0.0,
+        "limitpositionssValue": 0.0,
         "limitOrders": 0,
         "balance": 0.0,
         "credit": 0.0,
@@ -365,7 +365,7 @@ export const userData = [
         "company": null,
         "account": "",
         "leverage": 100,
-        "limitPositionsValue": 0.0,
+        "limitpositionssValue": 0.0,
         "limitOrders": 0,
         "balance": 0.0,
         "credit": 0.0,
@@ -390,7 +390,7 @@ export const userData = [
         "company": null,
         "account": "",
         "leverage": 100,
-        "limitPositionsValue": 0.0,
+        "limitpositionssValue": 0.0,
         "limitOrders": 0,
         "balance": 0.0,
         "credit": 0.0,
@@ -415,7 +415,7 @@ export const userData = [
         "company": null,
         "account": "",
         "leverage": 100,
-        "limitPositionsValue": 0.0,
+        "limitpositionssValue": 0.0,
         "limitOrders": 0,
         "balance": 0.0,
         "credit": 0.0,
@@ -440,7 +440,7 @@ export const userData = [
         "company": null,
         "account": "",
         "leverage": 100,
-        "limitPositionsValue": 0.0,
+        "limitpositionssValue": 0.0,
         "limitOrders": 0,
         "balance": 0.0,
         "credit": 0.0,
@@ -465,7 +465,7 @@ export const userData = [
         "company": null,
         "account": "",
         "leverage": 100,
-        "limitPositionsValue": 0.0,
+        "limitpositionssValue": 0.0,
         "limitOrders": 0,
         "balance": 0.0,
         "credit": 0.0,
@@ -484,11 +484,11 @@ export const userData = [
 export const symbolData = [
     {
         "symbol": "DJI30",
-        "positionTicket": 10482095,
+        "positionsTicket": 10482095,
         "volume": 1000,
         "profit": 4294967255,
         "dealer": 0,
-        "positionLogin": 0,
+        "positionsLogin": 0,
         "priceCurrent": 40611.0,
         "contractSize": 5.0,
         "priceOpen": 40695.0,
@@ -507,11 +507,11 @@ export const symbolData = [
     },
     {
         "symbol": "DJI30",
-        "positionTicket": 10482096,
+        "positionsTicket": 10482096,
         "volume": 1000,
         "profit": 4294967260,
         "dealer": 0,
-        "positionLogin": 0,
+        "positionsLogin": 0,
         "priceCurrent": 40611.0,
         "contractSize": 5.0,
         "priceOpen": 40685.0,
@@ -530,11 +530,11 @@ export const symbolData = [
     },
     {
         "symbol": "DJI30",
-        "positionTicket": 10482095,
+        "positionsTicket": 10482095,
         "volume": 1000,
         "profit": 4294967255,
         "dealer": 0,
-        "positionLogin": 0,
+        "positionsLogin": 0,
         "priceCurrent": 40611.0,
         "contractSize": 5.0,
         "priceOpen": 40695.0,
@@ -553,11 +553,11 @@ export const symbolData = [
     },
     {
         "symbol": "DJI30",
-        "positionTicket": 10482095,
+        "positionsTicket": 10482095,
         "volume": 1000,
         "profit": 4294967255,
         "dealer": 0,
-        "positionLogin": 0,
+        "positionsLogin": 0,
         "priceCurrent": 40611.0,
         "contractSize": 5.0,
         "priceOpen": 40695.0,
@@ -576,11 +576,11 @@ export const symbolData = [
     },
     {
         "symbol": "DJI30",
-        "positionTicket": 10482095,
+        "positionsTicket": 10482095,
         "volume": 1000,
         "profit": 4294967255,
         "dealer": 0,
-        "positionLogin": 0,
+        "positionsLogin": 0,
         "priceCurrent": 40611.0,
         "contractSize": 5.0,
         "priceOpen": 40695.0,
@@ -599,11 +599,11 @@ export const symbolData = [
     },
     {
         "symbol": "DJI30",
-        "positionTicket": 10482095,
+        "positionsTicket": 10482095,
         "volume": 1000,
         "profit": 4294967255,
         "dealer": 0,
-        "positionLogin": 0,
+        "positionsLogin": 0,
         "priceCurrent": 40611.0,
         "contractSize": 5.0,
         "priceOpen": 40695.0,
@@ -622,11 +622,11 @@ export const symbolData = [
     },
     {
         "symbol": "DJI30",
-        "positionTicket": 10482095,
+        "positionsTicket": 10482095,
         "volume": 1000,
         "profit": 4294967255,
         "dealer": 0,
-        "positionLogin": 0,
+        "positionsLogin": 0,
         "priceCurrent": 40611.0,
         "contractSize": 5.0,
         "priceOpen": 40695.0,
@@ -645,11 +645,11 @@ export const symbolData = [
     },
     {
         "symbol": "DJI30",
-        "positionTicket": 10482095,
+        "positionsTicket": 10482095,
         "volume": 1000,
         "profit": 4294967255,
         "dealer": 0,
-        "positionLogin": 0,
+        "positionsLogin": 0,
         "priceCurrent": 40611.0,
         "contractSize": 5.0,
         "priceOpen": 40695.0,
@@ -668,11 +668,11 @@ export const symbolData = [
     },
     {
         "symbol": "DJI30",
-        "positionTicket": 10482095,
+        "positionsTicket": 10482095,
         "volume": 1000,
         "profit": 4294967255,
         "dealer": 0,
-        "positionLogin": 0,
+        "positionsLogin": 0,
         "priceCurrent": 40611.0,
         "contractSize": 5.0,
         "priceOpen": 40695.0,
@@ -691,11 +691,11 @@ export const symbolData = [
     },
     {
         "symbol": "DJI30",
-        "positionTicket": 10482095,
+        "positionsTicket": 10482095,
         "volume": 1000,
         "profit": 4294967255,
         "dealer": 0,
-        "positionLogin": 0,
+        "positionsLogin": 0,
         "priceCurrent": 40611.0,
         "contractSize": 5.0,
         "priceOpen": 40695.0,
@@ -714,11 +714,11 @@ export const symbolData = [
     },
     {
         "symbol": "DJI30",
-        "positionTicket": 10482095,
+        "positionsTicket": 10482095,
         "volume": 1000,
         "profit": 4294967255,
         "dealer": 0,
-        "positionLogin": 0,
+        "positionsLogin": 0,
         "priceCurrent": 40611.0,
         "contractSize": 5.0,
         "priceOpen": 40695.0,
@@ -737,11 +737,11 @@ export const symbolData = [
     },
     {
         "symbol": "DJI30",
-        "positionTicket": 10482095,
+        "positionsTicket": 10482095,
         "volume": 1000,
         "profit": 4294967255,
         "dealer": 0,
-        "positionLogin": 0,
+        "positionsLogin": 0,
         "priceCurrent": 40611.0,
         "contractSize": 5.0,
         "priceOpen": 40695.0,
@@ -760,11 +760,11 @@ export const symbolData = [
     },
     {
         "symbol": "DJI30",
-        "positionTicket": 10482095,
+        "positionsTicket": 10482095,
         "volume": 1000,
         "profit": 4294967255,
         "dealer": 0,
-        "positionLogin": 0,
+        "positionsLogin": 0,
         "priceCurrent": 40611.0,
         "contractSize": 5.0,
         "priceOpen": 40695.0,
@@ -783,11 +783,11 @@ export const symbolData = [
     },
     {
         "symbol": "DJI30",
-        "positionTicket": 10482095,
+        "positionsTicket": 10482095,
         "volume": 1000,
         "profit": 4294967255,
         "dealer": 0,
-        "positionLogin": 0,
+        "positionsLogin": 0,
         "priceCurrent": 40611.0,
         "contractSize": 5.0,
         "priceOpen": 40695.0,
@@ -806,11 +806,11 @@ export const symbolData = [
     },
     {
         "symbol": "DJI30",
-        "positionTicket": 10482095,
+        "positionsTicket": 10482095,
         "volume": 1000,
         "profit": 4294967255,
         "dealer": 0,
-        "positionLogin": 0,
+        "positionsLogin": 0,
         "priceCurrent": 40611.0,
         "contractSize": 5.0,
         "priceOpen": 40695.0,
@@ -5333,23 +5333,23 @@ export const GroupsLpChartData = {
   };
   
   export   const rawDataPiechartEquity = [
-    // {
-    //     "login": "Totals",
-    //     "rid": 29039152,
-    //     "group": "0demo\\SINV\\PROdemo\\SINV\\PRIMEdemo\\RP\\Premiumdemo\\RP\\PROdemo\\SINV\\PROdemo\\SINV\\PROdemo\\SINV\\PROdemo\\SINV\\EXECUTIVEdemo\\SINV\\EXECUTIVEdemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\RP\\Primedemo\\HNINV\\RawRP\\IB\\old\\0C-15MU-15R-V2demo\\SINV\\PRIMEdemo\\SINV\\PRIMEdemo\\RP\\PROdemo\\RP\\PROdemo\\HNINV\\Standarddemo\\HNINV\\Rawdemo\\SINV\\PROdemo\\RP\\Primedemo\\HNINV\\Rawdemo\\RP\\Premiumdemo\\SINV\\EXECUTIVEdemo\\SINV\\PROdemo\\SINV\\PROdemo\\RP\\Premiumdemo\\RP\\Primedemo\\SINV\\PROdemo\\RP\\PROdemo\\RP\\PROdemo\\RP\\Premiumdemo\\SINV\\PROdemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\HNINV\\Standarddemo\\RP\\PROdemo\\RP\\IB\\00C-00M-00R-20SOdemo\\RP\\PROdemo\\SINV\\IB\\00C-10MU-20R-testdemo\\SINV\\EXECUTIVEdemo\\SINV\\PRIMEdemo\\RP\\Primedemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\RP\\PROdemo\\SINV\\PRIMEdemo\\HNINV\\Standarddemo\\SINV\\EXECUTIVEdemo\\SINV\\PRIMEdemo\\HNINV\\Rawdemo\\RP\\PROdemo\\HNINV\\Standarddemo\\RP\\Premiumdemo\\SINV\\PRO",
-    //     "equity": 10827931.45,
-    //     "volumeLots": 63.25,
-    //     "volumeNotional": 63250,
-    //     "realizedPL": -853157.24,
-    //     "unrealizedPL": -714765.65,
-    //     "marginUtilization": 75019.57999999999,
-    //     "marginFree": 9899560.04,
-    //     "marginLevel": 6045116.008684407,
-    //     "longs": 18,
-    //     "shorts": 57,
-    //     "naoi": -54.95000000000001,
-    //     "marginLeverage": 13400
-    // },
+    {
+        "login": "Totals",
+        "rid": 29039152,
+        "group": "0demo\\SINV\\PROdemo\\SINV\\PRIMEdemo\\RP\\Premiumdemo\\RP\\PROdemo\\SINV\\PROdemo\\SINV\\PROdemo\\SINV\\PROdemo\\SINV\\EXECUTIVEdemo\\SINV\\EXECUTIVEdemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\RP\\Primedemo\\HNINV\\RawRP\\IB\\old\\0C-15MU-15R-V2demo\\SINV\\PRIMEdemo\\SINV\\PRIMEdemo\\RP\\PROdemo\\RP\\PROdemo\\HNINV\\Standarddemo\\HNINV\\Rawdemo\\SINV\\PROdemo\\RP\\Primedemo\\HNINV\\Rawdemo\\RP\\Premiumdemo\\SINV\\EXECUTIVEdemo\\SINV\\PROdemo\\SINV\\PROdemo\\RP\\Premiumdemo\\RP\\Primedemo\\SINV\\PROdemo\\RP\\PROdemo\\RP\\PROdemo\\RP\\Premiumdemo\\SINV\\PROdemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\HNINV\\Standarddemo\\RP\\PROdemo\\RP\\IB\\00C-00M-00R-20SOdemo\\RP\\PROdemo\\SINV\\IB\\00C-10MU-20R-testdemo\\SINV\\EXECUTIVEdemo\\SINV\\PRIMEdemo\\RP\\Primedemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\RP\\PROdemo\\SINV\\PRIMEdemo\\HNINV\\Standarddemo\\SINV\\EXECUTIVEdemo\\SINV\\PRIMEdemo\\HNINV\\Rawdemo\\RP\\PROdemo\\HNINV\\Standarddemo\\RP\\Premiumdemo\\SINV\\PRO",
+        "equity": 10827931.45,
+        "volumeLots": 63.25,
+        "volumeNotional": 63250,
+        "realizedPL": -853157.24,
+        "unrealizedPL": -714765.65,
+        "marginUtilization": 75019.57999999999,
+        "marginFree": 9899560.04,
+        "marginLevel": 6045116.008684407,
+        "longs": 18,
+        "shorts": 57,
+        "naoi": -54.95000000000001,
+        "marginLeverage": 13400
+    },
     {
         "login": 906137,
         "rid": 500411,
@@ -6395,3 +6395,195 @@ export const GroupsLpChartData = {
         "marginLeverage": 100
     }
 ];
+
+export const clusterData = [
+  {
+    "login": "100001",
+    "positions": [
+      {
+        "symbol": "EurUSD",
+        "volume": 2322,
+        "profit": 2500,
+        "flag": "long"
+      },
+      {
+        "symbol": "SAMI",
+        "volume": 2322,
+        "profit": 3000,
+        "flag": "long"
+      },
+      {
+        "symbol": "GBPUSD",
+        "volume": 12456,
+        "profit": -5300,
+        "flag": "short"
+      },
+      {
+        "symbol": "USDJPY",
+        "volume": 8750,
+        "profit": 9200,
+        "flag": "long"
+      }
+    ]
+  },
+  {
+    "login": "100002",
+    "positions": [
+      {
+        "symbol": "AUDCAD",
+        "volume": 7452,
+        "profit": 3500,
+        "flag": "long"
+      },
+      {
+        "symbol": "NZDUSD",
+        "volume": 6521,
+        "profit": -1500,
+        "flag": "short"
+      }
+    ]
+  },
+  {
+    "login": "100003",
+    "positions": [
+      {
+        "symbol": "EURGBP",
+        "volume": 15623,
+        "profit": 7200,
+        "flag": "long"
+      },
+      {
+        "symbol": "AUDUSD",
+        "volume": 12456,
+        "profit": -3200,
+        "flag": "short"
+      },
+      {
+        "symbol": "USDCHF",
+        "volume": 9100,
+        "profit": 2800,
+        "flag": "long"
+      }
+    ]
+  },
+  {
+    "login": "100004",
+    "positions": [
+      {
+        "symbol": "EurUSD",
+        "volume": 18342,
+        "profit": 1300,
+        "flag": "long"
+      },
+      {
+        "symbol": "GBPJPY",
+        "volume": 6234,
+        "profit": -4500,
+        "flag": "short"
+      }
+    ]
+  },
+  {
+    "login": "100005",
+    "positions": [
+      {
+        "symbol": "USDJPY",
+        "volume": 11500,
+        "profit": -1000,
+        "flag": "short"
+      },
+      {
+        "symbol": "AUDCAD",
+        "volume": 9872,
+        "profit": 5600,
+        "flag": "long"
+      }
+    ]
+  },
+  {
+    "login": "100006",
+    "positions": [
+      {
+        "symbol": "NZDUSD",
+        "volume": 12345,
+        "profit": -3500,
+        "flag": "short"
+      },
+      {
+        "symbol": "EurUSD",
+        "volume": 15234,
+        "profit": 17500,
+        "flag": "long"
+      }
+    ]
+  },
+  {
+    "login": "100007",
+    "positions": [
+      {
+        "symbol": "USDCHF",
+        "volume": 13242,
+        "profit": 6100,
+        "flag": "long"
+      },
+      {
+        "symbol": "GBPUSD",
+        "volume": 18321,
+        "profit": -5200,
+        "flag": "short"
+      }
+    ]
+  },
+  {
+    "login": "100008",
+    "positions": [
+      {
+        "symbol": "EurUSD",
+        "volume": 22432,
+        "profit": 8700,
+        "flag": "long"
+      },
+      {
+        "symbol": "AUDNZD",
+        "volume": 9734,
+        "profit": -6700,
+        "flag": "short"
+      }
+    ]
+  },
+  {
+    "login": "100009",
+    "positions": [
+      {
+        "symbol": "SAMIUSD",
+        "volume": 13422,
+        "profit": 12400,
+        "flag": "long"
+      },
+      {
+        "symbol": "AUDCAD",
+        "volume": 11500,
+        "profit": -5300,
+        "flag": "short"
+      }
+    ]
+  },
+  {
+    "login": "100010",
+    "positions": [
+      {
+        "symbol": "NZDUSD",
+        "volume": 8543,
+        "profit": 2300,
+        "flag": "long"
+      },
+      {
+        "symbol": "GBPJPY",
+        "volume": 9211,
+        "profit": -7400,
+        "flag": "short"
+      }
+    ]
+  }
+];
+ 

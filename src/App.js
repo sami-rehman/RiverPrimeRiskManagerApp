@@ -6,6 +6,18 @@ import InnerHeader from './InnerHeader';
 import WatchList from './WatchlistGrid';
 
 const App = () => {
+
+  // Add this somewhere in your entry point file (e.g., index.js)
+const resizeObserverLoopErr = /^ResizeObserver loop limit exceeded/;
+const originalConsoleError = console.error;
+
+console.error = (...args) => {
+  if (args[0] && resizeObserverLoopErr.test(args[0].message)) {
+    return;
+  }
+  originalConsoleError(...args);
+};
+
   const [layout, setLayout] = useState('LayoutOne');
 
   const renderLayout = () => {
