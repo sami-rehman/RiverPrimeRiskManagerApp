@@ -5333,23 +5333,23 @@ export const GroupsLpChartData = {
   };
   
   export   const rawDataPiechartEquity = [
-    {
-        "login": "Totals",
-        "rid": 29039152,
-        "group": "0demo\\SINV\\PROdemo\\SINV\\PRIMEdemo\\RP\\Premiumdemo\\RP\\PROdemo\\SINV\\PROdemo\\SINV\\PROdemo\\SINV\\PROdemo\\SINV\\EXECUTIVEdemo\\SINV\\EXECUTIVEdemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\RP\\Primedemo\\HNINV\\RawRP\\IB\\old\\0C-15MU-15R-V2demo\\SINV\\PRIMEdemo\\SINV\\PRIMEdemo\\RP\\PROdemo\\RP\\PROdemo\\HNINV\\Standarddemo\\HNINV\\Rawdemo\\SINV\\PROdemo\\RP\\Primedemo\\HNINV\\Rawdemo\\RP\\Premiumdemo\\SINV\\EXECUTIVEdemo\\SINV\\PROdemo\\SINV\\PROdemo\\RP\\Premiumdemo\\RP\\Primedemo\\SINV\\PROdemo\\RP\\PROdemo\\RP\\PROdemo\\RP\\Premiumdemo\\SINV\\PROdemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\HNINV\\Standarddemo\\RP\\PROdemo\\RP\\IB\\00C-00M-00R-20SOdemo\\RP\\PROdemo\\SINV\\IB\\00C-10MU-20R-testdemo\\SINV\\EXECUTIVEdemo\\SINV\\PRIMEdemo\\RP\\Primedemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\RP\\PROdemo\\SINV\\PRIMEdemo\\HNINV\\Standarddemo\\SINV\\EXECUTIVEdemo\\SINV\\PRIMEdemo\\HNINV\\Rawdemo\\RP\\PROdemo\\HNINV\\Standarddemo\\RP\\Premiumdemo\\SINV\\PRO",
-        "equity": 10827931.45,
-        "volumeLots": 63.25,
-        "volumeNotional": 63250,
-        "realizedPL": -853157.24,
-        "unrealizedPL": -714765.65,
-        "marginUtilization": 75019.57999999999,
-        "marginFree": 9899560.04,
-        "marginLevel": 6045116.008684407,
-        "longs": 18,
-        "shorts": 57,
-        "naoi": -54.95000000000001,
-        "marginLeverage": 13400
-    },
+    // {
+    //     "login": 500001,
+    //     "rid": 29039152,
+    //     "group": "0demo\\SINV\\PROdemo\\SINV\\PRIMEdemo\\RP\\Premiumdemo\\RP\\PROdemo\\SINV\\PROdemo\\SINV\\PROdemo\\SINV\\PROdemo\\SINV\\EXECUTIVEdemo\\SINV\\EXECUTIVEdemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\RP\\Primedemo\\HNINV\\RawRP\\IB\\old\\0C-15MU-15R-V2demo\\SINV\\PRIMEdemo\\SINV\\PRIMEdemo\\RP\\PROdemo\\RP\\PROdemo\\HNINV\\Standarddemo\\HNINV\\Rawdemo\\SINV\\PROdemo\\RP\\Primedemo\\HNINV\\Rawdemo\\RP\\Premiumdemo\\SINV\\EXECUTIVEdemo\\SINV\\PROdemo\\SINV\\PROdemo\\RP\\Premiumdemo\\RP\\Primedemo\\SINV\\PROdemo\\RP\\PROdemo\\RP\\PROdemo\\RP\\Premiumdemo\\SINV\\PROdemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\HNINV\\Standarddemo\\RP\\PROdemo\\RP\\IB\\00C-00M-00R-20SOdemo\\RP\\PROdemo\\SINV\\IB\\00C-10MU-20R-testdemo\\SINV\\EXECUTIVEdemo\\SINV\\PRIMEdemo\\RP\\Primedemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\RP\\PROdemo\\SINV\\PRIMEdemo\\HNINV\\Standarddemo\\SINV\\EXECUTIVEdemo\\SINV\\PRIMEdemo\\HNINV\\Rawdemo\\RP\\PROdemo\\HNINV\\Standarddemo\\RP\\Premiumdemo\\SINV\\PRO",
+    //     "equity": 10827931.45,
+    //     "volumeLots": 63.25,
+    //     "volumeNotional": 63250,
+    //     "realizedPL": -853157.24,
+    //     "unrealizedPL": -714765.65,
+    //     "marginUtilization": 75019.57999999999,
+    //     "marginFree": 9899560.04,
+    //     "marginLevel": 6045116.008684407,
+    //     "longs": 18,
+    //     "shorts": 57,
+    //     "naoi": -54.95000000000001,
+    //     "marginLeverage": 13400
+    // },
     {
         "login": 906137,
         "rid": 500411,

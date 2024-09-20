@@ -1,3 +1,73 @@
+.ag-theme-custom-dark {
+  --ag-background-color: #1f2836;
+  --ag-foreground-color: #FFF;
+  --ag-border-color: #666;
+  --ag-header-background-color: #2b3a47;
+  --ag-header-foreground-color: #FFF;
+  --ag-font-size: 14px;
+  --ag-header-height: 40px;
+  --ag-row-height: 35px;
+  --ag-odd-row-background-color: #2b3a47;
+  --ag-even-row-background-color: #25323e;
+  --ag-cell-horizontal-spacing: 8px;
+  --ag-header-font-weight: 500;
+}
+
+.ag-theme-custom-dark .ag-header {
+  background-color: var(--ag-header-background-color);
+  color: var(--ag-header-foreground-color);
+  font-size: var(--ag-font-size);
+  font-weight: var(--ag-header-font-weight);
+}
+
+.ag-theme-custom-dark .ag-row {
+  background-color: var(--ag-background-color);
+}
+
+.ag-theme-custom-dark .ag-row-odd {
+  background-color: var(--ag-odd-row-background-color);
+}
+
+.ag-theme-custom-dark .ag-row-even {
+  background-color: var(--ag-even-row-background-color);
+}
+
+.ag-theme-custom-dark .ag-cell {
+  color: var(--ag-foreground-color);
+}
+
+.ag-theme-custom-dark .ag-header-cell {
+  padding: var(--ag-cell-horizontal-spacing);
+  border-color: var(--ag-border-color);
+}
+
+.ag-theme-custom-dark .ag-cell-focus {
+  border-color: var(--ag-border-color);
+}
+
+.ag-theme-custom-dark .ag-row-hover {
+  background-color: #394958;
+}
+
+.ag-theme-custom .ag-row-hover {
+  background-color: var(--ag-row-hover-color);
+}
+
+.ag-theme-custom .ag-cell {
+  font-size: var(--ag-font-size);
+}
+
+.ag-theme-custom .ag-header-cell {
+  padding: 10px;
+}
+
+.ag-theme-custom .ag-header-cell-label {
+  font-weight: var(--ag-header-font-weight);
+}
+
+
+
+
 .ag-theme-quartz {
     --ag-grid-size: 2px; /* very compact */
     --ag-selected-row-background-color: rgb(0, 255, 0, 0.1);
@@ -13,4 +83,8 @@
   
   .odd-row {
     background-color: #ffffff;
+  }
+
+  .totalRow-background {
+    background-color: rgb(201, 194, 194) !important;
   }
