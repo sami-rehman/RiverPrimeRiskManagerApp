@@ -13,11 +13,7 @@ import React, {
   import "ag-grid-community/styles/ag-theme-quartz.css";
   import { numberFormatter } from "../../common/constant";
   import "../../styles/custom-ag-grid.css";
-  
-  
-  
   import { rawDataPiechartEquity } from "../../constant";
-  
   
   export const LivePositionWatchlist = () => {
   
@@ -32,13 +28,6 @@ import React, {
 
     const colDefs = useMemo(
       () => [
-        // {
-        //     field: "checkbox",
-        //     headerCheckboxSelection: true,
-        //     checkboxSelection: true,
-        //     width: 10,
-        //     headerCheckboxSelectionFilteredOnly: true,  // Allows checkbox selection only on the filtered rows
-        //   },
         {
           field: "login",
           headerName: "MT Login",
