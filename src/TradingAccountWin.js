@@ -4,6 +4,7 @@ import { ReactComponent as MaximizeIcon } from "./assets/icons/maximizeIcon.svg"
 import { ReactComponent as MinimizeIcon } from "./assets/icons/minimizeIcon.svg";
 import HighchartsComponent from "./HighchartsComponent";
 import PieHighCharts from "./graphs/PieHighCharts";
+import VaRGraph2 from "./VaRGraph2";
 
 const TradingAccountWin = React.memo(() => {
   const [maximizedItem, setMaximizedItem] = useState("");
@@ -46,10 +47,11 @@ const TradingAccountWin = React.memo(() => {
 
             <div className="col-span-3 row-span-6 row-start-7 bg-gray-200 relative">
                 {/* <PieHighCharts/> */}
+                {/* <VaRGraph2/> */}
             </div>
 
             <div className="col-span-6 row-span-6 col-start-4 row-start-7 bg-gray-200 relative">
-                {/* <HighchartsComponent /> */}
+                <HighchartsComponent />
             </div>
 
             <div className="col-span-3 row-span-6 col-start-10 row-start-7 bg-gray-200 relative">

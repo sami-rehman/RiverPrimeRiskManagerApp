@@ -90,7 +90,7 @@ const VaRGraph2 = () => {
             },
           },
           axisLabel: {
-            formatter: '{value} °C',
+            formatter: '{value} °C', 
           },
         },
       ],
@@ -115,7 +115,10 @@ const VaRGraph2 = () => {
       ],
     };
 
-    chartInstance.setOption(option);
+    setTimeout(() => {
+    chartInstance.setOption(option); 
+    },1000);
+
 
     // Cleanup function
     return () => {
@@ -127,3 +130,4 @@ const VaRGraph2 = () => {
 };
 
 export default VaRGraph2;
+

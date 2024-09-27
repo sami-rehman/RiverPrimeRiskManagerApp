@@ -12,8 +12,8 @@ import FunnelChart from './FunnelChart';
 import WatchList from "./WatchlistGrid";
 import { WatchListFirst } from './watchlistA/WatchListFirst';
 import './ag-grid-custom.css'
-import {LineGraphRenderer}  from "./graphs/LineGraphRenderer";
-import {TradingviewLineChart} from "./graphs/TradingviewLineChart"
+import { LineGraphRenderer } from "./graphs/LineGraphRenderer";
+import { TradingviewLineChart } from "./graphs/TradingviewLineChart"
 import { numberFormatter, LocalDateTimeRenderer } from './common/constant';
 import ActiveInstumentsChart from './ActiveInstumentsChart';
 import ConcentrationChart from './ConcentrationChart';
@@ -21,6 +21,10 @@ import LPSymbolsCharts from './LPSymbolsCharts';
 import GroupsLpChart from './GroupsLpChart';
 import EChartsCandlestickChart from './EChartsCandlestickChart';
 import VaRGraph2 from './VaRGraph2';
+import TradeImpact from './graphs/TradeImpact';
+import RulesHighcharts from './RulesHighcharts'
+import PerformanceHighChart from './PerformanceHighChart';
+import WatchListDarkMode from './WatchListDarkMode';
 
 
 const WatchListFirstColDefs = [
@@ -56,20 +60,20 @@ const WatchListFirstColDefs = [
         field: "h",
         cellDataType: "number",
         valueFormatter: numberFormatter,
-        
+
     },
     {
         headerName: "Low",
         field: "l",
         cellDataType: "number",
-         valueFormatter: numberFormatter,
+        valueFormatter: numberFormatter,
     },
     {
         headerName: "Change (%)",
         field: "P",
     }
 ];
-  
+
 const WatchListLTPColDefs = [
     {
         field: "s",
@@ -108,92 +112,92 @@ const WatchListSymbolMapColDefs = [
     {
         field: "s",
         headerName: "MT Symbol",
-        
-      },
-      {
+
+    },
+    {
         headerName: 'Symbol Mapping - CS Multiplier',
         // headerClass: 'header-group-symbol-mapping',
         children: [
-          {
-            field: "s",
-            headerName: "LP1 Symbol",
-          },
-          {
-            field: "s",
-            headerName: "LP2 Symbol",
-          },
-          {
-            field: "s",
-            headerName: "LP3 Symbol",
-          }
+            {
+                field: "s",
+                headerName: "LP1 Symbol",
+            },
+            {
+                field: "s",
+                headerName: "LP2 Symbol",
+            },
+            {
+                field: "s",
+                headerName: "LP3 Symbol",
+            }
         ]
-      },
-      {
+    },
+    {
         field: "a",
         headerName: "Ask",
         valueFormatter: numberFormatter,
         cellRenderer: "agAnimateShowChangeCellRenderer",
-      },
-      {
+    },
+    {
         field: "b",
         headerName: "Bid",
         valueFormatter: numberFormatter,
         cellRenderer: "agAnimateShowChangeCellRenderer",
-      },
-      {
+    },
+    {
         headerName: 'Spread Ratio',
         // headerClass: 'header-group-spread-ratio',
         children: [
-          {
-            field: "b",
-            headerName: "SID-LP1",
-          },
-          {
-            field: "b",
-            headerName: "SID-LP2",
-          },
-          {
-            field: "b",
-            headerName: "SID-LP3",
-          }
+            {
+                field: "b",
+                headerName: "SID-LP1",
+            },
+            {
+                field: "b",
+                headerName: "SID-LP2",
+            },
+            {
+                field: "b",
+                headerName: "SID-LP3",
+            }
         ]
-      },
-      {
+    },
+    {
         headerName: 'Margins Conditions',
         // headerClass: 'header-group-margins-conditions',
         children: [
-          {
-            field: "b",
-            headerName: "SID-LP1",
-          },
-          {
-            field: "b",
-            headerName: "SID-LP2",
-          },
-          {
-            field: "b",
-            headerName: "SID-LP3",
-          }
+            {
+                field: "b",
+                headerName: "SID-LP1",
+            },
+            {
+                field: "b",
+                headerName: "SID-LP2",
+            },
+            {
+                field: "b",
+                headerName: "SID-LP3",
+            }
         ]
-      },
-      {
+    },
+    {
         headerName: 'Fees (/Lot)',
         // headerClass: 'header-group-fees',
         children: [
-          {
-            field: "b",
-            headerName: "SID-LP1",
-          },
-          {
-            field: "b",
-            headerName: "SID-LP2",
-          },
-          {
-            field: "b",
-            headerName: "SID-LP3",
-          }
+            {
+                field: "b",
+                headerName: "SID-LP1",
+            },
+            {
+                field: "b",
+                headerName: "SID-LP2",
+            },
+            {
+                field: "b",
+                headerName: "SID-LP3",
+            }
         ]
-      },
+    },
 
 ]
 
@@ -201,121 +205,121 @@ const WatchListMarketColDefs = [
     {
         headerName: 'Market',
         children: [
-          {
-            field: "s",
-            headerName: "MT Symbol",
-          },
-          {
-            field: "a",
-            headerName: "LTP",
-            valueFormatter: numberFormatter,
-            cellRenderer: "agAnimateShowChangeCellRenderer",
-          },
+            {
+                field: "s",
+                headerName: "MT Symbol",
+            },
+            {
+                field: "a",
+                headerName: "LTP",
+                valueFormatter: numberFormatter,
+                cellRenderer: "agAnimateShowChangeCellRenderer",
+            },
         ]
-      },
-      {
+    },
+    {
         headerName: 'Book Exposure',
         children: [
-          {
-            field: "s",
-            headerName: "A-Book",
-          },
-          {
-            field: "s",
-            headerName: "B-Book",
-          },
-          {
-            field: "s",
-            headerName: "C-Book",
-          }
+            {
+                field: "s",
+                headerName: "A-Book",
+            },
+            {
+                field: "s",
+                headerName: "B-Book",
+            },
+            {
+                field: "s",
+                headerName: "C-Book",
+            }
         ]
-      },
-      {
+    },
+    {
         headerName: 'Predicted Hedge',
         hide: true,
         children: [
-          {
-            field: "b",
-            headerName: "Buy / Sell",
-            valueFormatter: numberFormatter,
-            cellRenderer: "agAnimateShowChangeCellRenderer",
-          },
-          {
-            field: "L",
-            headerName: "H. Quantity",
-            valueFormatter: numberFormatter,
-            cellRenderer: "agAnimateShowChangeCellRenderer",
-          },
-          {
-            field: "b",
-            headerName: "Entry",
-            valueFormatter: numberFormatter,
-            cellRenderer: "agAnimateShowChangeCellRenderer",
-          },
-          {
-            field: "b",
-            headerName: "Take Profit",
-          },
-          {
-            field: "b",
-            headerName: "Stop Loss",
-          },
-          {
-            field: "L",
-            headerName: "Window",
-            valueFormatter: numberFormatter,
-            cellRenderer: "agAnimateShowChangeCellRenderer",
-          },
-          {
-            field: "b",
-            headerName: "Expiry",
-          },
-          {
-            field: "b",
-            headerName: "Re-Entry",
-          },
-          {
-            field: "b",
-            headerName: "Confidence",
-          },
-          {
-            field: "b",
-            headerName: "Objective",
-          },
-          {
-            field: "b",
-            headerName: "Warning",
-          }
+            {
+                field: "b",
+                headerName: "Buy / Sell",
+                valueFormatter: numberFormatter,
+                cellRenderer: "agAnimateShowChangeCellRenderer",
+            },
+            {
+                field: "L",
+                headerName: "H. Quantity",
+                valueFormatter: numberFormatter,
+                cellRenderer: "agAnimateShowChangeCellRenderer",
+            },
+            {
+                field: "b",
+                headerName: "Entry",
+                valueFormatter: numberFormatter,
+                cellRenderer: "agAnimateShowChangeCellRenderer",
+            },
+            {
+                field: "b",
+                headerName: "Take Profit",
+            },
+            {
+                field: "b",
+                headerName: "Stop Loss",
+            },
+            {
+                field: "L",
+                headerName: "Window",
+                valueFormatter: numberFormatter,
+                cellRenderer: "agAnimateShowChangeCellRenderer",
+            },
+            {
+                field: "b",
+                headerName: "Expiry",
+            },
+            {
+                field: "b",
+                headerName: "Re-Entry",
+            },
+            {
+                field: "b",
+                headerName: "Confidence",
+            },
+            {
+                field: "b",
+                headerName: "Objective",
+            },
+            {
+                field: "b",
+                headerName: "Warning",
+            }
         ]
-      },
-      {
+    },
+    {
         headerName: 'Margins Conditions',
         children: [
-          {
-            field: "b",
-            headerName: "SID-LP1",
-          },
-          {
-            field: "b",
-            headerName: "SID-LP2",
-          },
-          {
-            field: "b",
-            headerName: "SID-LP3",
-          }
+            {
+                field: "b",
+                headerName: "SID-LP1",
+            },
+            {
+                field: "b",
+                headerName: "SID-LP2",
+            },
+            {
+                field: "b",
+                headerName: "SID-LP3",
+            }
         ]
-      },
-      {
+    },
+    {
         headerName: 'LPS',
         children: [
-          {
-            field: "b",
-            headerName: "CMC | LMAX | PrimeXM | Equiti",
-            valueFormatter: numberFormatter,
-            cellRenderer: "agAnimateShowChangeCellRenderer",
-          },
+            {
+                field: "b",
+                headerName: "CMC | LMAX | PrimeXM | Equiti",
+                valueFormatter: numberFormatter,
+                cellRenderer: "agAnimateShowChangeCellRenderer",
+            },
         ]
-      },
+    },
 
 ]
 
@@ -335,16 +339,21 @@ const layouts = {
                 <ECharts />
             </div>
             <div className="border border-gray-300 col-span-3 row-span-3 col-start-4 row-start-4 flex justify-center items-center">
-            <ActiveInstumentsChart/>
+                {/* <ActiveInstumentsChart /> */}
+                <WatchListDarkMode/>
             </div>
             <div className="bg-gray-200 col-span-3 row-span-3 col-start-7 row-start-4 flex justify-center items-center">
-               <VaRGraph2/>
+                <div className="relative w-full h-full">
+                    <PerformanceHighChart />
+                </div>
             </div>
             <div className="bg-gray-200 col-span-3 row-span-3 col-start-10 row-start-4 flex justify-center items-center">
-               {/* <ConcentrationChart/> */}
+                <div className="relative w-[100%] h-[100%]">
+                    <RulesHighcharts />
+                </div>
             </div>
             <div className="bg-gray-200 col-span-4 row-span-3 row-start-7 flex justify-center items-center">
-            {/* <EChartsCandlestickChart/> */}
+                {/* <EChartsCandlestickChart/> */}
             </div>
             <div className="bg-gray-200 col-span-4 row-span-3 col-start-5 row-start-7 flex justify-center items-center">
                 {/* <WatchList /> */}
@@ -353,15 +362,6 @@ const layouts = {
                 {/* <LPSymbolsCharts/> */}
             </div>
         </BaseLayout>
-
-        // <BaseLayout cols="12" rows="12">
-        // <div className="bg-gray-200 col-span-12 row-span-12 flex justify-center items-center">
-        //     {/* <WatchListFirst/> */}
-        //     {/* <LineGraphRenderer /> */}
-        //     {/* <TradingviewLineChart/> */}
-        //     {/* <ConcentrationChart/> */}
-        // </div>
-        // </BaseLayout>
     ),
     LayoutTwo: () => (
         <BaseLayout cols="12" rows="12">
@@ -372,34 +372,32 @@ const layouts = {
                 <LongShortCharts />
             </div>
             <div className="border border-gray-300 col-span-12 row-span-6 row-start-7 flex justify-center items-center">
-            <WatchListFirst WatchListColDefs={WatchListSymbolMapColDefs} sideBar={true}/>
-            
+                <WatchListFirst WatchListColDefs={WatchListSymbolMapColDefs} sideBar={true} />
+
             </div>
         </BaseLayout>
     ),
     LayoutThree: () => (
         <BaseLayout cols="12" rows="12">
             <div className="bg-gray-200 col-span-12 row-span-6 flex justify-center items-center">
-            <WatchListFirst WatchListColDefs={WatchListMarketColDefs} sideBar={true}/>
-            {/* <WatchListFirst WatchListFirstColDefs={WatchListSymbolMapColDefs}/> */}
+                <WatchListFirst WatchListColDefs={WatchListMarketColDefs} sideBar={true} />
             </div>
             <div className="bg-gray-200 col-span-6 row-span-6 row-start-7 flex justify-center items-center">
-                <WatchListFirst WatchListColDefs={WatchListLTPColDefs}/>
+                <WatchListFirst WatchListColDefs={WatchListLTPColDefs} />
             </div>
             <div className="bg-gray-200 col-span-6 row-span-6 col-start-7 row-start-7 flex justify-center items-center">
-            <WatchListFirst WatchListColDefs={WatchListFirstColDefs}/>
+                <WatchListFirst WatchListColDefs={WatchListFirstColDefs} />
             </div>
         </BaseLayout>
     ),
     LayoutFour: () => (
         <BaseLayout cols="12" rows="8">
             <div className="bg-gray-200 col-span-12 row-span-4 flex justify-center items-center">
-                {/* <VaRCharts /> */}
-                {/* <VaRGraph2/> */}
-                <HighchartsComponent />
+                {/* <HighchartsComponent /> */}
             </div>
             <div className="bg-gray-200 col-span-12 row-span-4 row-start-5 flex justify-center items-center">
                 {/* <HighchartsComponent /> */}
+                <TradeImpact />
             </div>
         </BaseLayout>
     ),
@@ -409,19 +407,19 @@ const layouts = {
                 <HighchartsComponent />
             </div>
             <div className="bg-gray-200 col-span-4 row-span-4 col-start-5 flex justify-center items-center">
-              <ActiveInstumentsChart/>
+                <ActiveInstumentsChart />
             </div>
             <div className="bg-gray-200 col-span-4 row-span-4 col-start-9 flex justify-center items-center">
-                <ConcentrationChart/>
+                <ConcentrationChart />
             </div>
             <div className="bg-gray-200 col-span-4 row-span-4 row-start-5 flex justify-center items-center">
-            <LPSymbolsCharts />
+                <LPSymbolsCharts />
             </div>
             <div className="bg-gray-200 col-span-4 row-span-4 col-start-5 row-start-5 flex justify-center items-center">
-            <EChartsCandlestickChart/>
+                <EChartsCandlestickChart />
             </div>
             <div className="bg-gray-200 col-span-4 row-span-4 col-start-9 row-start-5 flex justify-center items-center">
-            <PieCharts/>
+                <PieCharts />
             </div>
         </BaseLayout>
     ),
@@ -430,10 +428,10 @@ const layouts = {
         <div className="grid grid-cols-10 grid-rows-8 gap-2 w-full h-full overflow-hidden">
             <div className="bg-gray-200 col-span-3 row-span-4 flex justify-center items-center">
                 {/* <ChartSwitcher chartType="line" /> */}
-                <PieCharts/>
+                <PieCharts />
             </div>
             <div className="bg-gray-200 col-span-3 row-span-4 col-start-1 row-start-5 flex justify-center items-center">
-               <VaRGraph2/>
+                <VaRGraph2 />
             </div>
             <div className="bg-gray-200 col-span-3 row-span-4 col-start-4 row-start-1 flex justify-center items-center">
                 <ChartSwitcher chartType="line" />
@@ -442,7 +440,7 @@ const layouts = {
                 <ChartSwitcher chartType="line" />
             </div>
             <div className="bg-gray-200 col-span-4 row-span-8 col-start-7 row-start-1 flex justify-center items-center">
-               <LPSymbolsCharts />
+                <LPSymbolsCharts />
                 {/* <WatchList /> */}
             </div>
         </div>
@@ -451,8 +449,7 @@ const layouts = {
     LayoutSeven: () => (
         <BaseLayout cols="10" rows="8">
             <div className="bg-gray-200 col-span-4 row-span-8 flex justify-center items-center">
-            {/* <WatchListFirst/> */}
-            <GroupsLpChart/>
+                <RulesHighcharts />
             </div>
             <div className="bg-gray-200 col-span-3 row-span-4 col-start-5 flex justify-center items-center">
                 <ChartSwitcher chartType="line" />
@@ -599,7 +596,7 @@ const layouts = {
     ),
     LayoutSixteen: () => (
         // <BaseLayout cols="9" rows="9">
-             <div className="grid grid-cols-9 grid-rows-9 gap-2 w-full h-full overflow-hidden">
+        <div className="grid grid-cols-9 grid-rows-9 gap-2 w-full h-full overflow-hidden">
             <div className="bg-gray-200 col-span-3 row-span-3 flex justify-center items-center">
                 <ChartSwitcher chartType="line" />
             </div>
@@ -627,7 +624,7 @@ const layouts = {
             <div className="bg-gray-200 col-span-3 row-span-3 col-start-7 row-start-7 flex justify-center items-center">
                 <ChartSwitcher chartType="line" />
             </div>
-            </div>
+        </div>
         // </BaseLayout>
     ),
     LayoutSeventeen: () => (
@@ -679,7 +676,7 @@ const layouts = {
             </div>
             <div className="bg-gray-200 col-span-3 row-span-3 col-start-10 row-start-10 flex justify-center items-center">
                 {/* <ChartSwitcher chartType="line" /> */}
-                <VaRGraph2/>
+                <VaRGraph2 />
             </div>
         </BaseLayout>
     ),

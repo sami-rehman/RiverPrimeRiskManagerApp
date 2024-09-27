@@ -12,7 +12,8 @@ import { LicenseManager } from "ag-grid-enterprise";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
 import { numberFormatter } from "../common/constant";
-import "../styles/custom-ag-grid.css";
+// import "../styles/custom-ag-grid.css";
+import "ag-grid-community/styles/ag-theme-balham.css";
 
 import NewWindow from "react-new-window";
 
@@ -84,7 +85,7 @@ export const WatchListTradingAccount = () => {
           const handleClick = () => triggerAccountActivity(params.data)
           return (
             <span
-              style={{ color: "blue", cursor: "pointer" }}
+              style={{ color: "#8ca6f3", cursor: "pointer" }}
               onClick={handleClick}
             >
               {params.value}
@@ -329,7 +330,7 @@ export const WatchListTradingAccount = () => {
 
   const getRowId = useCallback(({ data: { login } }) => login?.toString(), []);
   return (
-    <div className="ag-theme-quartz h-full w-full">
+    <div className="ag-theme-balham-dark h-full w-full">
       <AgGridReact
         ref={gridRef}
         getRowId={getRowId}
@@ -344,7 +345,7 @@ export const WatchListTradingAccount = () => {
       {showNewWindow && (
         <NewWindow
           onUnload={closeWindow}
-          features={{ width: 1600, height: 900 }}
+          features={{ width: 1800, height: 980 }}
           title="Account Activity Login"
         >
           <AccountActivityWin accountActivityData={accountActivityProps}/>

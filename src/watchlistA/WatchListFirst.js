@@ -9,11 +9,23 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-enterprise";
 import { LicenseManager } from "ag-grid-enterprise";
 
-import "ag-grid-community/styles/ag-grid.css";
-import "ag-grid-community/styles/ag-theme-quartz.css";
-import { numberFormatter, LocalDateTimeRenderer } from '../common/constant';
+import { themeBalham } from '@ag-grid-community/theming';
+import "ag-grid-community/styles/ag-theme-balham.css";
 
-import {LineGraphRenderer}  from "../graphs/LineGraphRenderer";
+const myTheme = themeBalham
+	.withParams({
+        backgroundColor: "#1f2836",
+        browserColorScheme: "dark",
+        chromeBackgroundColor: "#2E3744",
+        foregroundColor: "#FFF",
+        headerFontFamily: {
+            googleFont: "IBM Plex Sans"
+        },
+        headerFontSize: "14px",
+        iconSize: "12px",
+        oddRowBackgroundColor: "#313945",
+        spacing: "2px"
+    });
 
 
 export const WatchListFirst = ({WatchListColDefs, sideBar}) => {
@@ -66,23 +78,20 @@ export const WatchListFirst = ({WatchListColDefs, sideBar}) => {
 
    
     return (
-        <div className="ag-theme-quartz h-full w-full">
+        <div className="ag-theme-balham-dark h-full w-full">
             <AgGridReact
                 ref={gridRef}
                 getRowId={getRowId}
                 rowData={rowData}
                 columnDefs={colDefs}
                 defaultColDef={defaultColDef}
-                enableRangeSelection
-                rowSelection={"multiple"}
                 suppressAggFuncInHeader
                 groupDefaultExpanded={-1}
                 sideBar={sideBar}
                 immutableData={true}
                 pagination={true}
-                // paginationPageSize={7}
-                // paginationPageSizeSelector={[7, 30]}
                 autoSizeStrategy={autoSizeStrategy}
+                // theme={myTheme}
             />
         </div>
     );
