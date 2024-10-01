@@ -1,21 +1,26 @@
 import React, { useState } from "react";
 import TradingAccountWin from "./TradingAccountWin";
 import NewWindow from "react-new-window";
+import BbookWin from "./BbookWin";
 
 const Header = ({ setLayout }) => {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isBbookOpen, setIsBbookOpen] = useState(false);
+  const [isTradingAccountOpen, setIsTradingAccountOpen] = useState(false);
 
-  const togglePopup = () => {
-    setIsPopupOpen(!isPopupOpen);
+  const openBbookWindow = () => {
+    setIsBbookOpen(true);
   };
 
-  const openWindow = () => {
-    setIsOpen(true);
+  const closeBbookWindow = () => {
+    setIsBbookOpen(false);
   };
 
-  const closeWindow = () => {
-    setIsOpen(false);
+  const openTradingAccountWindow = () => {
+    setIsTradingAccountOpen(true);
+  };
+
+  const closeTradingAccountWindow = () => {
+    setIsTradingAccountOpen(false);
   };
 
   return (
@@ -24,20 +29,18 @@ const Header = ({ setLayout }) => {
         <h1 className="text-xl text-white">Layout Switcher</h1>
         <div className="flex items-center space-x-4">
           <button
-            onClick={togglePopup}
+            onClick={openTradingAccountWindow}
             className="bg-green-500 text-white px-4 py-2 rounded"
           >
             Trading Accounts
           </button>
 
-          <div>
-            <button
-              onClick={openWindow}
-              className="bg-green-500 text-white px-4 py-2 rounded"
-            >
-              Open Trading Account Window
-            </button>
-          </div>
+          <button
+            onClick={openBbookWindow}
+            className="bg-green-500 text-white px-4 py-2 rounded"
+          >
+            B Book Window
+          </button>
 
           <select
             className="p-2 rounded"
@@ -64,10 +67,20 @@ const Header = ({ setLayout }) => {
         </div>
       </header>
 
-      {isPopupOpen && <TradingAccountWin togglePopup={togglePopup} />}
-      {isOpen && (
+      {/* Open B Book Window */}
+      {isBbookOpen && (
         <NewWindow
-          onUnload={closeWindow}
+          onUnload={closeBbookWindow}
+          features={{ width: 1680, height: 900 }}
+        >
+          <BbookWin />
+        </NewWindow>
+      )}
+
+      {/* Open Trading Account Window */}
+      {isTradingAccountOpen && (
+        <NewWindow
+          onUnload={closeTradingAccountWindow}
           features={{ width: 1680, height: 900 }}
         >
           <TradingAccountWin />

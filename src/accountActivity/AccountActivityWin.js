@@ -76,7 +76,7 @@ const AccountActivityWin = React.memo(({ accountActivityData }) => {
                 <MaximizeIcon className="w-4 h-4" />
               </button>
               <div className="w-full h-full">
-                <LivePositionWatchlist loginID={accountActivityData.login} />
+                {/* <LivePositionWatchlist loginID={accountActivityData.login} /> */}
               </div>
             </div>
             <div className="col-span-9 row-span-3 col-start-1 row-start-4 bg-gray-200 relative">
@@ -87,18 +87,18 @@ const AccountActivityWin = React.memo(({ accountActivityData }) => {
                 <MaximizeIcon className="w-4 h-4" />
               </button>
               <div className="w-full h-full">
-                <PendingOrderWatchlist loginID={accountActivityData.login} />
+                {/* <PendingOrderWatchlist loginID={accountActivityData.login} /> */}
               </div>
             </div>
             <div className="col-span-9 row-span-2 col-start-1 row-start-7 bg-gray-200 relative">3</div>
             <div className="col-span-3 row-span-4 col-start-1 row-start-9 bg-gray-200 relative">
-              <TradeImpact/>
+              {/* <TradeImpact loginID={accountActivityData.login}/> */}
             </div>
             <div className="col-span-3 row-span-4 col-start-4 row-start-9  relative">
-              <RulesHighcharts/>
+              {/* <RulesHighcharts/> */}
             </div>
             <div className="col-span-3 row-span-4 col-start-7 row-start-9 bg-gray-200 relative">
-            <PerformanceHighChart/>
+            <PerformanceHighChart loginID={accountActivityData.login}/>
             </div>
             <div className="col-span-3 row-span-4 col-start-10 row-start-1 bg-gray-200 relative">7</div>
             <div className="col-span-3 row-span-4 col-start-10 row-start-5 bg-gray-200 relative">8</div>
