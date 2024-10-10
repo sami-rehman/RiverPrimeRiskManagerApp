@@ -47,11 +47,10 @@ const TradingAccountWin = React.memo(() => {
 
             <div className="col-span-3 row-span-6 row-start-7 bg-gray-200 relative">
                 {/* <PieHighCharts/> */}
-                {/* <VaRGraph2/> */}
             </div>
 
             <div className="col-span-6 row-span-6 col-start-4 row-start-7 bg-gray-200 relative">
-                {/* <HighchartsComponent /> */}
+                <HighchartsComponent />
             </div>
 
             <div className="col-span-3 row-span-6 col-start-10 row-start-7 bg-gray-200 relative">

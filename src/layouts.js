@@ -25,6 +25,7 @@ import TradeImpact from './graphs/TradeImpact';
 import RulesHighcharts from './RulesHighcharts'
 import PerformanceHighChart from './PerformanceHighChart';
 import WatchListDarkMode from './WatchListDarkMode';
+import InstrumentsByVolumes from './bbookaccount/graph/InstrumentsByVolumes';
 
 
 const WatchListFirstColDefs = [
@@ -325,43 +326,49 @@ const WatchListMarketColDefs = [
 
 const layouts = {
     LayoutOne: () => (
-        <BaseLayout cols="12" rows="9">
-            <div className="border border-gray-300 col-span-4 row-span-3 flex justify-center items-center p-2">
-                <VaRCharts />
-            </div>
-            <div className="border border-gray-300 col-span-4 row-span-3 col-start-5 flex justify-center items-center p-2">
-                <DepositsWithdrawalsAccountCharts />
-            </div>
-            <div className="border border-gray-300 col-span-4 row-span-3 col-start-9 flex justify-center items-center">
-                <TradebookCharts />
-            </div>
-            <div className="border border-gray-300 col-span-3 row-span-3 row-start-4 flex justify-center items-center">
-                <ECharts />
-            </div>
-            <div className="border border-gray-300 col-span-3 row-span-3 col-start-4 row-start-4 flex justify-center items-center">
-                {/* <ActiveInstumentsChart /> */}
-                <WatchListDarkMode/>
-            </div>
-            <div className="bg-gray-200 col-span-3 row-span-3 col-start-7 row-start-4 flex justify-center items-center">
-                <div className="relative w-full h-full">
-                    <PerformanceHighChart />
-                </div>
-            </div>
-            <div className="bg-gray-200 col-span-3 row-span-3 col-start-10 row-start-4 flex justify-center items-center">
-                <div className="relative w-[100%] h-[100%]">
-                    <RulesHighcharts />
-                </div>
-            </div>
-            <div className="bg-gray-200 col-span-4 row-span-3 row-start-7 flex justify-center items-center">
-                {/* <EChartsCandlestickChart/> */}
-            </div>
-            <div className="bg-gray-200 col-span-4 row-span-3 col-start-5 row-start-7 flex justify-center items-center">
-                {/* <WatchList /> */}
-            </div>
-            <div className="border border-gray-300 col-span-4 row-span-3 col-start-9 row-start-7 flex justify-center items-center">
-                {/* <LPSymbolsCharts/> */}
-            </div>
-        </BaseLayout>
+        // <BaseLayout cols="12" rows="9">
+        //     <div className="border border-gray-300 col-span-4 row-span-3 flex justify-center items-center p-2">
+        //         <VaRCharts />
+        //     </div>
+        //     <div className="border border-gray-300 col-span-4 row-span-3 col-start-5 flex justify-center items-center p-2">
+        //         <DepositsWithdrawalsAccountCharts />
+        //     </div>
+        //     <div className="border border-gray-300 col-span-4 row-span-3 col-start-9 flex justify-center items-center">
+        //         <TradebookCharts />
+        //     </div>
+        //     <div className="border border-gray-300 col-span-3 row-span-3 row-start-4 flex justify-center items-center">
+        //         <ECharts />
+        //     </div>
+        //     <div className="border border-gray-300 col-span-3 row-span-3 col-start-4 row-start-4 flex justify-center items-center">
+        //         {/* <ActiveInstumentsChart /> */}
+        //         {/* <WatchListDarkMode/> */}
+        //         <InstrumentsByVolumes/>
+        //     </div>
+        //     <div className="bg-gray-200 col-span-3 row-span-3 col-start-7 row-start-4 flex justify-center items-center">
+        //     <PerformanceHighChart />
+        //     {/* <InstrumentsByVolumes/> */}
+        //     </div>
+        //     <div className="bg-gray-200 col-span-3 row-span-3 col-start-10 row-start-4 flex justify-center items-center">
+        //         <div className="relative w-[100%] h-[100%]">
+        //             <RulesHighcharts />
+        //         </div>
+        //     </div>
+        //     <div className="bg-gray-200 col-span-4 row-span-3 row-start-7 flex justify-center items-center">
+        //         <EChartsCandlestickChart/>
+        //     </div>
+        //     <div className="bg-gray-200 col-span-4 row-span-3 col-start-5 row-start-7 flex justify-center items-center">
+        //         <WatchList />
+        //     </div>
+        //     <div className="border border-gray-300 col-span-4 row-span-3 col-start-9 row-start-7 flex justify-center items-center">
+        //         <LPSymbolsCharts/>
+        //     </div>
+        // </BaseLayout>
+        <BaseLayout cols="12" rows="12">
+        <div className="bg-gray-200 col-span-12 row-span-12 flex justify-center items-center">
+            <HighchartsComponent/>
+        </div>
+    </BaseLayout>
+
     ),
     LayoutTwo: () => (
         <BaseLayout cols="12" rows="12">
@@ -393,7 +400,7 @@ const layouts = {
     LayoutFour: () => (
         <BaseLayout cols="12" rows="8">
             <div className="bg-gray-200 col-span-12 row-span-4 flex justify-center items-center">
-                {/* <HighchartsComponent /> */}
+                <HighchartsComponent />
             </div>
             <div className="bg-gray-200 col-span-12 row-span-4 row-start-5 flex justify-center items-center">
                 {/* <HighchartsComponent /> */}

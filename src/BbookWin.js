@@ -3,6 +3,7 @@ import { ReactComponent as MaximizeIcon } from "./assets/icons/maximizeIcon.svg"
 import { ReactComponent as MinimizeIcon } from "./assets/icons/minimizeIcon.svg";
 import BbookPosition from "./bbookaccount/watchlist/BbookPosition";
 import InstrumentsByVolumes from "./bbookaccount/graph/InstrumentsByVolumes";
+import HoldingByAccount from "./bbookaccount/graph/HoldingByAccount";
 
 const BbookWin = React.memo(() => {
   const [maximizedItem, setMaximizedItem] = useState("");
@@ -25,7 +26,7 @@ const BbookWin = React.memo(() => {
   };
 
   return (
-    <div className="relative">
+    <div>
       <div
         className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10 p-2">
         <div className="bg-white w-full h-full flex flex-col">
@@ -38,18 +39,21 @@ const BbookWin = React.memo(() => {
                 <MaximizeIcon className="w-4 h-4" />
               </button>
               <div className="w-full h-full">
-              {/* <BbookPosition/> */}
+              <BbookPosition/>
               </div>
             </div>
-            <div className="col-span-8 row-span-4 col-start-1 row-start-5 bg-gray-200 relative">2</div>
+            <div className="col-span-8 row-span-4 col-start-1 row-start-5 bg-gray-200 relative">
+            <BbookPosition/>
+            </div>
             <div className="col-span-4 row-span-4 col-start-1 row-start-9 bg-gray-200 relative">
             <InstrumentsByVolumes/>
             </div>
             <div className="col-span-4 row-span-4 col-start-5 row-start-9 bg-gray-200 relative">4</div>
-            <div className="col-span-4 row-span-4 col-start-9 row-start-1 bg-gray-200 relative">5</div>
+            <div className="col-span-4 row-span-4 col-start-9 row-start-1 bg-gray-200 relative">
+            <HoldingByAccount/>
+            </div>
             <div className="col-span-4 row-span-4 col-start-9 row-start-5 bg-gray-200 relative">6</div>
             <div className="col-span-4 row-span-4 col-start-9 row-start-9 bg-gray-200 relative">7</div>
-
           </div>
         </div>
       </div>

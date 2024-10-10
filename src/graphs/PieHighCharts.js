@@ -222,11 +222,11 @@ const PieHighCharts = React.memo(() => {
             </div>
 
             {/* Show loader while loading */}
-            {/* {loading && (
+            {loading && (
                 <div className="flex-grow w-full flex items-center justify-center">
                     <div className="loader">Loading...</div>
                 </div>
-            )} */}
+            )}
 
             {/* Render the chart only when renderChart is true */}
            

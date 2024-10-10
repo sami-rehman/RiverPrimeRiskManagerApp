@@ -138,17 +138,17 @@ const PerformanceHighChart = ({ loginID }) => {
             type: 'xy',
           },
           height: 290,
-          style: {
-            width: '100%',
-            height: '100%',
-          },
+          // style: {
+          //   width: '100%',
+          //   height: '100%',
+          // },
         },
         title: {
           text: '',
         },
         xAxis: [
           {
-            categories: monthlyData.map((item) => item.month),
+            categories: monthlyData?.map((item) => item.month),
             crosshair: true,
           },
         ],

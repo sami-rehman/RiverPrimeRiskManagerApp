@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import TradingAccountWin from "./TradingAccountWin";
 import NewWindow from "react-new-window";
 import BbookWin from "./BbookWin";
+import AbookWin from "./AbookWin";
 
 const Header = ({ setLayout }) => {
   const [isBbookOpen, setIsBbookOpen] = useState(false);
+  const [isAbookOpen, setIsAbookOpen] = useState(false);
   const [isTradingAccountOpen, setIsTradingAccountOpen] = useState(false);
 
   const openBbookWindow = () => {
@@ -13,6 +15,14 @@ const Header = ({ setLayout }) => {
 
   const closeBbookWindow = () => {
     setIsBbookOpen(false);
+  };
+
+  const openAbookWindow = () => {
+    setIsAbookOpen(true);
+  };
+
+  const closeAbookWindow = () => {
+    setIsAbookOpen(false);
   };
 
   const openTradingAccountWindow = () => {
@@ -40,6 +50,13 @@ const Header = ({ setLayout }) => {
             className="bg-green-500 text-white px-4 py-2 rounded"
           >
             B Book Window
+          </button>
+
+          <button
+            onClick={openAbookWindow}
+            className="bg-green-500 text-white px-4 py-2 rounded"
+          >
+            A Book Window
           </button>
 
           <select
@@ -76,6 +93,18 @@ const Header = ({ setLayout }) => {
           <BbookWin />
         </NewWindow>
       )}
+
+
+  {/* Open A Book Window */}
+  {isAbookOpen && (
+        <NewWindow
+          onUnload={closeAbookWindow}
+          features={{ width: 1680, height: 900 }}
+        >
+        <AbookWin />
+        </NewWindow>
+      )}
+
 
       {/* Open Trading Account Window */}
       {isTradingAccountOpen && (

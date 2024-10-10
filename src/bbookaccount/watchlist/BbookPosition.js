@@ -40,7 +40,7 @@ import "ag-grid-community/styles/ag-theme-quartz.css";
 
     const handleMessage = (event) => {
       const data = JSON.parse(event.data);
-      updateTable(data);
+      updateTable(data?.positions);
     };
 
     const sendRequest = () => {
@@ -65,7 +65,7 @@ import "ag-grid-community/styles/ag-theme-quartz.css";
       if (isSocketOpen) {
         const unsubscribeMessage = {
           type: "unsubscribe",
-          requestType: "positionsActivities",
+          requestType: "b_book_positions",
           accounts: 'all',
         };
         socket.send(JSON.stringify(unsubscribeMessage));
@@ -75,12 +75,29 @@ import "ag-grid-community/styles/ag-theme-quartz.css";
     };
   }, []);
 
-  const updateTable = (data) => {
-    const incomingData = Array.isArray(data) ? data : [data];
-    incomingData.forEach(item => {
-        dataMapRef.current.set(item.login, item);
-    });
-    setRowData(Array.from(dataMapRef.current.values()));
+//   const updateTable = (data) => {
+//     const incomingData = Array.isArray(data) ? data : [data];
+//     incomingData.forEach(item => {
+//         dataMapRef.current.set(item.login, item);
+//     });
+//     setRowData(Array.from(dataMapRef.current.values()));
+// };
+
+const updateTable = (data) => {
+  if (!data) return;  // If data is undefined or null, return early
+
+  const incomingData = Array.isArray(data) ? data : [data];
+  
+  incomingData.forEach(item => {
+    // Check if the item exists and has the 'login' property
+    if (item && item.login) {
+      dataMapRef.current.set(item.login, item);
+    } else {
+      console.warn('Invalid item received:', item);  // Log any problematic item for debugging
+    }
+  });
+
+  setRowData(Array.from(dataMapRef.current.values()));
 };
 
   const detailCellRendererParams = useMemo(() => ({
