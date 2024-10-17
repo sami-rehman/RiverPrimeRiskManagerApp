@@ -13,7 +13,7 @@ const RulesHighcharts = () => {
   const options = {
     chart: {
       backgroundColor: 'white',
-      height: 280,
+      height: 800,
       style: {
         width: '100%',
         height: '100%',

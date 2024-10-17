@@ -342,7 +342,7 @@ const layouts = {
         //     <div className="border border-gray-300 col-span-3 row-span-3 col-start-4 row-start-4 flex justify-center items-center">
         //         {/* <ActiveInstumentsChart /> */}
         //         {/* <WatchListDarkMode/> */}
-        //         <InstrumentsByVolumes/>
+        //         {/* <InstrumentsByVolumes/> */}
         //     </div>
         //     <div className="bg-gray-200 col-span-3 row-span-3 col-start-7 row-start-4 flex justify-center items-center">
         //     <PerformanceHighChart />
@@ -365,7 +365,7 @@ const layouts = {
         // </BaseLayout>
         <BaseLayout cols="12" rows="12">
         <div className="bg-gray-200 col-span-12 row-span-12 flex justify-center items-center">
-            <HighchartsComponent/>
+           <InstrumentsByVolumes/>
         </div>
     </BaseLayout>
 
@@ -373,7 +373,7 @@ const layouts = {
     LayoutTwo: () => (
         <BaseLayout cols="12" rows="12">
             <div className="bg-gray-200 col-span-6 row-span-6 flex justify-center items-center">
-                <FunnelChart />
+                {/* <FunnelChart /> */}
             </div>
             <div className="border border-gray-300 rounded-sm col-span-6 row-span-6 col-start-7 flex justify-center items-center p-2">
                 <LongShortCharts />

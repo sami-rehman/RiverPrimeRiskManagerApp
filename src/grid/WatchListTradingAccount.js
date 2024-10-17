@@ -22,22 +22,20 @@ import { rawDataPiechartEquity } from "../constant";
 import AccountActivityWin from "../accountActivity/AccountActivityWin";
 
 
-export const WatchListTradingAccount = () => {
+export const WatchListTradingAccount = ({setSelectedLogins}) => {
 
   const [showNewWindow, setShowNewWindow] = useState(false);
   const [accountActivityProps, setaccountActivityProps] = useState();
 
+
   const triggerAccountActivity = (data) => {
     setaccountActivityProps(data);
     setShowNewWindow(!showNewWindow);
-
-
   };
 
   const closeWindow = () => {
     setShowNewWindow(false);
   };
-
 
   LicenseManager.setLicenseKey(
     "Using_this_{AG_Grid}_Enterprise_key_{AG-063926}_in_excess_of_the_licence_granted_is_not_permitted___Please_report_misuse_to_legal@ag-grid.com___For_help_with_changing_this_key_please_contact_info@ag-grid.com___{River_Prime}_is_granted_a_{Single_Application}_Developer_License_for_the_application_{River_Prime}_only_for_{1}_Front-End_JavaScript_developer___All_Front-End_JavaScript_developers_working_on_{River_Prime}_need_to_be_licensed___{River_Prime}_has_been_granted_a_Deployment_License_Add-on_for_{1}_Production_Environment___This_key_works_with_{AG_Grid}_Enterprise_versions_released_before_{23_July_2025}____[v3]_[01]_MTc1MzIyNTIwMDAwMA==1200d27c6f62377b36b8f92b7c13fe53"
@@ -48,36 +46,17 @@ export const WatchListTradingAccount = () => {
   const gridRef = useRef(null);
   const dataMapRef1 = useRef(new Map());
 
-  // const openNewWindow = (data) => {
-  //   const newWindow = window.open("", "", "width=600,height=400");
-  //   if (newWindow) {
-  //     newWindow.document.title = "MT Login Data";
-  //     newWindow.document.body.innerHTML = `
-  //       <html>
-  //         <head>
-  //           <title>MT Login Data</title>
-  //           <style>
-  //             body { font-family: Arial, sans-serif; padding: 20px; }
-  //             pre { white-space: pre-wrap; word-wrap: break-word; }
-  //             button { padding: 10px; margin-top: 20px; cursor: pointer; }
-  //           </style>
-  //         </head>
-  //         <body>
-  //           <h2>Row Data for MT Login: ${data.login}</h2>
-  //           <pre>${JSON.stringify(data, null, 2)}</pre>
-  //           <button id="closeButton">Close</button>
-  //         </body>
-  //       </html>
-  //     `;
-  //     newWindow.document.getElementById("closeButton").onclick = () => {
-  //       newWindow.close();
-  //     };
-  //   }
-  // };
-
   const colDefs = useMemo(
     () => [
+      // {
+      //   headerCheckboxSelection: true, // Enables checkbox in header
+      //   checkboxSelection: true, // Enables checkbox for each row
+      //   width:50,
+      //   suppressSizeToFit: true, 
+      // },
       {
+        headerCheckboxSelection: true, // Enables checkbox in header
+        checkboxSelection: true, // Enables checkbox for each row
         field: "login",
         headerName: "MT Login",
         filter: true,
@@ -329,6 +308,16 @@ export const WatchListTradingAccount = () => {
 
 
   const getRowId = useCallback(({ data: { login } }) => login?.toString(), []);
+
+
+   // Function to update selected logins whenever selection changes
+   const onSelectionChanged = useCallback(() => {
+    const selectedRows = gridRef?.current?.api?.getSelectedRows();
+    const selectedLogins = selectedRows?.map(row => row?.login); // Extracting logins
+    console.log('selectedLogins', selectedLogins); // Log the array of logins
+    setSelectedLogins(selectedLogins); // Store selected logins in state if needed
+  }, []);
+
   return (
     <div className="ag-theme-balham-dark h-full w-full">
       <AgGridReact
@@ -339,8 +328,9 @@ export const WatchListTradingAccount = () => {
         defaultColDef={defaultColDef}
         pagination={true}
         pinnedTopRowData={pinnedTopRowData}
+        rowSelection="multiple" // Enables multiple row selection
+        onSelectionChanged={onSelectionChanged} // Trigger selection change event
       />
-
 
       {showNewWindow && (
         <NewWindow

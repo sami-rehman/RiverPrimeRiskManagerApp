@@ -8,6 +8,7 @@ import VaRGraph2 from "./VaRGraph2";
 
 const TradingAccountWin = React.memo(() => {
   const [maximizedItem, setMaximizedItem] = useState("");
+  const [selectedLogins, setSelectedLogins] = useState([]);
 
   const openMaximizedPopup = (item) => {
     setMaximizedItem(item);
@@ -20,7 +21,7 @@ const TradingAccountWin = React.memo(() => {
   const renderContent = () => {
     switch (maximizedItem) {
       case "watchListTradingAccount":
-        return <WatchListTradingAccount />;
+        return <WatchListTradingAccount setSelectedLogins={setSelectedLogins} />;
       default:
         return null;
     }
@@ -41,20 +42,20 @@ const TradingAccountWin = React.memo(() => {
                 <MaximizeIcon className="w-4 h-4" />
               </button>
               <div className="w-full h-full">
-                <WatchListTradingAccount />
+                <WatchListTradingAccount setSelectedLogins={setSelectedLogins} />
               </div>
             </div>
 
             <div className="col-span-3 row-span-6 row-start-7 bg-gray-200 relative">
-                {/* <PieHighCharts/> */}
+                <PieHighCharts/>
             </div>
 
-            <div className="col-span-6 row-span-6 col-start-4 row-start-7 bg-gray-200 relative">
-                <HighchartsComponent />
+            <div className="col-span-9 row-span-9 col-start-4 row-start-7 bg-gray-200 relative">
+                <HighchartsComponent selectedLogins={selectedLogins} />
             </div>
 
-            <div className="col-span-3 row-span-6 col-start-10 row-start-7 bg-gray-200 relative">
-            </div>
+            {/* <div className="col-span-3 row-span-6 col-start-10 row-start-7 bg-gray-200 relative">
+            </div> */}
           </div>
         </div>
       </div>

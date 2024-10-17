@@ -5333,23 +5333,6 @@ export const GroupsLpChartData = {
   };
   
   export   const rawDataPiechartEquity = [
-    // {
-    //     "login": 500001,
-    //     "rid": 29039152,
-    //     "group": "0demo\\SINV\\PROdemo\\SINV\\PRIMEdemo\\RP\\Premiumdemo\\RP\\PROdemo\\SINV\\PROdemo\\SINV\\PROdemo\\SINV\\PROdemo\\SINV\\EXECUTIVEdemo\\SINV\\EXECUTIVEdemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\RP\\Primedemo\\HNINV\\RawRP\\IB\\old\\0C-15MU-15R-V2demo\\SINV\\PRIMEdemo\\SINV\\PRIMEdemo\\RP\\PROdemo\\RP\\PROdemo\\HNINV\\Standarddemo\\HNINV\\Rawdemo\\SINV\\PROdemo\\RP\\Primedemo\\HNINV\\Rawdemo\\RP\\Premiumdemo\\SINV\\EXECUTIVEdemo\\SINV\\PROdemo\\SINV\\PROdemo\\RP\\Premiumdemo\\RP\\Primedemo\\SINV\\PROdemo\\RP\\PROdemo\\RP\\PROdemo\\RP\\Premiumdemo\\SINV\\PROdemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\HNINV\\Standarddemo\\RP\\PROdemo\\RP\\IB\\00C-00M-00R-20SOdemo\\RP\\PROdemo\\SINV\\IB\\00C-10MU-20R-testdemo\\SINV\\EXECUTIVEdemo\\SINV\\PRIMEdemo\\RP\\Primedemo\\RP\\Primedemo\\SINV\\PRIMEdemo\\RP\\PROdemo\\SINV\\PRIMEdemo\\HNINV\\Standarddemo\\SINV\\EXECUTIVEdemo\\SINV\\PRIMEdemo\\HNINV\\Rawdemo\\RP\\PROdemo\\HNINV\\Standarddemo\\RP\\Premiumdemo\\SINV\\PRO",
-    //     "equity": 10827931.45,
-    //     "volumeLots": 63.25,
-    //     "volumeNotional": 63250,
-    //     "realizedPL": -853157.24,
-    //     "unrealizedPL": -714765.65,
-    //     "marginUtilization": 75019.57999999999,
-    //     "marginFree": 9899560.04,
-    //     "marginLevel": 6045116.008684407,
-    //     "longs": 18,
-    //     "shorts": 57,
-    //     "naoi": -54.95000000000001,
-    //     "marginLeverage": 13400
-    // },
     {
         "login": 906137,
         "rid": 500411,
@@ -6402,25 +6385,29 @@ export const clusterData = [
     "positions": [
       {
         "symbol": "EurUSD",
-        "volume": 2322,
+        "volLots": 2322,
+        "volNots": 232200,
         "profit": 2500,
         "flag": "long"
       },
       {
         "symbol": "SAMI",
-        "volume": 2322,
+        "volLots": 2322,
+        "volNots": 232200,
         "profit": 3000,
         "flag": "long"
       },
       {
         "symbol": "GBPUSD",
-        "volume": 12456,
+        "volLots": 12456,
+        "volNots": 1245600,
         "profit": -5300,
         "flag": "short"
       },
       {
         "symbol": "USDJPY",
-        "volume": 8750,
+        "volLots": 8750,
+        "volNots": 875000,
         "profit": 9200,
         "flag": "long"
       }
@@ -6431,13 +6418,15 @@ export const clusterData = [
     "positions": [
       {
         "symbol": "AUDCAD",
-        "volume": 7452,
+        "volLots": 7452,
+        "volNots": 745200,
         "profit": 3500,
         "flag": "long"
       },
       {
         "symbol": "NZDUSD",
-        "volume": 6521,
+        "volLots": 6521,
+        "volNots": 652100,
         "profit": -1500,
         "flag": "short"
       }
@@ -6448,19 +6437,22 @@ export const clusterData = [
     "positions": [
       {
         "symbol": "EURGBP",
-        "volume": 15623,
+        "volLots": 15623,
+        "volNots": 1562300,
         "profit": 7200,
         "flag": "long"
       },
       {
         "symbol": "AUDUSD",
-        "volume": 12456,
+        "volLots": 12456,
+        "volNots": 1245600,
         "profit": -3200,
         "flag": "short"
       },
       {
         "symbol": "USDCHF",
-        "volume": 9100,
+        "volLots": 9100,
+        "volNots": 910000,
         "profit": 2800,
         "flag": "long"
       }
@@ -6471,13 +6463,15 @@ export const clusterData = [
     "positions": [
       {
         "symbol": "EurUSD",
-        "volume": 18342,
+        "volLots": 18342,
+        "volNots": 1834200,
         "profit": 1300,
         "flag": "long"
       },
       {
         "symbol": "GBPJPY",
-        "volume": 6234,
+        "volLots": 6234,
+        "volNots": 623400,
         "profit": -4500,
         "flag": "short"
       }
@@ -6488,13 +6482,15 @@ export const clusterData = [
     "positions": [
       {
         "symbol": "USDJPY",
-        "volume": 11500,
+        "volLots": 11500,
+        "volNots": 1150000,
         "profit": -1000,
         "flag": "short"
       },
       {
         "symbol": "AUDCAD",
-        "volume": 9872,
+        "volLots": 9872,
+        "volNots": 987200,
         "profit": 5600,
         "flag": "long"
       }
@@ -6505,13 +6501,15 @@ export const clusterData = [
     "positions": [
       {
         "symbol": "NZDUSD",
-        "volume": 12345,
+        "volLots": 12345,
+        "volNots": 1234500,
         "profit": -3500,
         "flag": "short"
       },
       {
         "symbol": "EurUSD",
-        "volume": 15234,
+        "volLots": 15234,
+        "volNots": 1523400,
         "profit": 17500,
         "flag": "long"
       }
@@ -6522,13 +6520,15 @@ export const clusterData = [
     "positions": [
       {
         "symbol": "USDCHF",
-        "volume": 13242,
+        "volLots": 13242,
+        "volNots": 1324200,
         "profit": 6100,
         "flag": "long"
       },
       {
         "symbol": "GBPUSD",
-        "volume": 18321,
+        "volLots": 18321,
+        "volNots": 1832100,
         "profit": -5200,
         "flag": "short"
       }
@@ -6539,13 +6539,15 @@ export const clusterData = [
     "positions": [
       {
         "symbol": "EurUSD",
-        "volume": 22432,
+        "volLots": 22432,
+        "volNots": 2243200,
         "profit": 8700,
         "flag": "long"
       },
       {
         "symbol": "AUDNZD",
-        "volume": 9734,
+        "volLots": 9734,
+        "volNots": 973400,
         "profit": -6700,
         "flag": "short"
       }
@@ -6556,13 +6558,15 @@ export const clusterData = [
     "positions": [
       {
         "symbol": "SAMIUSD",
-        "volume": 13422,
+        "volLots": 13422,
+        "volNots": 1342200,
         "profit": 12400,
         "flag": "long"
       },
       {
         "symbol": "AUDCAD",
-        "volume": 11500,
+        "volLots": 11500,
+        "volNots": 1150000,
         "profit": -5300,
         "flag": "short"
       }
@@ -6573,17 +6577,18 @@ export const clusterData = [
     "positions": [
       {
         "symbol": "NZDUSD",
-        "volume": 8543,
+        "volLots": 8543,
+        "volNots": 854300,
         "profit": 2300,
         "flag": "long"
       },
       {
         "symbol": "GBPJPY",
-        "volume": 9211,
+        "volLots": 9211,
+        "volNots": 921100,
         "profit": -7400,
         "flag": "short"
       }
     ]
   }
 ];
- 

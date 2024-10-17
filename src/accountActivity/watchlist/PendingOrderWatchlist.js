@@ -178,7 +178,7 @@ import React, {
     );
   
     useEffect(() => {
-      const socket = new WebSocket("ws://192.168.3.164:8081/ws/api/v1/positionsActivities");
+      const socket = new WebSocket("ws://192.168.3.164:8081/ws/api/v1/account/positionsActivities");
       let isSocketOpen = false;
   
       const handleMessage = (event) => {

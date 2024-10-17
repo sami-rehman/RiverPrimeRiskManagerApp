@@ -12,8 +12,13 @@ accessibility(Highcharts);
 seriesLabel(Highcharts);
 
 const PerformanceHighChart = ({ loginID }) => {
-  const [optionData, setOptionData] = useState({
+  const [optionDataPerformanceChart, setOptionDataPerformanceChart] = useState({
     "pnl&vol": [
+      {
+        "month": "2024-10",
+        "totalProfit": -480040,
+        "totalVolume": 100000,
+      },
       {
         "month": "2024-03",
         "totalProfit": 56966.59,
@@ -36,24 +41,24 @@ const PerformanceHighChart = ({ loginID }) => {
       },
       {
         "month": "2024-08",
-        "totalProfit": -480040,
-        "totalVolume": 100000,
+        "totalProfit": 880040,
+        "totalVolume": 1000000,
       },
     ],
     transactions: [
       {
         action: "deposit",
-        amount: 3000.0,
-        dateTime: "2024-09-05 12:15:48",
+        amount: 300000.0,
+        dateTime: "2024-04-05 12:15:48",
       },
       {
         action: "withdrawal",
-        amount: 11700000.0,
-        dateTime: "2023-10-30 12:15:48",
+        amount: 1170000.0,
+        dateTime: "2024-08-30 12:15:48",
       },
       {
         action: "deposit",
-        amount: 2700000.0,
+        amount: 2000000.0,
         dateTime: "2024-08-30 12:15:48",
       },
     ],
@@ -67,7 +72,7 @@ const PerformanceHighChart = ({ loginID }) => {
     const handleMessage = (event) => {
       const data = JSON.parse(event.data);
       if (data?.data) {
-        setOptionData(data?.data);
+        setOptionDataPerformanceChart(data?.data);
       }
     };
 
@@ -102,23 +107,23 @@ const PerformanceHighChart = ({ loginID }) => {
   // Create a list of unique months from both pnl&vol and transactions
   const uniqueMonths = [
     ...new Set([
-      ...optionData['pnl&vol']?.map((item) => item.month),
-      ...optionData.transactions.map((t) => t.dateTime.slice(0, 7)),
+      ...optionDataPerformanceChart['pnl&vol']?.map((item) => item.month),
+      ...optionDataPerformanceChart?.transactions?.map((t) => t.dateTime.slice(0, 7)),
     ]),
   ].sort();
 
   // Create data for each month, handling missing entries
   const monthlyData = uniqueMonths?.map((month) => {
-    const pnlVol = optionData['pnl&vol'].find((item) => item.month === month) || {
+    const pnlVol = optionDataPerformanceChart['pnl&vol']?.find((item) => item.month === month) || {
       totalProfit: 0,
       totalVolume: 0,
     };
 
-    const deposits = optionData.transactions
+    const deposits = optionDataPerformanceChart?.transactions
       .filter((t) => t.action === 'deposit' && t.dateTime.slice(0, 7) === month)
       .reduce((sum, t) => sum + t.amount, 0);
 
-    const withdrawals = optionData.transactions
+    const withdrawals = optionDataPerformanceChart.transactions
       .filter((t) => t.action === 'withdrawal' && t.dateTime.slice(0, 7) === month)
       .reduce((sum, t) => sum + t.amount, 0);
 
@@ -131,61 +136,73 @@ const PerformanceHighChart = ({ loginID }) => {
     };
   });
 
-  const chartOptions = optionData
+  const chartOptions = optionDataPerformanceChart
     ? {
         chart: {
-          zooming: {
-            type: 'xy',
-          },
           height: 290,
-          // style: {
-          //   width: '100%',
-          //   height: '100%',
-          // },
+          style: {
+            fontFamily: "'Arial', sans-serif",
+        },
         },
         title: {
           text: '',
         },
-        xAxis: [
-          {
+        xAxis:{
             categories: monthlyData?.map((item) => item.month),
             crosshair: true,
+            plotBands: monthlyData.map((_, index) => ({
+            from: index - 0.5, // Adjust for correct positioning
+            to: index + 0.5,
+            color: index % 2 === 0 ? '#232730' : '#292e37', // Alternating colors for bands
+          })),
           },
-        ],
-        yAxis: [
+        yAxis:
           {
             labels: {
-              format: '{value}',
+              // format: '{value}',
               style: {
-                color: Highcharts.getOptions().colors[2],
+                // color: Highcharts.getOptions().colors[2],
               },
             },
             title: {
               text: '',
             },
-            opposite: true,
+            opposite: false,
           },
-        ],
         tooltip: {
           shared: true,
         },
         legend: {
-          enabled: false,
+        enabled: true, // Enable the legend
+        layout: 'horizontal', // Horizontal layout
+        align: 'center', // Center the legend horizontally
+        verticalAlign: 'top', // Place the legend at the bottom
+        itemStyle: {
+          fontSize: '11px', // Adjust font size of legend items
         },
+        itemMarginBottom: 10, // Add space between legend items
+        itemWidth: 100, // Set a fixed width to each item to control row fit
+        symbolPadding: 0, // Space between the symbol and text in legend
+        floating: false, // Ensure the legend stays inside the chart
+        width: '100%', // Make sure legend takes full width of chart
+        useHTML: true, // Enable HTML rendering for better layout control
+      },
         series: [
           {
             name: 'Total Profit',
             type: 'column',
             yAxis: 0,
-            data: monthlyData.map((item) => item.totalProfit),
+            data: monthlyData?.map((item) => item.totalProfit),
             color: '#2caffe',
-            tooltip: {},
+          tooltip: {
+              valueSuffix: ' $',
+            },
           },
           {
             name: 'Deposits',
             type: 'column',
             yAxis: 0,
-            data: monthlyData.map((item) => item.deposits),
+            data: monthlyData?.map((item) => item.deposits),
             color: '#00e272',
             tooltip: {
               valueSuffix: ' $',
@@ -195,7 +212,7 @@ const PerformanceHighChart = ({ loginID }) => {
             name: 'Withdrawals',
             type: 'column',
             yAxis: 0,
-            data: monthlyData.map((item) => item.withdrawals),
+            data: monthlyData?.map((item) => item.withdrawals),
             color: '#FF0000',
             tooltip: {
               valueSuffix: ' $',
@@ -205,8 +222,8 @@ const PerformanceHighChart = ({ loginID }) => {
             name: 'Total Volume',
             type: 'spline',
             yAxis: 0,
-            data: monthlyData.map((item) => item.totalVolume),
-            color: '#2d3417',
+            data: monthlyData?.map((item) => item.totalVolume),
+            color: '#eaeef0',
             marker: {
               enabled: false,
             },
@@ -214,9 +231,16 @@ const PerformanceHighChart = ({ loginID }) => {
             tooltip: {
               valueSuffix: ' Lots',
             },
-            showInLegend: false,
+            // showInLegend: true,
           },
         ],
+        plotOptions: {
+        series: {
+          label: {
+            enabled: false, // Enable automatic labels for all series
+          },
+        },
+      },
         responsive: {
           rules: [
             {

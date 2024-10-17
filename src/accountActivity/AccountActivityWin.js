@@ -98,7 +98,7 @@ const AccountActivityWin = React.memo(({ accountActivityData }) => {
               <RulesHighcharts/>
             </div>
             <div className="col-span-3 row-span-4 col-start-7 row-start-9 bg-gray-200 relative">
-            {/* <PerformanceHighChart loginID={accountActivityData.login}/> */}
+            <PerformanceHighChart loginID={accountActivityData.login}/>
             </div>
             <div className="col-span-3 row-span-4 col-start-10 row-start-1 bg-gray-200 relative">7</div>
             <div className="col-span-3 row-span-4 col-start-10 row-start-5 bg-gray-200 relative">8</div>

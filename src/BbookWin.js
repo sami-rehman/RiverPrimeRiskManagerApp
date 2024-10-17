@@ -4,6 +4,7 @@ import { ReactComponent as MinimizeIcon } from "./assets/icons/minimizeIcon.svg"
 import BbookPosition from "./bbookaccount/watchlist/BbookPosition";
 import InstrumentsByVolumes from "./bbookaccount/graph/InstrumentsByVolumes";
 import HoldingByAccount from "./bbookaccount/graph/HoldingByAccount";
+import BbookOrders from "./bbookaccount/watchlist/BbookOrders";
 
 const BbookWin = React.memo(() => {
   const [maximizedItem, setMaximizedItem] = useState("");
@@ -20,6 +21,8 @@ const BbookWin = React.memo(() => {
     switch (maximizedItem) {
       case "watchListBbookPosition":
         return <BbookPosition />;
+        case "watchListBbookOrders":
+          return <BbookOrders />;
       default:
         return null;
     }
@@ -43,7 +46,15 @@ const BbookWin = React.memo(() => {
               </div>
             </div>
             <div className="col-span-8 row-span-4 col-start-1 row-start-5 bg-gray-200 relative">
-            <BbookPosition/>
+            <button
+                onClick={() => openMaximizedPopup("watchListBbookOrders")}
+                className="absolute top-0 right-0 text-gray-700 bg-gray-300 hover:bg-gray-200 hover:text-gray-900 rounded-sm z-10"
+              >
+                <MaximizeIcon className="w-4 h-4" />
+              </button>
+              <div className="w-full h-full">
+              <BbookOrders/>
+              </div>
             </div>
             <div className="col-span-4 row-span-4 col-start-1 row-start-9 bg-gray-200 relative">
             <InstrumentsByVolumes/>

@@ -6,6 +6,7 @@ import { numberFormatter } from './common/constant';
 
 import { WatchListFirst } from './watchlistA/WatchListFirst';
 import AbookPosition from "./abookaccount/watchlist/AbookPosition";
+import AbookOrders from "./abookaccount/watchlist/AbookOrders";
 const AbookWin = React.memo(() => {
   const [maximizedItem, setMaximizedItem] = useState("");
 
@@ -19,8 +20,10 @@ const AbookWin = React.memo(() => {
 
   const renderContent = () => {
     switch (maximizedItem) {
-      case "watchListBbookPosition":
-        return <BbookPosition />;
+      case "watchListAbookPosition":
+        return  <AbookPosition/>;
+        case "watchListAbookOrders":
+          return  <AbookOrders/>;
       default:
         return null;
     }
@@ -69,10 +72,26 @@ const AbookWin = React.memo(() => {
           </div>
           <div className="flex-grow grid grid-cols-12 grid-rows-12 gap-1 relative">
             <div className="col-span-8 row-span-5 bg-gray-200 relative">
-              <AbookPosition/>
+              <button
+                onClick={() => openMaximizedPopup("watchListAbookPosition")}
+                className="absolute top-0 right-0 text-gray-700 bg-gray-300 hover:bg-gray-200 hover:text-gray-900 rounded-sm z-10"
+              >
+                <MaximizeIcon className="w-4 h-4" />
+              </button>
+              <div className="w-full h-full">
+                 <AbookPosition/>
+              </div>
             </div>
             <div className="col-span-8 row-span-3 col-start-1 row-start-6 bg-gray-200 relative">
-              2
+            <button
+                onClick={() => openMaximizedPopup("watchListAbookOrders")}
+                className="absolute top-0 right-0 text-gray-700 bg-gray-300 hover:bg-gray-200 hover:text-gray-900 rounded-sm z-10"
+              >
+                <MaximizeIcon className="w-4 h-4" />
+              </button>
+              <div className="w-full h-full">
+              <AbookOrders/>
+              </div>
             </div>
             <div className="col-span-2 row-span-4 col-start-1 row-start-9 bg-gray-200 relative">
               4
