@@ -38,6 +38,21 @@ const FunnelChart = () => {
             { date: '2020-07-06', index: '引导成交用户数', type: '对比期', value: 34896 },
         ];
 
+        // const rawData = [
+        //     { date: '2020-08-01', index: 'Ad Click Users', type: 'Current Period', value: 46893 },
+        //     { date: '2020-08-01', index: 'Exposed Users in Event', type: 'Current Period', value: 37896 },
+        //     { date: '2020-08-01', index: 'Event Click Users', type: 'Current Period', value: 34896 },
+        //     { date: '2020-08-01', index: 'Privilege Claim Users', type: 'Current Period', value: 28896 },
+        //     { date: '2020-08-01', index: 'Guided IUV', type: 'Current Period', value: 14896 },
+        //     { date: '2020-08-01', index: 'Guided Deal Users', type: 'Current Period', value: 4755 },
+        //     { date: '2020-07-06', index: 'Ad Click Users', type: 'Comparison Period', value: 46893 },
+        //     { date: '2020-07-06', index: 'Exposed Users in Event', type: 'Comparison Period', value: 37896 },
+        //     { date: '2020-07-06', index: 'Event Click Users', type: 'Comparison Period', value: 34896 },
+        //     { date: '2020-07-06', index: 'Privilege Claim Users', type: 'Comparison Period', value: 28896 },
+        //     { date: '2020-07-06', index: 'Guided IUV', type: 'Comparison Period', value: 36896 },
+        //     { date: '2020-07-06', index: 'Guided Deal Users', type: 'Comparison Period', value: 34896 },
+        // ];
+
         function processData(rawData) {
             const res = [];
             [rawData.filter(({ type }) => type === '本期'), rawData.filter(({ type }) => type === '对比期')].forEach((data) => {

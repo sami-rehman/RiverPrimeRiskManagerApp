@@ -26,6 +26,8 @@ import RulesHighcharts from './RulesHighcharts'
 import PerformanceHighChart from './PerformanceHighChart';
 import WatchListDarkMode from './WatchListDarkMode';
 import InstrumentsByVolumes from './bbookaccount/graph/InstrumentsByVolumes';
+import PieHighCharts from './graphs/PieHighCharts';
+import HoldingByAccount from './bbookaccount/graph/HoldingByAccount';
 
 
 const WatchListFirstColDefs = [
@@ -365,7 +367,9 @@ const layouts = {
         // </BaseLayout>
         <BaseLayout cols="12" rows="12">
         <div className="bg-gray-200 col-span-12 row-span-12 flex justify-center items-center">
-           <InstrumentsByVolumes/>
+           {/* <InstrumentsByVolumes/> */}
+<HoldingByAccount/>
+           {/* <PieHighCharts/> */}
         </div>
     </BaseLayout>
 
@@ -373,7 +377,7 @@ const layouts = {
     LayoutTwo: () => (
         <BaseLayout cols="12" rows="12">
             <div className="bg-gray-200 col-span-6 row-span-6 flex justify-center items-center">
-                {/* <FunnelChart /> */}
+                <FunnelChart />
             </div>
             <div className="border border-gray-300 rounded-sm col-span-6 row-span-6 col-start-7 flex justify-center items-center p-2">
                 <LongShortCharts />

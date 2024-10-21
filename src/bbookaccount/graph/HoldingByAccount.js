@@ -3,249 +3,331 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
 const HoldingByAccount = () => {
-  const getData = [
-    {
-      "holdings": {
-        "long": {
-          "NDX100": [
-            {
-              "volLots": 116.6,
-              "volNotional": 58300.0
-            }
-          ]
-        },
-        "short": null
-      },
-      "login": 2343
-    },
-    {
-      "holdings": {
-        "long": null,
-        "short": {
-          "Gold": [
-            {
-              "volLots": 6.0,
-              "volNotional": 600.0
-            }
-          ],
-          "WTI": [
-            {
-              "volLots": 10.0,
-              "volNotional": 10000.0
-            }
-          ]
-        }
-      },
-      "login": 119733
-    },
-    {
-      "holdings": {
-        "long": {
-          "Gold": [
-            {
-              "volLots": 201.0,
-              "volNotional": 20100.0
-            }
-          ],
-          "WTI": [
-            {
-              "volLots": 1000.0,
-              "volNotional": 10000.0
-            }
-          ]
-        },
-        "short": null
-      },
-      "login": 903127
-    },
-    {
-      "holdings": {
-        "long": {
-          "GBPNZD": [
-            {
-              "volLots": 100.0,
-              "volNotional": 100.0
-            }
-          ]
-        },
-        "short": {
-          "Silver": [
-            {
-              "volLots": 50.0,
-              "volNotional": 100.0
-            }
-          ]
-        }
-      },
-      "login": 904495
-    },
-    {
-      "holdings": {
-        "long": null,
-        "short": {
-          "Gold": [
-            {
-              "volLots": 8.0,
-              "volNotional": 800.0
-            }
-          ]
-        }
-      },
-      "login": 904642
-    },
-    {
-      "holdings": {
-        "long": {
-          "AUDCHF": [
-            {
-              "volLots": 100.0,
-              "volNotional": 100.0
-            }
-          ],
-          "AUDJPY": [
-            {
-              "volLots": 1000.0,
-              "volNotional": 100.0
-            }
-          ],
-          "AUDNZD": [
-            {
-              "volLots": 1000.0,
-              "volNotional": 100.0
-            }
-          ],
-          "CHFJPY": [
-            {
-              "volLots": 1000.0,
-              "volNotional": 100.0
-            }
-          ],
-          "EURAUD": [
-            {
-              "volLots": 1000.0,
-              "volNotional": 100.0
-            }
-          ],
-          "EURJPY": [
-            {
-              "volLots": 2000.0,
-              "volNotional": 200.0
-            }
-          ],
-          "Gold": [
-            {
-              "volLots": 1.0,
-              "volNotional": 100.0
-            }
-          ],
-          "Silver": [
-            {
-              "volLots": 50.0,
-              "volNotional": 100.0
-            }
-          ],
-          "USDJPY": [
-            {
-              "volLots": 1000.0,
-              "volNotional": 100.0
-            }
-          ],
-          "WTI": [
-            {
-              "volLots": 10.0,
-              "volNotional": 100.0
-            }
-          ]
-        },
-        "short": null
-      },
-      "login": 905727
-    }
-  ];
+  // const getData = [
+  //   {
+  //     "holdings": {
+  //       "long": {
+  //         "NDX100": [
+  //           {
+  //             "volLots": 116.6,
+  //             "volNotional": 58300.0
+  //           }
+  //         ]
+  //       },
+  //       "short": null
+  //     },
+  //     "login": 2343
+  //   },
+  //   {
+  //     "holdings": {
+  //       "long": null,
+  //       "short": {
+  //         "Gold": [
+  //           {
+  //             "volLots": 6.0,
+  //             "volNotional": 600.0
+  //           }
+  //         ],
+  //         "WTI": [
+  //           {
+  //             "volLots": 10.0,
+  //             "volNotional": 10000.0
+  //           }
+  //         ]
+  //       }
+  //     },
+  //     "login": 119733
+  //   },
+  //   {
+  //     "holdings": {
+  //       "long": {
+  //         "Gold": [
+  //           {
+  //             "volLots": 201.0,
+  //             "volNotional": 20100.0
+  //           }
+  //         ],
+  //         "WTI": [
+  //           {
+  //             "volLots": 1000.0,
+  //             "volNotional": 10000.0
+  //           }
+  //         ]
+  //       },
+  //       "short": null
+  //     },
+  //     "login": 903127
+  //   },
+  //   {
+  //     "holdings": {
+  //       "long": {
+  //         "GBPNZD": [
+  //           {
+  //             "volLots": 100.0,
+  //             "volNotional": 100.0
+  //           }
+  //         ]
+  //       },
+  //       "short": {
+  //         "Silver": [
+  //           {
+  //             "volLots": 50.0,
+  //             "volNotional": 100.0
+  //           }
+  //         ]
+  //       }
+  //     },
+  //     "login": 904495
+  //   },
+  //   {
+  //     "holdings": {
+  //       "long": null,
+  //       "short": {
+  //         "Gold": [
+  //           {
+  //             "volLots": 8.0,
+  //             "volNotional": 800.0
+  //           }
+  //         ]
+  //       }
+  //     },
+  //     "login": 904642
+  //   },
+  //   {
+  //     "holdings": {
+  //       "long": {
+  //         "AUDCHF": [
+  //           {
+  //             "volLots": 100.0,
+  //             "volNotional": 100.0
+  //           }
+  //         ],
+  //         "AUDJPY": [
+  //           {
+  //             "volLots": 1000.0,
+  //             "volNotional": 100.0
+  //           }
+  //         ],
+  //         "AUDNZD": [
+  //           {
+  //             "volLots": 1000.0,
+  //             "volNotional": 100.0
+  //           }
+  //         ],
+  //         "CHFJPY": [
+  //           {
+  //             "volLots": 1000.0,
+  //             "volNotional": 100.0
+  //           }
+  //         ],
+  //         "EURAUD": [
+  //           {
+  //             "volLots": 1000.0,
+  //             "volNotional": 100.0
+  //           }
+  //         ],
+  //         "EURJPY": [
+  //           {
+  //             "volLots": 2000.0,
+  //             "volNotional": 200.0
+  //           }
+  //         ],
+  //         "Gold": [
+  //           {
+  //             "volLots": 1.0,
+  //             "volNotional": 100.0
+  //           }
+  //         ],
+  //         "Silver": [
+  //           {
+  //             "volLots": 50.0,
+  //             "volNotional": 100.0
+  //           }
+  //         ],
+  //         "USDJPY": [
+  //           {
+  //             "volLots": 1000.0,
+  //             "volNotional": 100.0
+  //           }
+  //         ],
+  //         "WTI": [
+  //           {
+  //             "volLots": 10.0,
+  //             "volNotional": 100.0
+  //           }
+  //         ]
+  //       },
+  //       "short": null
+  //     },
+  //     "login": 905727
+  //   }
+  // ];
 
-  // Extract long and short holdings into separate arrays
-  const extractPositions = (data) => {
-    const loginMap = {};
+  const colors = Highcharts.getOptions().colors.map((c, i) =>
+    Highcharts.color(Highcharts.getOptions().colors[0])
+      .brighten((i - 3) / 20)
+      .get()
+  );
 
-    data.forEach(account => {
-      const { login, holdings } = account;
-
-      if (!loginMap[login]) {
-        loginMap[login] = { long: [], short: [] };
-      }
-
-      // Extract long positions
-      if (holdings.long) {
-        for (const [symbol, volumes] of Object.entries(holdings.long)) {
-          volumes.forEach(volume => {
-            loginMap[login].long.push({ symbol, volLots: volume.volLots });
-          });
-        }
-      }
-
-      // Extract short positions
-      if (holdings.short) {
-        for (const [symbol, volumes] of Object.entries(holdings.short)) {
-          volumes.forEach(volume => {
-            loginMap[login].short.push({ symbol, volLots: volume.volLots });
-          });
-        }
-      }
-    });
-
-    return loginMap;
-  };
-
-  const loginMap = extractPositions(getData);
-
-  // Prepare data for chart
-  const categories = Object.keys(loginMap);
-  const longData = categories.map(login => 
-    loginMap[login].long.map(pos => pos.volLots)
-  ).flat();
-
-  const shortData = categories.map(login => 
-    loginMap[login].short.map(pos => pos.volLots)
-  ).flat();
-
+  const chartHeight = 290;
   const chartOptions = {
     chart: {
       type: 'bar',
-      height: 290,
-      width: 550,
-      reflow: false,
+      height:chartHeight,
+      marginLeft: 10,
+      style: {
+          fontFamily: "'Arial', sans-serif",
+        },
     },
     title: {
-      text: `Volume by Login`,
+      text: `Groups Holdings: Live Holding`,
       align: 'left',
     },
+
+     // Disable the legend
+     legend: {
+      enabled: false
+    },
+    
+    
+    plotOptions: {
+      series: {
+        cursor: 'pointer',
+        colors: colors,
+        borderRadius: 5,
+        stacking: 'normal',  // Enable stacking globally
+        dataLabels: {
+          enabled: false
+        }
+      }
+    },
+
     xAxis: {
-      categories: categories,
+      left: '50%',
+      categories: ['44253', '44254', '44255', '44256', '44257', '44258', '44259'],
+      lineWidth: 0,
+      tickWidth: 0,
+      labels: {
+        align: 'left',
+        x: -18
+      },
       title: {
-        text: 'Login',
+        text: 'Account',
+        align: 'high',
+        rotation: 0,
+        x: 35,
       }
     },
-    yAxis: {
+
+    yAxis: [{
+      left: '55%',
+      width: '45%',
+      labels: {
+        enabled: true
+      },
       title: {
-        text: 'Volume Lots'
-      }
-    },
+        text: "Long",
+        align: "high",
+        style: {
+          fontSize: "10pt",
+        },
+      },
+      gridLineWidth: 1,
+      lineWidth: 1,
+      minTickInterval: 1,
+      plotLines: [{
+        value: 0,
+        width: 1,
+        color: 'black',
+        zIndex: 4
+      }],
+    }, {
+      reversed: true,
+      width: '45%',
+      offset: 0,
+      labels: {
+        enabled: true
+      },
+      gridLineWidth: 1,
+      lineWidth: 1,
+      minTickInterval: 1,
+      title: {
+        text: "Short",
+        align: "low",
+        style: {
+          fontSize: "10pt",
+        },
+      },
+      plotLines: [{
+        value: 0,
+        width: 1,
+        color: 'black',
+        zIndex: 4
+      }],
+    }],
+
     series: [
       {
-        name: 'Long Volume Lots',
-        data: longData,
+        name: 'Gold.',
+        data: [2, 5, 9, 20, 1, 3, 6],
+        yAxis: 1,
+        stack: 'shortStack',
+        color: colors[0]
       },
       {
-        name: 'Short Volume Lots',
-        data: shortData,
+        name: 'Silver',
+        data: [1, 2, 3, 5, 1, 1, 2],
+        yAxis: 1,
+        stack: 'shortStack',
+        color: colors[1]
       },
-    ],
+      {
+        name: 'Gold',
+        data: [2, 5, 9, 20, 1, 3, 6],
+        yAxis: 1,
+        stack: 'shortStack',
+        color: colors[2]
+      },
+      {
+        name: 'DJ130',
+        data: [1, 2, 3, 5, 1, 1, 2],
+        yAxis: 1,
+        stack: 'shortStack',
+        color: colors[3]
+      },
+      {
+        name: 'Gold.',
+        data: [1, 3, 5, 8, 9, 4, 15],
+        stack: 'longStack',
+        color: colors[0]
+      },
+      {
+        name: 'Eur-USD',
+        data: [2, 1, 2, 3, 4, 2, 5],
+        stack: 'longStack',
+        color: colors[1]
+      },
+      {
+        name: 'DJ130',
+        data: [1, 3, 5, 8, 9, 4, 15],
+        stack: 'longStack',
+        color: colors[2]
+      },
+      {
+        name: 'XBC',
+        data: [2, 1, 2, 3, 4, 2, 5],
+        stack: 'longStack',
+        color: colors[3]
+      }
+    ]
   };
-
   return (
-    <>
-      <HighchartsReact highcharts={Highcharts} options={chartOptions} />
-    </>
+  <div className='w-full h-full'>
+       <HighchartsReact
+        highcharts={Highcharts}
+        options={chartOptions}
+      />
+    </div>
   );
 };
 
