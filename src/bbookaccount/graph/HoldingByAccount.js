@@ -204,7 +204,7 @@ const HoldingByAccount = () => {
 
     xAxis: {
       left: '50%',
-      categories: ['44253', '44254', '44255', '44256', '44257', '44258', '44259'],
+      categories: ['44253', '44254', '44255', '44256', '44257', '44258', '44259', '4421','4462','4463','4464','4465',],
       lineWidth: 0,
       tickWidth: 0,
       labels: {
@@ -216,6 +216,7 @@ const HoldingByAccount = () => {
         align: 'high',
         rotation: 0,
         x: 35,
+        y:-5,
       }
     },
 
@@ -318,8 +319,49 @@ const HoldingByAccount = () => {
         data: [2, 1, 2, 3, 4, 2, 5],
         stack: 'longStack',
         color: colors[3]
+      },
+      {
+        name: 'XBC1',
+        data: [2, 1, 2, 3, 4, 2, 5],
+        stack: 'longStack',
+        color: colors[4]
+      },
+      {
+        name: 'BC1',
+        data: [2, 1, 2, 3, 2, 1, 2,],
+        stack: 'longStack',
+        color: colors[4]
       }
-    ]
+    ],
+    // Make the chart responsive
+    responsive: {
+      rules: [
+        {
+          condition: {
+            maxWidth: 500
+          },
+          chartOptions: {
+            chart: {
+              height: 300
+            },
+            xAxis: {
+              labels: {
+                style: {
+                  fontSize: '8px'
+                }
+              }
+            },
+            yAxis: {
+              labels: {
+                style: {
+                  fontSize: '8px'
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
   };
   return (
   <div className='w-full h-full'>

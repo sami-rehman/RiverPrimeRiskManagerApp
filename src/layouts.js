@@ -28,6 +28,8 @@ import WatchListDarkMode from './WatchListDarkMode';
 import InstrumentsByVolumes from './bbookaccount/graph/InstrumentsByVolumes';
 import PieHighCharts from './graphs/PieHighCharts';
 import HoldingByAccount from './bbookaccount/graph/HoldingByAccount';
+import { WatchListTradingAccount } from './grid/WatchListTradingAccount';
+import { TradingAccountGrid } from './grid/TradingAccountGrid';
 
 
 const WatchListFirstColDefs = [
@@ -368,8 +370,9 @@ const layouts = {
         <BaseLayout cols="12" rows="12">
         <div className="bg-gray-200 col-span-12 row-span-12 flex justify-center items-center">
            {/* <InstrumentsByVolumes/> */}
-<HoldingByAccount/>
+           {/* <HoldingByAccount/> */}
            {/* <PieHighCharts/> */}
+           <TradingAccountGrid/>
         </div>
     </BaseLayout>
 

@@ -59,6 +59,7 @@ export const WatchListTradingAccount = ({setSelectedLogins}) => {
         checkboxSelection: true, // Enables checkbox for each row
         field: "login",
         headerName: "MT Login",
+        rowDrag: true,
         filter: true,
         cellRenderer: (params) => {
           const handleClick = () => triggerAccountActivity(params.data)
@@ -329,6 +330,7 @@ export const WatchListTradingAccount = ({setSelectedLogins}) => {
         pagination={true}
         pinnedTopRowData={pinnedTopRowData}
         rowSelection="multiple" // Enables multiple row selection
+        rowDragManaged={true}
         onSelectionChanged={onSelectionChanged} // Trigger selection change event
       />
 
