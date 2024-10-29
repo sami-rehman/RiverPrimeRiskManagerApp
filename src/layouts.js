@@ -30,6 +30,8 @@ import PieHighCharts from './graphs/PieHighCharts';
 import HoldingByAccount from './bbookaccount/graph/HoldingByAccount';
 import { WatchListTradingAccount } from './grid/WatchListTradingAccount';
 import { TradingAccountGrid } from './grid/TradingAccountGrid';
+import AbookWatchList from './bbookaccount/watchlist/AbookWatchList';
+import BbookWatchList from './bbookaccount/watchlist/BbookWatchList';
 
 
 const WatchListFirstColDefs = [
@@ -372,7 +374,9 @@ const layouts = {
            {/* <InstrumentsByVolumes/> */}
            {/* <HoldingByAccount/> */}
            {/* <PieHighCharts/> */}
-           <TradingAccountGrid/>
+           {/* <TradingAccountGrid/> */}
+           {/* <AbookWatchList/> */}
+           <BbookWatchList/>
         </div>
     </BaseLayout>
 

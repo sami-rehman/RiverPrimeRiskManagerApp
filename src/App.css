@@ -1,3 +1,18 @@
 .highcharts-tooltip {
   margin: 0.2em 0;
 }
+
+.parties-group {
+  background-color: #2e3436 !important;
+  justify-content: center;
+}
+
+.particularsTrade-group {
+  background-color: #272c2e !important;
+}
+
+.ag-details-row {
+  padding: calc(var(--ag-grid-size) * 1) !important;
+  /* background-color: var(--ag-background-color); */
+}
+

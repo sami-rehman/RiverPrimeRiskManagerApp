@@ -6,13 +6,9 @@ import React, {
   useState,
 } from "react";
 import { AgGridReact } from "ag-grid-react";
-import "ag-grid-enterprise";
-import { LicenseManager } from "ag-grid-enterprise";
 
 import "ag-grid-community/styles/ag-grid.css";
-import "ag-grid-community/styles/ag-theme-quartz.css";
 import { numberFormatter } from "../common/constant";
-// import "../styles/custom-ag-grid.css";
 import "ag-grid-community/styles/ag-theme-balham.css";
 
 import NewWindow from "react-new-window";
@@ -20,9 +16,12 @@ import NewWindow from "react-new-window";
 
 import { rawDataPiechartEquity } from "../constant";
 import AccountActivityWin from "../accountActivity/AccountActivityWin";
+import { StatusRender } from "./statusRendered";
+import { formatNumber } from "../common";
+import { PercentageUnderline } from "./percentageUnderline";
 
 
-export const WatchListTradingAccount = ({setSelectedLogins}) => {
+export const WatchListTradingAccount = ({ setSelectedLogins }) => {
 
   const [showNewWindow, setShowNewWindow] = useState(false);
   const [accountActivityProps, setaccountActivityProps] = useState();
@@ -37,9 +36,6 @@ export const WatchListTradingAccount = ({setSelectedLogins}) => {
     setShowNewWindow(false);
   };
 
-  LicenseManager.setLicenseKey(
-    "Using_this_{AG_Grid}_Enterprise_key_{AG-063926}_in_excess_of_the_licence_granted_is_not_permitted___Please_report_misuse_to_legal@ag-grid.com___For_help_with_changing_this_key_please_contact_info@ag-grid.com___{River_Prime}_is_granted_a_{Single_Application}_Developer_License_for_the_application_{River_Prime}_only_for_{1}_Front-End_JavaScript_developer___All_Front-End_JavaScript_developers_working_on_{River_Prime}_need_to_be_licensed___{River_Prime}_has_been_granted_a_Deployment_License_Add-on_for_{1}_Production_Environment___This_key_works_with_{AG_Grid}_Enterprise_versions_released_before_{23_July_2025}____[v3]_[01]_MTc1MzIyNTIwMDAwMA==1200d27c6f62377b36b8f92b7c13fe53"
-  );
   const [rowData, setRowData] = useState(rawDataPiechartEquity);
   const [pinnedTopRowData, setPinnedTopRowData] = useState([]);
 
@@ -48,54 +44,52 @@ export const WatchListTradingAccount = ({setSelectedLogins}) => {
 
   const colDefs = useMemo(
     () => [
-      // {
-      //   headerCheckboxSelection: true, // Enables checkbox in header
-      //   checkboxSelection: true, // Enables checkbox for each row
-      //   width:50,
-      //   suppressSizeToFit: true, 
-      // },
       {
-        headerCheckboxSelection: true, // Enables checkbox in header
-        checkboxSelection: true, // Enables checkbox for each row
+        headerCheckboxSelection: true,
+        checkboxSelection: true,
+        maxWidth: 40,
+      },
+      {
+        field: "rule",
+        headerName: "Status",
+        filter: true,
+        maxWidth: 99,
+        cellRenderer: StatusRender,
+      },
+      {
         field: "login",
         headerName: "MT Login",
         rowDrag: true,
         filter: true,
+        minWidth: 99,
         cellRenderer: (params) => {
           const handleClick = () => triggerAccountActivity(params.data)
+          // Determine the color based on the flag
+          const isActive = params?.data?.rule === 'Active';
+          const textColor = !isActive ? "#8ca6f3" : "#f7cf13";
           return (
             <span
-              style={{ color: "#8ca6f3", cursor: "pointer" }}
+              style={{ color: textColor, cursor: "pointer" }}
               onClick={handleClick}
             >
               {params.value}
             </span>
           );
         },
-        cellClassRules: {
-          'even-row': (params) => params.node.rowIndex % 2 === 0,
-          'odd-row': (params) => params.node.rowIndex % 2 !== 0,
-        },
       },
       {
         headerName: "MT Group:",
         field: "group",
         hide: true,
-        cellClassRules: {
-          'even-row': params => params.node.rowIndex % 2 === 0,
-          'odd-row': params => params.node.rowIndex % 2 !== 0,
-        }
       },
       {
         headerName: "Equity",
         field: "equity",
         filter: "agNumberColumnFilter",
         cellDataType: "number",
-        cellRenderer: "agAnimateShowChangeCellRenderer",
-        valueFormatter: numberFormatter,
-        cellClassRules: {
-          'even-row': params => params.node.rowIndex % 2 === 0,
-          'odd-row': params => params.node.rowIndex % 2 !== 0,
+        // cellRenderer: "agAnimateShowChangeCellRenderer",
+        valueFormatter: (params) => {
+          return `$${formatNumber(params.value)}`;
         },
         aggFunc: "sum",
       },
@@ -106,10 +100,6 @@ export const WatchListTradingAccount = ({setSelectedLogins}) => {
         cellDataType: "number",
         valueFormatter: numberFormatter,
         cellRenderer: "agAnimateShowChangeCellRenderer",
-        cellClassRules: {
-          'even-row': params => params.node.rowIndex % 2 === 0,
-          'odd-row': params => params.node.rowIndex % 2 !== 0,
-        },
         aggFunc: "sum",
       },
       {
@@ -119,10 +109,6 @@ export const WatchListTradingAccount = ({setSelectedLogins}) => {
         cellDataType: "number",
         valueFormatter: numberFormatter,
         cellRenderer: "agAnimateSlideCellRenderer",
-        cellClassRules: {
-          'even-row': params => params.node.rowIndex % 2 === 0,
-          'odd-row': params => params.node.rowIndex % 2 !== 0,
-        },
         aggFunc: "sum",
       },
       {
@@ -130,12 +116,8 @@ export const WatchListTradingAccount = ({setSelectedLogins}) => {
         field: "realizedPL",
         filter: "agNumberColumnFilter",
         cellDataType: "number",
-        cellRenderer: "agAnimateShowChangeCellRenderer",
+        // cellRenderer: "agAnimateShowChangeCellRenderer",
         valueFormatter: numberFormatter,
-        cellClassRules: {
-          'even-row': params => params.node.rowIndex % 2 === 0,
-          'odd-row': params => params.node.rowIndex % 2 !== 0,
-        },
         aggFunc: "sum",
       },
       {
@@ -143,34 +125,29 @@ export const WatchListTradingAccount = ({setSelectedLogins}) => {
         field: "unrealizedPL",
         filter: "agNumberColumnFilter",
         cellDataType: "number",
-        cellRenderer: "agAnimateShowChangeCellRenderer",
+        // cellRenderer: "agAnimateShowChangeCellRenderer",
         valueFormatter: numberFormatter,
-        cellClassRules: {
-          'even-row': params => params.node.rowIndex % 2 === 0,
-          'odd-row': params => params.node.rowIndex % 2 !== 0,
-        },
         aggFunc: "sum",
       },
       {
         headerName: "Rules",
         field: "rule",
-        cellClassRules: {
-          'even-row': params => params.node.rowIndex % 2 === 0,
-          'odd-row': params => params.node.rowIndex % 2 !== 0,
+        filter: "agSetColumnFilter",
+        filterParams: {
+          suppressMiniFilter: true,
         },
+        hide: true,
       },
       {
         headerName: "Margin Utilization",
         field: "marginUtilization",
         filter: "agNumberColumnFilter",
-        cellDataType: "number",
-        cellRenderer: "agAnimateShowChangeCellRenderer",
-        valueFormatter: numberFormatter,
-        cellClassRules: {
-          'even-row': params => params.node.rowIndex % 2 === 0,
-          'odd-row': params => params.node.rowIndex % 2 !== 0,
-        },
-        aggFunc: "sum",
+        cellRenderer: (params) => (
+          <PercentageUnderline
+            value={params?.data?.marginUtilization}
+            percentage={params?.data?.marginUtilizationPercentage}
+          />
+        ),
       },
       {
         headerName: "Longs",
@@ -178,10 +155,6 @@ export const WatchListTradingAccount = ({setSelectedLogins}) => {
         filter: "agNumberColumnFilter",
         cellDataType: "number",
         valueFormatter: numberFormatter,
-        cellClassRules: {
-          'even-row': params => params.node.rowIndex % 2 === 0,
-          'odd-row': params => params.node.rowIndex % 2 !== 0,
-        },
         aggFunc: "sum",
       },
       {
@@ -190,10 +163,6 @@ export const WatchListTradingAccount = ({setSelectedLogins}) => {
         filter: "agNumberColumnFilter",
         cellDataType: "number",
         valueFormatter: numberFormatter,
-        cellClassRules: {
-          'even-row': params => params.node.rowIndex % 2 === 0,
-          'odd-row': params => params.node.rowIndex % 2 !== 0,
-        },
         aggFunc: "sum",
       },
       {
@@ -202,10 +171,6 @@ export const WatchListTradingAccount = ({setSelectedLogins}) => {
         filter: "agNumberColumnFilter",
         cellDataType: "number",
         valueFormatter: numberFormatter,
-        cellClassRules: {
-          'even-row': params => params.node.rowIndex % 2 === 0,
-          'odd-row': params => params.node.rowIndex % 2 !== 0,
-        },
         aggFunc: "sum",
       },
     ],
@@ -295,6 +260,7 @@ export const WatchListTradingAccount = ({setSelectedLogins}) => {
   const defaultColDef = useMemo(
     () => ({
       flex: 1,
+      floatingFilter: true,
       enableRowGroup: true,
       enableValue: true,
       enablePivot: true,
@@ -311,11 +277,11 @@ export const WatchListTradingAccount = ({setSelectedLogins}) => {
   const getRowId = useCallback(({ data: { login } }) => login?.toString(), []);
 
 
-   // Function to update selected logins whenever selection changes
-   const onSelectionChanged = useCallback(() => {
+  // Function to update selected logins whenever selection changes
+  const onSelectionChanged = useCallback(() => {
     const selectedRows = gridRef?.current?.api?.getSelectedRows();
     const selectedLogins = selectedRows?.map(row => row?.login); // Extracting logins
-    console.log('selectedLogins', selectedLogins); // Log the array of logins
+    // console.log('selectedLogins', selectedLogins); // Log the array of logins
     setSelectedLogins(selectedLogins); // Store selected logins in state if needed
   }, []);
 
@@ -327,11 +293,15 @@ export const WatchListTradingAccount = ({setSelectedLogins}) => {
         rowData={rowData}
         columnDefs={colDefs}
         defaultColDef={defaultColDef}
-        pagination={true}
-        pinnedTopRowData={pinnedTopRowData}
-        rowSelection="multiple" // Enables multiple row selection
         rowDragManaged={true}
-        onSelectionChanged={onSelectionChanged} // Trigger selection change event
+        rowSelection={"multiple"}
+        rowGroupPanelShow={"always"}
+        suppressAggFuncInHeader
+        groupDefaultExpanded={-1}
+        sideBar={true}
+        rowHeight={19}
+        // pinnedTopRowData={pinnedTopRowData}
+        onSelectionChanged={onSelectionChanged}
       />
 
       {showNewWindow && (
@@ -340,7 +310,7 @@ export const WatchListTradingAccount = ({setSelectedLogins}) => {
           features={{ width: 1800, height: 980 }}
           title="Account Activity Login"
         >
-          <AccountActivityWin accountActivityData={accountActivityProps}/>
+          <AccountActivityWin accountActivityData={accountActivityProps} />
         </NewWindow>
       )}
 

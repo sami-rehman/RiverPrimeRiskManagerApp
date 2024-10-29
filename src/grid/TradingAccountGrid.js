@@ -13,6 +13,7 @@ import "ag-grid-community/styles/ag-theme-balham.css";
 import { rawDataPiechartEquity } from "../constant";
 import { StatusRender } from "./statusRendered";
 import { PercentageUnderline } from "./percentageUnderline";
+import { formatNumber } from "../common";
 
 export const TradingAccountGrid = () => {
 
@@ -39,6 +40,7 @@ export const TradingAccountGrid = () => {
         rowDrag: true,
         filter: true,
         minWidth: 99,
+        
       },
       {
         headerName: "MT Group:",
@@ -51,7 +53,9 @@ export const TradingAccountGrid = () => {
         filter: "agNumberColumnFilter",
         cellDataType: "number",
         cellRenderer: "agAnimateShowChangeCellRenderer",
-        valueFormatter: numberFormatter,
+        valueFormatter: (params) => {
+          return `$${formatNumber(params.value)}`;
+        },
         aggFunc: "sum",
       },
       {
@@ -187,7 +191,7 @@ export const TradingAccountGrid = () => {
         suppressAggFuncInHeader
         groupDefaultExpanded={-1}
         sideBar={sideBar}
-        rowHeight={18}
+        rowHeight={19}
       
       />
     </div>

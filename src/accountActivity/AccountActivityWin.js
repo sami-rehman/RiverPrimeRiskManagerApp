@@ -5,7 +5,6 @@ import { LivePositionWatchlist } from "./watchlist/LivePositionWatchlist";
 import { PendingOrderWatchlist } from "./watchlist/PendingOrderWatchlist";
 import TradeImpact from "../graphs/TradeImpact";
 import RulesHighcharts from "../RulesHighcharts";
-import VaRGraph2 from "../VaRGraph2";
 import PerformanceHighChart from "../PerformanceHighChart";
 
 const AccountActivityWin = React.memo(({ accountActivityData }) => {
@@ -92,13 +91,13 @@ const AccountActivityWin = React.memo(({ accountActivityData }) => {
             </div>
             <div className="col-span-9 row-span-2 col-start-1 row-start-7 bg-gray-200 relative">3</div>
             <div className="col-span-3 row-span-4 col-start-1 row-start-9 bg-gray-200 relative">
-              <TradeImpact loginID={accountActivityData.login}/>
+              {/* <TradeImpact loginID={accountActivityData.login}/> */}
             </div>
             <div className="col-span-3 row-span-4 col-start-4 row-start-9  relative">
-              <RulesHighcharts/>
+              {/* <RulesHighcharts/> */}
             </div>
             <div className="col-span-3 row-span-4 col-start-7 row-start-9 bg-gray-200 relative">
-            <PerformanceHighChart loginID={accountActivityData.login}/>
+            {/* <PerformanceHighChart loginID={accountActivityData.login}/> */}
             </div>
             <div className="col-span-3 row-span-4 col-start-10 row-start-1 bg-gray-200 relative">7</div>
             <div className="col-span-3 row-span-4 col-start-10 row-start-5 bg-gray-200 relative">8</div>
