@@ -3,6 +3,8 @@ const sides = ["BUY", "SELL"];
 const rules = ["Active", "Inactive"];
 const prompts = ["Auto", "Manual"];
 const types = ["Market", "Limit", "Stop"];
+const liveType = ["Market"];
+const PendingType = ["Limit", "Stop"];
 const tifs = ["Good Till Cancel", "Day", "Immediate", "Cancel"];
 const destinations = ["CMC", "Equity", "Lmax"];
 const riskManagerList = ["Ross", "Sami", "Zeeshan", "Abdullah"];
@@ -45,7 +47,8 @@ function generateRandomEntry() {
     
   
   return {
-    activationTime: getRandomDateTime(),
+    liveTimestamp:getRandomDateTime(),
+    activationTime: getRandomDateTime().split(' ')[1],
     login: `MT${Math.floor(Math.random() * 900000) + 100000}`,
     positionId: `P${Math.floor(Math.random() * 900000) + 100000}`,
     orderId: orderId1,
@@ -74,6 +77,8 @@ function generateRandomEntry() {
     prompts: prompts[Math.floor(Math.random() * prompts.length)],
     side: sides[Math.floor(Math.random() * sides.length)],
     type: types[Math.floor(Math.random() * types.length)],
+    liveType: liveType[Math.floor(Math.random() * liveType.length)],
+    pendingType: PendingType[Math.floor(Math.random() * PendingType.length)],
     requestedQuantity: quantityFilled + quantityRemaining, // Sum of filled and remaining quantities
     quantityFilled: quantityFilled,
     quantityRemaining: quantityRemaining,

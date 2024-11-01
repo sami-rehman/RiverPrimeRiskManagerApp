@@ -14,3 +14,37 @@ export const LocalDateTimeRenderer = (props) => {
       </span>
     );
   };
+
+
+  export const dateComparator = (filterLocalDateAtMidnight, cellValue) => {
+    if (!cellValue) return -1;
+  
+    // Parse the cell value, e.g., "17-10-2024 13:17:36.145"
+    const [day, month, yearTime] = cellValue.split("-");
+    const [year, time] = yearTime.split(" ");
+    const [hours, minutes, secondsMilliseconds] = time.split(":");
+    const [seconds, milliseconds] = secondsMilliseconds.split(".");
+  
+    // Convert to a JavaScript Date object
+    const cellDate = new Date(
+      year,
+      month - 1,
+      day,
+      hours,
+      minutes,
+      seconds,
+       milliseconds ? parseInt(milliseconds) : 0 // Handle milliseconds if present
+    );
+  
+    // Only compare dates, ignoring the time part
+    const cellDateAtMidnight = new Date(
+      cellDate.getFullYear(),
+      cellDate.getMonth(),
+      cellDate.getDate()
+    );
+  
+    if (cellDateAtMidnight < filterLocalDateAtMidnight) return -1;
+    if (cellDateAtMidnight > filterLocalDateAtMidnight) return 1;
+    return 0;
+  };
+  

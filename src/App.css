@@ -16,3 +16,8 @@
   /* background-color: var(--ag-background-color); */
 }
 
+.ag-strikethrough {
+  text-decoration: line-through;
+  opacity: 0.5;
+  color: gray;
+}

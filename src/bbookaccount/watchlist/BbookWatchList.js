@@ -11,25 +11,17 @@ import "ag-grid-community/styles/ag-theme-quartz.css";
 import Datepicker from "react-tailwindcss-datepicker";
 import { dummyDataBbook } from "./dummyData";
 import { StatusRender } from "../../grid/statusRendered";
-import { CustomDateFilter } from "../agGridFilters/CustomDateFilter";
 import { QuantityRequested } from "../../grid/QuantityRequested";
+import { dateComparator } from "../../common/constant";
 
 const BbookWatchList = () => {
-  const [activeButton, setActiveButton] = useState("Working Order");
-  const [dateRange, setDateRange] = useState([
-    {
-      startDate: new Date(),
-      endDate: null,
-    },
-  ]);
 
-  const handleSelect = (ranges) => {
-    setDateRange(ranges);
-  };
+  const [selectedStatus, setSelectedStatus] = useState('Live');
+  const [selectedDate, setSelectedDate] = useState('Today');
+  const [isBroker, setIsBroker] = useState(false);
 
-  const handleButtonClick = (button) => {
-    setActiveButton(button);
-  };
+  const statuses = ['Live', 'Pending', 'Closed', 'Rejected'];
+  const dateOptions = ['Today', 'Yesterday', 'This Week', 'Last Week', 'This Month', 'Last Month', '3 Months', '6 Months', '12 Months'];
 
   const [rowData] = useState(dummyDataBbook);
   const [pinnedTopRowData, setPinnedTopRowData] = useState([]);
@@ -46,38 +38,7 @@ const BbookWatchList = () => {
     return value < 0 ? `-${formattedValue}` : formattedValue;
   };
 
-  const dateComparator = (filterLocalDateAtMidnight, cellValue) => {
-    if (!cellValue) return -1;
-  
-    // Parse the cell value, e.g., "17-10-2024 13:17:36.145"
-    const [day, month, yearTime] = cellValue.split("-");
-    const [year, time] = yearTime.split(" ");
-    const [hours, minutes, secondsMilliseconds] = time.split(":");
-    const [seconds, milliseconds] = secondsMilliseconds.split(".");
-  
-    // Convert to a JavaScript Date object
-    const cellDate = new Date(
-      year,
-      month - 1,
-      day,
-      hours,
-      minutes,
-      seconds,
-      milliseconds
-    );
-  
-    // Only compare dates, ignoring the time part
-    const cellDateAtMidnight = new Date(
-      cellDate.getFullYear(),
-      cellDate.getMonth(),
-      cellDate.getDate()
-    );
-  
-    if (cellDateAtMidnight < filterLocalDateAtMidnight) return -1;
-    if (cellDateAtMidnight > filterLocalDateAtMidnight) return 1;
-    return 0;
-  };
-  
+ 
 
   const baseColDefs  = useMemo(
     () => [
@@ -91,27 +52,30 @@ const BbookWatchList = () => {
       },
       {
         headerName: "MT Submit",
-        field: "activationTime",
+        // field: "activationTime",
+        field: selectedStatus !== 'Live' ? 'liveTimestamp' : 'activationTime',
         filter: "agDateColumnFilter",
         filterParams: {
+          inRangeInclusive: true,
           comparator: dateComparator,
         },
         minWidth: 185,
         rowDrag: true,
-        floatingFilter: false,
       },
       {
         headerName: "MT Execution",
-        field: "activationTime",
+        // field: "activationTime",
+        field: selectedStatus !== 'Live' ? 'liveTimestamp' : 'activationTime',
         filter: "agDateColumnFilter",
+        filterParams: {
+          inRangeInclusive: true,
+          comparator: dateComparator,
+        },
         minWidth: 160,
-        floatingFilter: false,
       },
-
-
       {
         headerName: "Date",
-        field: "activationTime",
+        field: "liveTimestamp",
         filter: "agDateColumnFilter",
         filterParams: {
           comparator: dateComparator,
@@ -140,7 +104,15 @@ const BbookWatchList = () => {
         field: "positionId",
         filter: true,
         cellRenderer: "agGroupCellRenderer",
-        hide: true,
+        hide: !selectedStatus=== 'Live',
+      },
+      {
+        headerName: "Deal ID",
+        field: "positionId",
+        filter: true,
+        // cellRenderer: "agGroupCellRenderer",
+        maxWidth:85,
+        hide: selectedStatus !=='Closed'
       },
       { field: "side", filter: true, cellRenderer: "agGroupCellRenderer" },
       {
@@ -212,16 +184,20 @@ const BbookWatchList = () => {
         headerName: "LP Submit",
         field: "activationTime",
         filter: "agDateColumnFilter",
-        filterFramework: CustomDateFilter,
-        minWidth: 185,
+        filterParams: {
+          comparator: dateComparator,
+        },
+        minWidth: 160,
         hide: true,
       },
       {
         headerName: "LP Execution",
         field: "activationTime",
         filter: "agDateColumnFilter",
-        filterFramework: CustomDateFilter,
-        minWidth: 185,
+        filterParams: {
+          comparator: dateComparator,
+        },
+        minWidth: 160,
         hide: true,
       },
       {
@@ -232,7 +208,7 @@ const BbookWatchList = () => {
       { field: "fixId", headerName: "Fix ID", filter: true },
       { field: "comments", filter: "agTextColumnFilter" },
     ],
-    []
+    [selectedStatus]
   );
 
   const [colDefs, setColDefs] = useState(baseColDefs);
@@ -243,19 +219,19 @@ const BbookWatchList = () => {
       if (col.headerName === "MT Submit" || col.headerName === "MT Execution") {
         return {
           ...col,
-          hide: activeButton === "Closed" || activeButton === "Rejected",
+          hide: selectedStatus === "Closed" || selectedStatus === "Rejected",
         };
       }
       if (col.headerName === "Date") {
         return {
           ...col,
-          hide: !(activeButton === "Closed" || activeButton === "Rejected"),
+          hide: !(selectedStatus === "Closed" || selectedStatus === "Rejected"),
         };
       }
       return col;
     });
     setColDefs(updatedColDefs);
-  }, [activeButton, baseColDefs]);
+  }, [selectedStatus, baseColDefs]);
 
   const defaultColDef = useMemo(
     () => ({
@@ -266,8 +242,11 @@ const BbookWatchList = () => {
       enablePivot: true,
       sortable: true,
       resizable: true,
+      cellClassRules: {
+        "ag-strikethrough": params => (selectedStatus === 'Pending') ? params?.data?.rules === "Active" : false,
+    }
     }),
-    []
+    [selectedStatus]
   );
 
   const getSummaryRow = (data) => {
@@ -340,38 +319,48 @@ const BbookWatchList = () => {
 
   return (
     <div className="flex flex-col h-full w-full">
-      <div className="flex items-center space-x-4 m-1">
-        <div className=" space-x-2">
-          {["Working Order", "Closed", "Rejected"].map((button) => (
-            <button
-              key={button}
-              className={`px-2 py-1 text-xs rounded text-white ${activeButton === button
-                  ? "bg-blue-600"
-                  : "bg-gray-500 hover:bg-gray-600"
-                }`}
-              onClick={() => handleButtonClick(button)}
-            >
-              {button}
-            </button>
+      <h1 class="m-1 text-md font-bold leading-none tracking-tight text-gray-400">
+      B Book View</h1>
+      <div className="flex items-center space-x-4 p-1 border border-gray-300 rounded-sm shadow-lg bg-gray-900">
+        {/* Status Checkboxes */}
+        <div className="flex items-center space-x-2">
+          {statuses.map((status) => (
+            <label key={status} className="flex items-center space-x-1">
+              <input
+                type="checkbox"
+                checked={selectedStatus === status}
+                onChange={() => setSelectedStatus(status)}
+                className="form-checkbox h-3 w-3 text-gray-600"
+              />
+              <span className="text-xs text-gray-200">{status}</span>
+            </label>
           ))}
         </div>
 
-        <div className="w-60">
-          <Datepicker
-            displayFormat="MM/DD/YYYY"
-            value={dateRange}
-            onChange={handleSelect}
-            showSelectionPreview={true}
-            showShortcuts={true}
-            disabled={activeButton === "Working Order"}
-            inputClassName={
-              "relative transition-all duration-300 py-1 pl-4 pr-14 w-full border-gray-600 dark:bg-gray-500 dark:text-white dark:border-gray-600 rounded tracking-wide text-xs placeholder-gray-400 bg-white focus:ring disabled:opacity-40 disabled:cursor-not-allowed focus:border-gray-500 focus:ring-gray-500/20"
-            }
-            className={` ${activeButton === "Live" || activeButton === "Pending"
-                ? "opacity-50 cursor-not-allowed"
-                : ""
-              }`}
-          />
+        {/* Date Dropdown */}
+        <select
+          value={selectedDate}
+          onChange={(e) => setSelectedDate(e.target.value)}
+          className={`text-xs h-5 text-white bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700 ${selectedStatus === 'Live' ? 'opacity-50 cursor-not-allowed' : null} `}
+          disabled={selectedStatus === 'Live'}
+        >
+          {dateOptions.map((date) => (
+            <option key={date} value={date}>
+              {date}
+            </option>
+          ))}
+        </select>
+
+        {/* Toggle Switch */}
+        <div className="flex items-center text-gray-300 text-xs space-x-2">
+          <span className=" ">Clients</span>
+          <div
+            onClick={() => setIsBroker(!isBroker)}
+            className={`w-8 h-4 flex items-center bg-gray-600 rounded-full p-1 cursor-pointer ${isBroker ? 'justify-end' : ''}`}
+          >
+            <div className="bg-white w-3 h-3 rounded-full shadow-md transform transition-transform duration-200" />
+          </div>
+          <span className="">Broker</span>
         </div>
       </div>
 
