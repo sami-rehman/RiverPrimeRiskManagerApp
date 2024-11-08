@@ -3,29 +3,11 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
 
-const BookReconciliation = () => {
+const DetailedPortfolioSummary = () => {
 
   const columnDefs = [
-    { field: "status",   pinned: "left", },
-    { field: "P&L", headerName: "UnPnL" },
-    {field:"currentPrice",},
-    { field: "net" },
-    { headerName: "Required Hedge",
-      children:[
-        {field: "pl", headerName:"@P. Low"},
-        {field: "curr", headerName:"@Current Price"},
-        {field: "ph", headerName:"@P. High"},
-      ]
-    },
-    { field: "longs", hide: true },
-    { field: "shorts", hide: true  },
-    { headerName: "In/Outflows",
-      children:[
-        { field: "revenue" },
-        { field: "expense" }
-      ]
-    },
-    { field: "VWAP", headerName: "VWAP" },
+    { field: "symbol" },
+    { field: "longs" },
   ];
 
   function generateDataSet(numSets) {
@@ -82,19 +64,15 @@ const BookReconciliation = () => {
       const parentNet = totalLongs - totalShorts;
       const parentPL = Math.floor(Math.random() * 1000).toString();
       const parentVWAP = (Math.random() * 100).toFixed(2);
-      const currentPrice =`$ ${Math.floor(Math.random() *1500)}`;
+
       rowData.push({
         status: "",
         symbol: parentSymbol,
         longs: totalLongs,
         shorts: totalShorts,
         net: parentNet > 0 ? `${Math.abs(parentNet)} Longs` : `${Math.abs(parentNet)} Shorts`,
-        pl: Math.floor(Math.random() *500),
-        curr:Math.floor(Math.random() *850),
-        ph: Math.floor(Math.random() *800)-15,
         revenue: totalRevenue,
         expense: totalExpense,
-        currentPrice,
         HedgeReq: "",
         "P&L": parentPL,
         VWAP: parentVWAP,
@@ -137,11 +115,10 @@ const BookReconciliation = () => {
             },
             cellRenderer: "agGroupCellRenderer",
           }}
-          sideBar={true}
         />
       </div>
     </div>
   );
 };
 
-export default BookReconciliation;
+export default DetailedPortfolioSummary;

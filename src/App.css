@@ -21,3 +21,9 @@
   opacity: 0.5;
   color: gray;
 }
+
+
+.ag-header-group-cell .ag-header-cell-comp-wrapper {
+  display: flex;
+  justify-content: center;
+}
