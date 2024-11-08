@@ -1,7 +1,7 @@
 import React from "react";
 
 export const QuantityRequested = (params) => {
-    console.log('params:', params);
+    // console.log('params:', params);
 
     return (
         <div className="flex flex-row items-center space-x-2">
@@ -9,7 +9,7 @@ export const QuantityRequested = (params) => {
 
             {params?.data?.rules !== "Summary" && (
                 <>
-                    {params.value >= 40 && (
+                    {params?.data?.quantityRemaining !== 0  && !params?.data?.reason && (
                         // Show SVG icon if value is 40 or greater
                         <span title="Check for partial fill" style={{ cursor:'pointer'}}>
                         <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="15" height="15">
@@ -19,7 +19,7 @@ export const QuantityRequested = (params) => {
                         </span>
                     )}
 
-                    {params.value < 40 && (
+                    {params?.data?.quantityRemaining === 0 && !params?.data?.reason && (
                         // Show different SVG icon if value is less than 40
                         <span title="Completed" style={{ cursor:'pointer'}}>
                         <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="15" height="15">

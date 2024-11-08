@@ -31,7 +31,10 @@ import HoldingByAccount from './bbookaccount/graph/HoldingByAccount';
 import { WatchListTradingAccount } from './grid/WatchListTradingAccount';
 import { TradingAccountGrid } from './grid/TradingAccountGrid';
 import AbookWatchList from './bbookaccount/watchlist/AbookWatchList';
-import BbookWatchList from './bbookaccount/watchlist/BbookWatchList';
+// import BbookWatchList from './bbookaccount/watchlist/BbookWatchList';
+import BbookWatchList from './bbookaccount/watchlist/BbookWatchListLiveData';
+import CbookWatchList from './bbookaccount/watchlist/CbookWatchList';
+import BookReconciliation from './bbookaccount/watchlist/BookReconciliation';
 
 
 const WatchListFirstColDefs = [
@@ -376,7 +379,9 @@ const layouts = {
            {/* <PieHighCharts/> */}
            {/* <TradingAccountGrid/> */}
            {/* <AbookWatchList/> */}
-           <BbookWatchList/>
+           {/* <BbookWatchList/> */}
+           {/* <CbookWatchList/> */}
+           <BookReconciliation/>
         </div>
     </BaseLayout>
 

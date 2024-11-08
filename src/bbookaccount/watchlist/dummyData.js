@@ -32,7 +32,7 @@ function getRandomDateTime() {
     return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}.${millSeconds}`;
   }
   
-  console.log(getRandomDateTime());
+  // console.log(getRandomDateTime());
   
 
 // Function to generate random data entry
@@ -51,6 +51,7 @@ function generateRandomEntry() {
     activationTime: getRandomDateTime().split(' ')[1],
     login: `MT${Math.floor(Math.random() * 900000) + 100000}`,
     positionId: `P${Math.floor(Math.random() * 900000) + 100000}`,
+    lots: ((Math.random() * 900000) + 100000).toFixed(2),
     orderId: orderId1,
     associatedOrders: [
       {
@@ -82,7 +83,7 @@ function generateRandomEntry() {
     requestedQuantity: quantityFilled + quantityRemaining, // Sum of filled and remaining quantities
     quantityFilled: quantityFilled,
     quantityRemaining: quantityRemaining,
-    Price: parseFloat((Math.random() * 50000).toFixed(2)),
+    price: parseFloat((Math.random() * 50000).toFixed(2)),
     trigger_price: parseFloat((Math.random() * 1000).toFixed(2)),
     tif: tifs[Math.floor(Math.random() * tifs.length)],
     priceSL: parseFloat((Math.random() * 1000).toFixed(2)),
@@ -93,9 +94,19 @@ function generateRandomEntry() {
     currentPrice: parseFloat((Math.random() * 5000).toFixed(2)),
     fixId: `FIX${Math.floor(Math.random() * 900000) + 100000}`,
     riskManager:riskManagerList[Math.floor(Math.random() * riskManagerList.length)],
-    comments: commentsList[Math.floor(Math.random() * commentsList.length)]
+    comments: commentsList[Math.floor(Math.random() * commentsList.length)],
+
+    swapSize: parseFloat((Math.random() * 50).toFixed(2)),
+    commission: parseFloat((Math.random() * 200).toFixed(2)),
+    fee: parseFloat((Math.random() * 100).toFixed(2)),
+
+    marginUtilization: parseFloat((Math.random() * 100000).toFixed(2)), // Random margin utilization value
+    marginUtilizationPercentage: parseFloat((Math.random() * 100).toFixed(2)) // Random percentage between 0 and 100
+
   };
 }
 
 // Generate 50 entries
 export const dummyDataBbook = Array.from({ length: 50 }, generateRandomEntry);
+
+console.log('dummyDataBbook', dummyDataBbook)

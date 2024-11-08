@@ -1,4 +1,3 @@
-
 import React, {
   useMemo,
   useRef,
@@ -39,11 +38,8 @@ const AbookWatchList = () => {
     return value < 0 ? `-${formattedValue}` : formattedValue;
   };
 
-
-
   const baseColDefs = useMemo(
     () => [
-
       {
         headerCheckboxSelection: true,
         checkboxSelection: true,
@@ -71,16 +67,15 @@ const AbookWatchList = () => {
             },
             minWidth: 185,
             rowDrag: true,
-            colId: "lpSubmit", // Add unique identifier
+            colId: "lpSubmit",
           },
           {
             headerName: "LP Execution",
-            floatingFilter: false,
-            // field: "activationTime",
+            // floatingFilter: (selectedStatus === 'Live') && false ,
             field: selectedStatus !== 'Live' ? 'liveTimestamp' : 'activationTime',
-            filter: "agDateColumnFilter",
+            filter: selectedStatus === 'Live' ? true : 'agDateColumnFilter',
             filterParams: {
-              comparator: dateComparator,
+              comparator: selectedStatus !== 'Live' ? dateComparator : null,
             },
             minWidth: 160,
             colId: "lpExecution",
@@ -95,7 +90,7 @@ const AbookWatchList = () => {
             },
             minWidth: 160,
             hide: true,
-            colId: "date", // Add unique identifier
+            colId: "date",
           },
         ]
       },
@@ -316,29 +311,6 @@ const AbookWatchList = () => {
 
   const [colDefs, setColDefs] = useState(baseColDefs);
 
-
-  // useEffect(() => {
-  //   const updatedColDefs = baseColDefs.map((col) => {
-  //     if (col.children) {
-  //       return {
-  //         ...col,
-  //         children: col.children.map((child) => {
-  //           if (child.colId === "lpSubmit" || child.colId === "lpExecution") {
-  //             return { ...child, hide: selectedStatus === "Closed" || selectedStatus === "Rejected" };
-  //           }
-  //           if (child.colId === "date") {
-  //             return { ...child, hide: !(selectedStatus === "Closed" || selectedStatus === "Rejected") };
-  //           }
-  //           return child;
-  //         })
-  //       };
-  //     }
-  //     return col;
-  //   });
-  //   setColDefs(updatedColDefs);
-  // }, [selectedStatus, baseColDefs]);
-
-
   useEffect(() => {
     const updatedColDefs = baseColDefs.map((col) => {
       if (col.children) {
@@ -408,54 +380,54 @@ const AbookWatchList = () => {
     return [{ rules: "Summary", ...summary }];
   };
 
-  const getDetailRowData = (params) => {
-    params.successCallback(params.data.associatedOrders || []);
-  };
+  // const getDetailRowData = (params) => {
+  //   params.successCallback(params.data.associatedOrders || []);
+  // };
 
-  const detailColDefs = useMemo(() => {
-    return colDefs.map((col) => ({
-      ...col,
-      filter: false
-    }));
-  }, [colDefs]);
+  // const detailColDefs = useMemo(() => {
+  //   return colDefs.map((col) => ({
+  //     ...col,
+  //     filter: false
+  //   }));
+  // }, [colDefs]);
 
-  const detailCellRendererParams = useMemo(
-    () => ({
-      detailGridOptions: {
-        columnDefs: detailColDefs,
-        defaultColDef: {
-          ...defaultColDef,
-          floatingFilter: false,
-          filter: false,
-        },
-      },
-      getDetailRowData: getDetailRowData,
-    }),
-    [detailColDefs, defaultColDef]
-  );
+  // const detailCellRendererParams = useMemo(
+  //   () => ({
+  //     detailGridOptions: {
+  //       columnDefs: detailColDefs,
+  //       defaultColDef: {
+  //         ...defaultColDef,
+  //         floatingFilter: false,
+  //         filter: false,
+  //       },
+  //     },
+  //     getDetailRowData: getDetailRowData,
+  //   }),
+  //   [detailColDefs, defaultColDef]
+  // );
 
-  const onFirstDataRendered = useCallback((params) => {
-    setTimeout(() => {
-      params.api.getDisplayedRowAtIndex(1).setExpanded(false);
-    }, 0);
-  }, []);
+  // const onFirstDataRendered = useCallback((params) => {
+  //   setTimeout(() => {
+  //     params.api.getDisplayedRowAtIndex(1).setExpanded(false);
+  //   }, 0);
+  // }, []);
 
-  const onColumnMoved = useCallback(() => {
-    const newColDefs = gridRef.current.api.getColumnDefs();
-    const newDetailColDefs = newColDefs.map((col) => ({
-      ...col,
-      floatingFilter: false,
-      filter: false,
-    }));
-    detailCellRendererParams.detailGridOptions.columnDefs = newDetailColDefs;
+  // const onColumnMoved = useCallback(() => {
+  //   const newColDefs = gridRef.current.api.getColumnDefs();
+  //   const newDetailColDefs = newColDefs.map((col) => ({
+  //     ...col,
+  //     floatingFilter: false,
+  //     filter: false,
+  //   }));
+  //   detailCellRendererParams.detailGridOptions.columnDefs = newDetailColDefs;
 
-    gridRef.current.api.forEachNode((node) => {
-      if (node.detail) {
-        node.setData(node.data);
-        node.setExpanded(true);
-      }
-    });
-  }, [detailCellRendererParams]);
+  //   gridRef.current.api.forEachNode((node) => {
+  //     if (node.detail) {
+  //       node.setData(node.data);
+  //       node.setExpanded(true);
+  //     }
+  //   });
+  // }, [detailCellRendererParams]);
 
   useEffect(() => {
     setPinnedTopRowData(getSummaryRow(rowData));
@@ -466,11 +438,9 @@ const AbookWatchList = () => {
 
   return (
     <div className="flex flex-col h-full w-full">
-   <h1 class="m-1 text-lg font-bold leading-none tracking-tight text-gray-400">
-   A Book View</h1>
+   <h1 class="m-1 text-lg font-bold leading-none tracking-tight text-gray-400">A Book View</h1>
 
       <div className="flex items-center space-x-4 p-1 border border-gray-300 rounded-sm shadow-lg bg-gray-900">
-        {/* Status Checkboxes */}
         <div className="flex items-center space-x-2">
           {statuses.map((status) => (
             <label key={status} className="flex items-center space-x-1">
@@ -485,7 +455,6 @@ const AbookWatchList = () => {
           ))}
         </div>
 
-        {/* Date Dropdown */}
         <select
           value={selectedDate}
           onChange={(e) => setSelectedDate(e.target.value)}
@@ -498,8 +467,7 @@ const AbookWatchList = () => {
             </option>
           ))}
         </select>
-
-        {/* Toggle Switch */}
+        
         <div className="flex items-center text-gray-300 text-xs space-x-2">
           <span className=" ">Clients</span>
           <div
@@ -521,9 +489,9 @@ const AbookWatchList = () => {
           rowDragManaged={true}
           rowSelection={"multiple"}
           rowGroupPanelShow={"always"}
-          masterDetail={true}
-          detailRowAutoHeight={true}
-          detailCellRendererParams={detailCellRendererParams}
+          // masterDetail={true}
+          // detailRowAutoHeight={true}
+          // detailCellRendererParams={detailCellRendererParams}
           sideBar={{
             toolPanels: [
               {
@@ -542,8 +510,8 @@ const AbookWatchList = () => {
           rowHeight={19}
           getRowStyle={getRowStyle}
           pinnedTopRowData={pinnedTopRowData}
-          onFirstDataRendered={onFirstDataRendered}
-          onColumnMoved={onColumnMoved}
+          // onFirstDataRendered={onFirstDataRendered}
+          // onColumnMoved={onColumnMoved}
         />
       </div>
     </div>
