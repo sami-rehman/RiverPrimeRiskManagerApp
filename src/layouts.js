@@ -36,6 +36,7 @@ import BbookWatchList from './bbookaccount/watchlist/BbookWatchListLiveData';
 import CbookWatchList from './bbookaccount/watchlist/CbookWatchList';
 import BookReconciliation from './bbookaccount/watchlist/BookReconciliation';
 import ReconciliationSummaries from './bbookaccount/watchlist/ReconciliationSummaries';
+import PortfolioWin from './PortfolioWin';
 
 
 const WatchListFirstColDefs = [
@@ -384,6 +385,7 @@ const layouts = {
            {/* <CbookWatchList/> */}
            <BookReconciliation/>
            {/* <ReconciliationSummaries/> */}
+           {/* <PortfolioWin/> */}
         </div>
     </BaseLayout>
 

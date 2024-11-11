@@ -3,7 +3,7 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-quartz.css";
 
-const DetailedPortfolioSummary = () => {
+const InstrumentSummary = () => {
 
   const columnDefs = [
     { field: "portfolio", hide: true },
@@ -12,81 +12,81 @@ const DetailedPortfolioSummary = () => {
 
 const rowData = [
   
-  // A-Book
+  // A-Book P/L
   {
       "hierarchy": [
-          "A-Book"
+          "A-Book P/L"
       ]
   },
   {
       "description": "$ 5200",
       "hierarchy": [
-          "A-Book",
+          "A-Book P/L",
         "Realized A-Book Markup",
       ]
   },
   {
     "description": "$ 9000",
     "hierarchy": [
-        "A-Book",
+        "A-Book P/L",
         "A-Book P/L"
     ]
 },
 
- // B-Book
+ // B-Book P/L
 {
   "hierarchy": [
-      "B-Book"
+      "B-Book P/L"
   ]
 },
 {
   "description": "$ 5200",
   "hierarchy": [
-      "B-Book",
+      "B-Book P/L",
     "Realized B-Book Principle",
   ]
 },
 {
 "description": "$ 9000",
 "hierarchy": [
-    "B-Book",
+    "B-Book P/L",
     "Realized B-Book Spread"
 ]
 },
 {
   "description": "$ 500",
   "hierarchy": [
-      "B-Book",
+      "B-Book P/L",
       "Un-Realized B-Book Principle"
   ]
   },
 
 
-  // C-Book
+  // C-Book P/L
 
   {
     "hierarchy": [
-        "C-Book"
+        "C-Book P/L"
     ]
 },
 {
     "description": "$ 2200",
     "hierarchy": [
-        "C-Book",
+        "C-Book P/L",
       "Realized C-Book",
     ]
 },
 {
   "description": "$ 990",
   "hierarchy": [
-      "C-Book",
+      "C-Book P/L",
       "Un-Realized C-Book"
   ]
 },
 {
   "description": "$ 99",
   "hierarchy": [
-      "C-Book",
+      "C-Book P/L",
       "C-Book P/L"
   ]
 },
@@ -134,17 +134,17 @@ const rowData = [
     ]
     },
     
-  // Portfolio Net Profit & Loss
+  // Instrument Net Profit & Loss
 
 {
   "hierarchy": [
-      "Portfolio Net Profit & Loss"
+      "Instrument Net Profit & Loss"
   ]
 },
 {
   "description": "$ 27500",
   "hierarchy": [
-      "Portfolio Net Profit & Loss",
+      "Instrument Net Profit & Loss",
     "Net P/L",
   ]
 },
@@ -190,7 +190,7 @@ const rowData = [
   return (
     <div className="flex flex-col h-full w-full">
       {/* <h1 className="m-1 text-lg font-bold leading-none tracking-tight text-gray-400">
-      Detailed Portfolio Summary
+      Instrument Summary
       </h1> */}
       <div className="ag-theme-balham-dark w-full h-full">
         <AgGridReact
@@ -214,4 +214,4 @@ const rowData = [
   );
 };
 
-export default DetailedPortfolioSummary;
+export default InstrumentSummary;

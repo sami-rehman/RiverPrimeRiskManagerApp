@@ -6,26 +6,46 @@ import "ag-grid-community/styles/ag-theme-quartz.css";
 const BookReconciliation = () => {
 
   const columnDefs = [
-    { field: "status",   pinned: "left", },
-    { field: "P&L", headerName: "UnPnL" },
-    {field:"currentPrice",},
-    { field: "net" },
-    { headerName: "Required Hedge",
-      children:[
-        {field: "pl", headerName:"@P. Low"},
-        {field: "curr", headerName:"@Current Price"},
-        {field: "ph", headerName:"@P. High"},
+    { field: "status", pinned: "left", maxWidth: 100 },
+    {
+      headerName: "Portfolio Profit/Loss",
+      children: [
+        { field: "rpl", headerName: "R. PnL" },
+        { field: "unpl", headerName: "UnPnL" },
+        { field: "netPL", headerName: "P/L" },
       ]
     },
+    { field: "currentPrice", },
     { field: "longs", hide: true },
-    { field: "shorts", hide: true  },
-    { headerName: "In/Outflows",
-      children:[
-        { field: "revenue" },
-        { field: "expense" }
+    { field: "shorts", hide: true },
+    { field: "net" },
+    {
+      headerName: "Required Hedge",
+      children: [
+        { field: "pl", headerName: "@P. Low" },
+        { field: "curr", headerName: "@Current Price" },
+        { field: "ph", headerName: "@P. High" },
+      ]
+    },
+
+    {
+      headerName: "Revenue",
+      children: [
+        { field: "commissionRevenue", headerName: "Comm.", hide: true },
+        { field: "swapsRevenue", headerName: "Swaps", hide: true },
+        { field: "markupRevenue", headerName: "Markups/Spread", hide: true }
+      ]
+    },
+    {
+      headerName: "Expense",
+      children: [
+        { field: "commissionRevenue", headerName: "Comm.", hide: true },
+        { field: "swapsRevenue", headerName: "Swaps (-)", hide: true },
+        { field: "swapsRevenue", headerName: "Spread", hide: true }
       ]
     },
     { field: "VWAP", headerName: "VWAP" },
+    { field: "volume", headerName: "Vol. Closed", hide: true},
   ];
 
   function generateDataSet(numSets) {
@@ -49,6 +69,12 @@ const BookReconciliation = () => {
       let totalShorts = 0;
       let totalRevenue = 0;
       let totalExpense = 0;
+      let totalCommissionRevenue = 0;
+      let totalSwapsRevenue = 0;
+      let totalMarkupRevenue = 0;
+      let totalRpl = 0;
+      let totalUnpl = 0;
+      let totalVolume = 0;
 
       const childRows = ["A Book", "B Book", "C Book"].map(bookType => {
         const longs = Math.floor(Math.random() * 2000) + 500;
@@ -57,12 +83,26 @@ const BookReconciliation = () => {
         const pl = Math.floor(Math.random() * 5000).toString();
         const vwap = (Math.random() * 0.2).toFixed(2);
         const revenue = bookType !== "C Book" ? Math.floor(Math.random() * 3000) : null;
+        const commissionRevenue = bookType === "B Book" ? Math.floor(Math.random() * 1000) : null;
+        const swapsRevenue = Math.floor(Math.random() * 100)
         const expense = Math.floor(Math.random() * 2000);
+        const markupRevenue = Math.floor(Math.random() * 500);
+        const rpl = Math.floor(Math.random() * 200);
+        const unpl = Math.floor(Math.random() * 150);
+        const netPL = rpl - unpl;
+        const volume = Math.floor(Math.random() * 1000000);
+
 
         totalLongs += longs;
         totalShorts += shorts;
         totalRevenue += revenue;
         totalExpense += expense;
+        totalCommissionRevenue += commissionRevenue;
+        totalSwapsRevenue += swapsRevenue;
+        totalMarkupRevenue += markupRevenue;
+        totalRpl += rpl;
+        totalUnpl += unpl;
+        totalVolume += volume;
 
         return {
           status: "",
@@ -70,34 +110,47 @@ const BookReconciliation = () => {
           longs,
           shorts,
           net: net > 0 ? `${Math.abs(net)} Longs` : `${Math.abs(net)} Shorts`,
+          commissionRevenue,
+          swapsRevenue,
+          markupRevenue,
           revenue,
           expense,
-          HedgeReq: "",
           "P&L": pl,
+          rpl,
+          unpl,
+          netPL,
           VWAP: vwap,
+          volume,
           hierarchy: [parentSymbol, bookType]
         };
       });
 
       const parentNet = totalLongs - totalShorts;
+      const parentNetPL = totalRpl - totalUnpl;
       const parentPL = Math.floor(Math.random() * 1000).toString();
       const parentVWAP = (Math.random() * 100).toFixed(2);
-      const currentPrice =`$ ${Math.floor(Math.random() *1500)}`;
+      const currentPrice = `$ ${Math.floor(Math.random() * 1500)}`;
       rowData.push({
         status: "",
         symbol: parentSymbol,
         longs: totalLongs,
         shorts: totalShorts,
         net: parentNet > 0 ? `${Math.abs(parentNet)} Longs` : `${Math.abs(parentNet)} Shorts`,
-        pl: Math.floor(Math.random() *500),
-        curr:Math.floor(Math.random() *850),
-        ph: Math.floor(Math.random() *800)-15,
+        pl: Math.floor(Math.random() * 500),
+        curr: Math.floor(Math.random() * 850),
+        ph: Math.floor(Math.random() * 800) - 15,
+        commissionRevenue: totalCommissionRevenue,
+        swapsRevenue: totalSwapsRevenue,
+        markupRevenue: totalMarkupRevenue,
+        rpl: totalRpl,
+        unpl: totalUnpl,
+        netPL: parentNetPL,
         revenue: totalRevenue,
         expense: totalExpense,
         currentPrice,
-        HedgeReq: "",
         "P&L": parentPL,
         VWAP: parentVWAP,
+        volume:totalVolume,
         hierarchy: [parentSymbol]
       });
 
@@ -107,7 +160,9 @@ const BookReconciliation = () => {
     return rowData;
   }
 
-  const rowData = generateDataSet(40);
+  const rowData = generateDataSet(50);
+
+  console.log('rowData', rowData)
 
   const defaultColDef = {
     flex: 1,
@@ -132,12 +187,27 @@ const BookReconciliation = () => {
           getDataPath={(data) => data.hierarchy}
           autoGroupColumnDef={{
             headerName: "Symbols",
+            minWidth: 120,
             cellRendererParams: {
               suppressCount: true,
             },
             cellRenderer: "agGroupCellRenderer",
           }}
-          sideBar={true}
+          sideBar={{
+            toolPanels: [
+              {
+                id: "columns",
+                labelDefault: "Columns",
+                toolPanel: "agColumnsToolPanel",
+              },
+              {
+                id: "filters",
+                labelDefault: "Filters",
+                toolPanel: "agFiltersToolPanel",
+              },
+            ],
+            hiddenByDefault: false,
+          }}
         />
       </div>
     </div>
