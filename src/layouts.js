@@ -37,6 +37,10 @@ import CbookWatchList from './bbookaccount/watchlist/CbookWatchList';
 import BookReconciliation from './bbookaccount/watchlist/BookReconciliation';
 import ReconciliationSummaries from './bbookaccount/watchlist/ReconciliationSummaries';
 import PortfolioWin from './PortfolioWin';
+import SymbologyMappingGrid from './bbookaccount/watchlist/SymbologyMappingGrid';
+import PortfolioChart from './PortfolioChart';
+import SymbologyWin from './SymbologyWin';
+import TradingConditionsChart from './TradingConditionsChart';
 
 
 const WatchListFirstColDefs = [
@@ -383,9 +387,15 @@ const layouts = {
            {/* <AbookWatchList/> */}
            {/* <BbookWatchList/> */}
            {/* <CbookWatchList/> */}
-           <BookReconciliation/>
+           {/* <BookReconciliation/> */}
            {/* <ReconciliationSummaries/> */}
            {/* <PortfolioWin/> */}
+           {/* WatchListTradingAccount */}
+           {/* <WatchListTradingAccount/> */}
+           {/* <SymbologyMappingGrid/> */}
+           {/* <PortfolioChart/> */}
+           {/* <SymbologyWin/> */}
+           <TradingConditionsChart/>
         </div>
     </BaseLayout>
 

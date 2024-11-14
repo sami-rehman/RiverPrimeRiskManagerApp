@@ -317,6 +317,7 @@ const PieHighCharts = React.memo(() => {
             .get()
     );
     
+    console.log(colors, 'samiColors')
 
     const options = {
         chart: {

@@ -1,7 +1,7 @@
 import React from "react";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
-import "ag-grid-community/styles/ag-theme-quartz.css";
+import "ag-grid-community/styles/ag-theme-balham.css";
 
 const BookReconciliation = () => {
 
@@ -57,7 +57,10 @@ const BookReconciliation = () => {
       "EuroUSD.", "ZNUSD.", "GBPUSD.", "USDJPY.", "AUDUSD.",
       "NZDUSD.", "USDCAD", "EURJPY.", "GBPJPY.", "CHFUSD",
       "SGDUSD.", "HKDUSD.", "MXNUSD.", "SEKUSD.", "NOKUSD.",
-      "TRYUSDT", "PLNUSDT"
+      "TRYUSDT", "PLNUSDT",
+      "NZDUD.", "USDAD", "EUJPY.", "GBJPY.", "CHFSD",
+      "SGDSD.", "HKUSD.", "MXNUSD.", "SEKSD.", "NOKSD.",
+      "TRYSDT", "PLNUDT"
     ];
 
     const rowData = [];
@@ -160,7 +163,7 @@ const BookReconciliation = () => {
     return rowData;
   }
 
-  const rowData = generateDataSet(50);
+  const rowData = generateDataSet(42);
 
   console.log('rowData', rowData)
 
@@ -208,6 +211,7 @@ const BookReconciliation = () => {
             ],
             hiddenByDefault: false,
           }}
+          rowHeight={19}
         />
       </div>
     </div>
