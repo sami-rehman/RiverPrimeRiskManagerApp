@@ -41,6 +41,7 @@ import SymbologyMappingGrid from './bbookaccount/watchlist/SymbologyMappingGrid'
 import PortfolioChart from './PortfolioChart';
 import SymbologyWin from './SymbologyWin';
 import TradingConditionsChart from './TradingConditionsChart';
+import UnfavourableTradingConditions from './unfavourableTradingConditionsChart';
 
 
 const WatchListFirstColDefs = [
@@ -395,7 +396,8 @@ const layouts = {
            {/* <SymbologyMappingGrid/> */}
            {/* <PortfolioChart/> */}
            {/* <SymbologyWin/> */}
-           <TradingConditionsChart/>
+           {/* <TradingConditionsChart/> */}
+           <UnfavourableTradingConditions/>
         </div>
     </BaseLayout>
 
