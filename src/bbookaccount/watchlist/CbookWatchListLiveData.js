@@ -11,8 +11,9 @@ import "ag-grid-community/styles/ag-theme-quartz.css";
 import { dummyDataBbook } from "./dummyData";
 import { StatusRender } from "../../grid/statusRendered";
 import { QuantityRequested } from "../../grid/QuantityRequested";
-import { dateComparator } from "../../common/constant";
+import { dateComparator, numberFormatter } from "../../common/constant";
 import { formatNumber } from "../../common";
+import { PercentageUnderline } from "../../grid/percentageUnderline";
 import ToggleSwitch from "../../ToggleSwitch";
 
 
@@ -27,7 +28,7 @@ import ToggleSwitch from "../../ToggleSwitch";
     return value < 0 ? `-${formattedValue}` : formattedValue;
   };
 
-const BbookWatchList = () => {
+const CbookWatchList = () => {
 
   const [pinnedTopRowData, setPinnedTopRowData] = useState([]);
   const [rowClosedData, setRowClosedData] = useState(dummyDataBbook);
@@ -36,7 +37,7 @@ const BbookWatchList = () => {
   const [rowLiveData, setRowLiveData] = useState(dummyDataBbook);
 
   const [isBroker, setIsBroker] = useState(false);
-  const [selectedStatus, setSelectedStatus] = useState("Live");
+  const [selectedStatus, setSelectedStatus] = useState("Closed");
   const [selectedDate, setSelectedDate] = useState('Today');
   const statuses = ['Live', 'Pending', 'Closed', 'Rejected'];
   const dateOptions = ['Today', 'Yesterday', 'This Week', 'Last Week', 'This Month', 'Last Month', '3 Months', '6 Months', '12 Months'];
@@ -50,13 +51,13 @@ const BbookWatchList = () => {
   const getSocketRequestType = (status) => {
     switch (status) {
       case "Live":
-        return "b_book_positions";
+        return "c_book_positions";
       case "Pending":
-        return "b_book_open_orders";
+        return "c_book_open_orders";
       case "Rejected":
-        return "b_book_rejected_orders";
+        return "c_book_rejected_orders";
       case "Closed":
-        return "b_book_closed_positions";
+        return "c_book_closed_positions";
       default:
         return "";
     }
@@ -137,7 +138,6 @@ const BbookWatchList = () => {
         dataMapRef.current.clear();
     };
 
-    // Clean up WebSocket on unmount or when `selectedStatus` changes
     return () => {
         if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
           
@@ -173,37 +173,32 @@ const BbookWatchList = () => {
 
   const colDefs = useMemo(
     () => [
-      { headerCheckboxSelection: true, checkboxSelection: true, maxWidth: 40 },
       {
-        headerName: "Status",
-        field: "rules",
-        filter: true,
-        minWidth: 99,
-        cellRenderer: StatusRender,
-        hide: selectedStatus==='Rejected'
+        headerCheckboxSelection: true,
+        checkboxSelection: true,
+        maxWidth: 40,
       },
+
       {
-        headerName: "MT Submit",
-        field: "mtSubmit",
+        headerName: selectedStatus === "Rejected" ? "LP Rejection" : "Broker Submit",
+        field: selectedStatus === "Rejected" ? "lpRejected" : "mtSubmit",
         filter: "agDateColumnFilter",
         filterParams: {
-          inRangeInclusive: true,
           comparator: dateComparator,
         },
         minWidth: 185,
         rowDrag: true,
-        hide: selectedStatus === 'Closed'
+         hide: selectedStatus === 'Closed'
       },
       {
-        headerName: selectedStatus === "Rejected" ? "MT Rejection" : "MT Execution",
-        field: selectedStatus === "Rejected" ? "mtRejected" : "mtExecution",
+        headerName: "LP Execution",
+        field: "mtExecution",
         filter: "agDateColumnFilter",
         filterParams: {
-          inRangeInclusive: true,
           comparator: dateComparator,
         },
         minWidth: 160,
-        hide: (selectedStatus ==='Closed' ||  selectedStatus ==='Pending')
+        hide: selectedStatus !== 'Live',
       },
       {
         field: "closingTime",
@@ -214,21 +209,11 @@ const BbookWatchList = () => {
         minWidth: 160,
         hide:   !(selectedStatus === "Closed"),
       },
-
       {
-        headerName: "Account ID",
-        field: "login",
+        headerName: "Broker ID ",
+        field: "brokerId",
         filter: true,
-        hide: true,
-        cellRenderer: (params) => (
-          <span
-            style={{
-              color: params?.data?.rules === "Active" ? "#FFBF00" : "#8ca6f3",
-            }}
-          >
-            {params.value}
-          </span>
-        ),
+        hide: true
       },
       {
         headerName: "Position ID",
@@ -243,13 +228,6 @@ const BbookWatchList = () => {
         hide: (selectedStatus === 'Pending' || selectedStatus === 'Rejected'),
       },
       {
-        field: "orderId",
-        headerName: "Order ID",
-        cellRenderer:  selectedStatus ==="Live" ? "agGroupCellRenderer" : null,
-        filter: true,
-        // hide: true,
-      },
-      {
         headerName: "Deal ID",
         field: "dealId",
         filter: true,
@@ -257,101 +235,65 @@ const BbookWatchList = () => {
         hide: selectedStatus !== 'Closed'
       },
       {
-        field: "side",
-        filter: true,
-        cellRenderer: selectedStatus === "Live" ? "agGroupCellRenderer" : null,
-      },
-      {
-        field: "closingPrice",
-        filter: "agNumberColumnFilter",
-        valueFormatter: currencyFormatter,
-        hide: selectedStatus !== 'Closed'
-      },
-
-      {
+        headerName: "Volume",
         field: "requestedQuantity",
-        headerName: "Qty. Req.",
         filter: "agNumberColumnFilter",
-        valueFormatter: formatNumber,
-        cellRenderer: QuantityRequested,
-        // hide: selectedStatus === 'Closed'
+        valueFormatter: numberFormatter,
       },
-
+      // {
+      //   headerName: "Notional",
+      //   field: "trigger_price",
+      //   filter: "agNumberColumnFilter",
+      //   valueFormatter: currencyFormatter,
+      // },
+      {
+        field: "symbol",
+        filter: "agTextColumnFilter"
+      },
       {
         headerName: "Vol. Closed",
         field: "volumeClosed",
         filter: "agNumberColumnFilter",
         hide: selectedStatus !== 'Closed'
       },
-
-      { field: "symbol", filter: "agTextColumnFilter" },
       {
-        field: "type",
+        field: "side",
         filter: true,
+      },
+      {
+        headerName: "Open Price",
+        field: "trigger_price",
+        filter: "agNumberColumnFilter",
+        valueFormatter: currencyFormatter,
         hide: selectedStatus === 'Closed'
       },
       {
-        field: "priceRequested",
+        headerName: "Closed Price",
+        field: "closingPrice",
         filter: "agNumberColumnFilter",
         valueFormatter: currencyFormatter,
-        hide: (selectedStatus === 'Closed' || selectedStatus === 'Rejected') 
+       hide: selectedStatus !== 'Closed'
       },
       {
-        field: "priceTP",
-        headerName: "TP",
-        filter: "agNumberColumnFilter",
-        valueFormatter: currencyFormatter,
-      },
-      {
-        field: "priceSL",
-        headerName: "SL",
-        filter: "agNumberColumnFilter",
-        valueFormatter: currencyFormatter,
-      },
-      {
-        field: "quantityFilled",
-        headerName: "Qty. Filled",
-        filter: "agNumberColumnFilter",
-        hide: true,
-      },
-      {
-        field: "quantityRemaining",
-        headerName: "Qty. Left",
-        filter: "agNumberColumnFilter",
-        hide: true,
-      },
-      {
-        field: "trigger_price",
-        headerName: "Trigger Price",
-        filter: "agNumberColumnFilter",
-        valueFormatter: currencyFormatter,
-        hide: true,
-      },
-      { field: "tif", filter: true, hide: true },
-      
-      {
-        field: "averageFillPrice",
-        headerName: "Avg. Fill Price",
-        filter: "agNumberColumnFilter",
-        valueFormatter: currencyFormatter,
-        hide: true, 
-      },
-      {
-        field: "pnl",
+        field: selectedStatus === 'Closed' ? "pnl" : "profit",
         headerName: "P&L",
         filter: "agNumberColumnFilter",
         valueFormatter: currencyFormatter,
-        hide: selectedStatus !== 'Closed'
       },
       {
-        field: "profit",
-        headerName: "UnPL",
+        headerName: "Margin Utilization ($, %)",
+        field: "marginUtilization",
         filter: "agNumberColumnFilter",
         valueFormatter: currencyFormatter,
-        hide: true
+        cellRenderer: (params) => (
+          <PercentageUnderline
+            value={params?.data?.marginUtilization} 
+            percentage={params?.data?.marginUtilizationPercentage}
+          />
+        ),
+        minWidth:180,
       },
-      { field: "destination", filter: "agTextColumnFilter", hide: true },
-      { field: "swapSize", filter: true, hide: selectedStatus !== 'Closed' || selectedStatus !== 'Live' },
+      { field: "swapSize", filter: true, hide: selectedStatus !== 'Closed' },
       { field: "commission", filter: "agNumberColumnFilter", valueFormatter: currencyFormatter, hide: selectedStatus !== 'Closed' },
       { field: "fee",
         filter: "agNumberColumnFilter",
@@ -359,36 +301,13 @@ const BbookWatchList = () => {
       hide: selectedStatus !== 'Closed'
       },
       {
-        headerName: "LP Submit",
-        field: "activationTime",
-        filter: "agDateColumnFilter",
-        filterParams: {
-          comparator: dateComparator,
-        },
-        minWidth: 160,
-        hide: true,
+        headerName: "Reference",
+        field: "positionId",
+        filter: true,
       },
-      {
-        headerName: "LP Execution",
-        field: "activationTime",
-        filter: "agDateColumnFilter",
-        filterParams: {
-          comparator: dateComparator,
-        },
-        minWidth: 160,
-        hide: true,
-      },
-      {
-        field: "currentPrice",
-        filter: "agNumberColumnFilter",
-        valueFormatter: currencyFormatter,
-        hide: selectedStatus !== 'Pending'
-      },
+      {field:'destination', filter: true},
       { field: "fixId", headerName: "Fix ID", filter: true, hide: true },
-      { field: "comments", filter: "agTextColumnFilter", hide: (selectedStatus === "Closed" || selectedStatus === "Rejected") },
-      { headerName: "Rejected Reason",field: "reason", filter: "agTextColumnFilter", hide: selectedStatus !== 'Rejected' },
-      {field:"flag", filter: true}
-
+      { field: "comments", filter: "agTextColumnFilter", },
     ],
     [selectedStatus]
   );
@@ -485,7 +404,7 @@ const BbookWatchList = () => {
 
   return (
     <div className="flex flex-col h-full w-full">
-      <div className="flex items-center space-x-4 p-1  bg-[#2D2D2D] border-b-4 border-black px-2 h-[40px]">
+       <div className="flex items-center space-x-4 p-1  bg-[#2D2D2D] border-b-4 border-black px-2 h-[40px]">
         <div className="flex items-center space-x-2">
           {statuses.map((status) => (
             <label key={status} className="flex items-center space-x-1">
@@ -554,9 +473,9 @@ const BbookWatchList = () => {
             </svg>
           </div>
         </div>
-
         <ToggleSwitch />
       </div>
+
       <div className="ag-theme-balham-dark w-full h-full">
         <AgGridReact
           ref={gridRef}
@@ -595,4 +514,4 @@ const BbookWatchList = () => {
   );
 };
 
-export default BbookWatchList;
+export default CbookWatchList;

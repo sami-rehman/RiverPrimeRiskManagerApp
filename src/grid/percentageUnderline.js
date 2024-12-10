@@ -8,7 +8,9 @@ export const PercentageUnderline = ({ value, percentage }) => {
       title={`Margin Utilization: ${widthPercentage}%`}
     >
       <span className="leading-none">
-        $ {formatNumber(value)}, 
+        $ {formatNumber(value)}
+       { percentage > 0 &&
+        <span>, 
         <span
           className="leading-none"
           style={{
@@ -17,6 +19,8 @@ export const PercentageUnderline = ({ value, percentage }) => {
           }}
         > ({percentage}%)
         </span>
+        </span>
+       }
       </span>
 
       <div className="flex w-full h-0.5 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700 mt-[2px]"

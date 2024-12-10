@@ -8,6 +8,26 @@ import RulesHighcharts from "../RulesHighcharts";
 import PerformanceHighChart from "../PerformanceHighChart";
 
 const AccountActivityWin = React.memo(({ accountActivityData }) => {
+  accountActivityData ={
+    "agent": 0,
+    "equity": 7805.43,
+    "equityPercentage": 0.0,
+    "group": "demo\\SINV\\EXECUTIVE",
+    "login": 10001058,
+    "longs": 1,
+    "marginFree": 7498.63,
+    "marginLevel": 2544.1427640156453,
+    "marginLeverage": 100.0,
+    "marginUtilization": 306.8,
+    "marginUtilizationPercentage": 1.268605007454E-311,
+    "naoi": 6.95324827911596E-310,
+    "realizedPL": 7805.43,
+    "shorts": 0,
+    "unrealizedPL": 1767.18,
+    "volumeLots": 0.3,
+    "volumeNotional": 0.0
+}
+  console.log('accountActivityData', accountActivityData)
   const [maximizedItem, setMaximizedItem] = useState("");
 
   const openMaximizedPopup = (item) => {
@@ -89,39 +109,22 @@ const AccountActivityWin = React.memo(({ accountActivityData }) => {
                 <PendingOrderWatchlist loginID={accountActivityData.login} />
               </div>
             </div>
-            <div className="col-span-9 row-span-2 col-start-1 row-start-7 bg-gray-200 relative">3</div>
             <div className="col-span-3 row-span-4 col-start-1 row-start-9 bg-gray-200 relative">
-              {/* <TradeImpact loginID={accountActivityData.login}/> */}
+              <TradeImpact loginID={accountActivityData.login}/>
             </div>
             <div className="col-span-3 row-span-4 col-start-4 row-start-9  relative">
               {/* <RulesHighcharts/> */}
             </div>
             <div className="col-span-3 row-span-4 col-start-7 row-start-9 bg-gray-200 relative">
-            {/* <PerformanceHighChart loginID={accountActivityData.login}/> */}
-            </div>
-            <div className="col-span-3 row-span-4 col-start-10 row-start-1 bg-gray-200 relative">7</div>
-            <div className="col-span-3 row-span-4 col-start-10 row-start-5 bg-gray-200 relative">8</div>
-            <div className="col-span-3 row-span-4 col-start-10 row-start-9 bg-gray-200 relative">9
+            <PerformanceHighChart loginID={accountActivityData.login}/>
             </div>
           </div>
+          
+          
+  
+
         </div>
       </div>
-      {maximizedItem && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10">
-          <div className="bg-white w-4/5 h-4/5 p-2 rounded-lg shadow-lg relative flex flex-col z-[20]">
-            <button
-              onClick={closeMaximizedPopup}
-              className="absolute top-0 right-0 text-gray-700 bg-gray-300 hover:bg-gray-200 hover:text-gray-900 rounded-sm"
-              style={{ zIndex: 20 }}
-            >
-              <MinimizeIcon className="w-4 h-4" />
-            </button>
-            <div className="w-full h-full flex items-center justify-center">
-              {renderContent()}
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 });

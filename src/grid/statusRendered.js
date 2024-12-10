@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 export const StatusRender = (params) => {
+    // console.log('Total search', params)
 
     const [activeIndex, setActiveIndex] = useState(0);
 
@@ -9,7 +10,7 @@ export const StatusRender = (params) => {
         setActiveIndex(randomIndex);
     }, []);
 
-    if (params.value === "Summary") return null;
+    if (params.value === "Summary" || params?.data?.pinRow === true) return null;
 
     const icons = [
         <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="16" height="16">

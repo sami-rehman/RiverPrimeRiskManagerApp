@@ -33,7 +33,7 @@ import { TradingAccountGrid } from './grid/TradingAccountGrid';
 import AbookWatchList from './bbookaccount/watchlist/AbookWatchList';
 // import BbookWatchList from './bbookaccount/watchlist/BbookWatchList';
 import BbookWatchList from './bbookaccount/watchlist/BbookWatchListLiveData';
-import CbookWatchList from './bbookaccount/watchlist/CbookWatchList';
+import CbookWatchList from './bbookaccount/watchlist/CbookWatchListLiveData';
 import BookReconciliation from './bbookaccount/watchlist/BookReconciliation';
 import ReconciliationSummaries from './bbookaccount/watchlist/ReconciliationSummaries';
 import PortfolioWin from './PortfolioWin';
@@ -42,6 +42,10 @@ import PortfolioChart from './PortfolioChart';
 import SymbologyWin from './SymbologyWin';
 import TradingConditionsChart from './TradingConditionsChart';
 import UnfavourableTradingConditions from './unfavourableTradingConditionsChart';
+import TradingAccountWin from './TradingAccountWin';
+import BbookWindow from './Books/BbookWindow';
+import AccountActivityWin from './accountActivity/AccountActivityWin';
+import { AnalyticsGrid } from './AnalyticsGrid';
 
 
 const WatchListFirstColDefs = [
@@ -397,7 +401,13 @@ const layouts = {
            {/* <PortfolioChart/> */}
            {/* <SymbologyWin/> */}
            {/* <TradingConditionsChart/> */}
-           <UnfavourableTradingConditions/>
+           {/* <UnfavourableTradingConditions/> */}
+           {/* <TradeImpact /> */}
+           {/* <TradingAccountWin/> */}
+           {/* <BbookWindow/> */}
+           {/* <AccountActivityWin/> */}
+           <AnalyticsGrid/>
+
         </div>
     </BaseLayout>
 
@@ -432,7 +442,7 @@ const layouts = {
     LayoutFour: () => (
         <BaseLayout cols="12" rows="8">
             <div className="bg-gray-200 col-span-12 row-span-4 flex justify-center items-center">
-                <HighchartsComponent />
+                {/* <HighchartsComponent /> */}
             </div>
             <div className="bg-gray-200 col-span-12 row-span-4 row-start-5 flex justify-center items-center">
                 {/* <HighchartsComponent /> */}

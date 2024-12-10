@@ -15,7 +15,7 @@ import { PercentageUnderline } from "../../grid/percentageUnderline";
 
 const CbookWatchList = () => {
 
-  const [selectedStatus, setSelectedStatus] = useState('Live');
+  const [selectedStatus, setSelectedStatus] = useState('Rejected');
   const [selectedDate, setSelectedDate] = useState('Today');
   const [isBroker, setIsBroker] = useState(false);
 

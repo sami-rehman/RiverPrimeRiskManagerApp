@@ -47,6 +47,11 @@ function generateRandomEntry() {
     
   
   return {
+    mtSubmitLive: getRandomDateTime().split(' ')[1],
+    mtSubmit: getRandomDateTime(),
+    mtExecution: getRandomDateTime().split(' ')[1],
+    closingTime: getRandomDateTime(),
+    mtRejected: getRandomDateTime(),
     liveTimestamp:getRandomDateTime(),
     activationTime: getRandomDateTime().split(' ')[1],
     login: `MT${Math.floor(Math.random() * 900000) + 100000}`,
@@ -80,7 +85,8 @@ function generateRandomEntry() {
     type: types[Math.floor(Math.random() * types.length)],
     liveType: liveType[Math.floor(Math.random() * liveType.length)],
     pendingType: PendingType[Math.floor(Math.random() * PendingType.length)],
-    requestedQuantity: quantityFilled + quantityRemaining, // Sum of filled and remaining quantities
+    // requestedQuantity: quantityFilled + quantityRemaining, 
+    requestedQuantity: 4.25825885258522, 
     quantityFilled: quantityFilled,
     quantityRemaining: quantityRemaining,
     price: parseFloat((Math.random() * 50000).toFixed(2)),

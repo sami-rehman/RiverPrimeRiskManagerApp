@@ -1,11 +1,12 @@
 import React from "react";
+import { formatNumber } from "../common";
 
 export const QuantityRequested = (params) => {
     // console.log('params:', params);
 
     return (
         <div className="flex flex-row items-center space-x-2">
-            <span>{params.value}</span>
+            <span>{formatNumber(params.value)}</span>
 
             {params?.data?.rules !== "Summary" && (
                 <>

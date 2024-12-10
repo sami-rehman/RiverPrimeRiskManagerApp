@@ -22,7 +22,7 @@ const PerformanceHighChart = ({ loginID }) => {
       {
         "month": "2024-03",
         "totalProfit": 56966.59,
-        "totalVolume": 1750000,
+        "totalVolume": 175000,
       },
       {
         "month": "2024-04",
@@ -31,12 +31,12 @@ const PerformanceHighChart = ({ loginID }) => {
       },
       {
         "month": "2024-05",
-        "totalProfit": 1010,
-        "totalVolume": 100000,
+        "totalProfit": 100010,
+        "totalVolume": 10000,
       },
       {
         "month": "2024-07",
-        "totalProfit": 21940,
+        "totalProfit": 921940,
         "totalVolume": 100000,
       },
       {
@@ -48,8 +48,13 @@ const PerformanceHighChart = ({ loginID }) => {
     transactions: [
       {
         action: "deposit",
-        amount: 300000.0,
+        amount: 30000.0,
         dateTime: "2024-04-05 12:15:48",
+      },
+      {
+        action: "deposit",
+        amount: 30000.0,
+        dateTime: "2024-04-07 12:15:48",
       },
       {
         action: "withdrawal",

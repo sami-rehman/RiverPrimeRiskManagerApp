@@ -20,7 +20,6 @@ import { StatusRender } from "./statusRendered";
 import { formatNumber } from "../common";
 import { PercentageUnderline } from "./percentageUnderline";
 
-
 export const WatchListTradingAccount = ({ setSelectedLogins }) => {
 
   const [showNewWindow, setShowNewWindow] = useState(false);
@@ -38,6 +37,7 @@ export const WatchListTradingAccount = ({ setSelectedLogins }) => {
 
   const [rowData, setRowData] = useState(rawDataPiechartEquity);
   const [pinnedTopRowData, setPinnedTopRowData] = useState([]);
+  // console.log('pinnedTopRowData', pinnedTopRowData);
 
   const gridRef = useRef(null);
   const dataMapRef1 = useRef(new Map());
@@ -238,6 +238,7 @@ export const WatchListTradingAccount = ({ setSelectedLogins }) => {
 
     // Prepare pinned top row data
     const totalRow = {
+      pinRow: true,
       login: "Totals",
       volumeLots: totals.volumeLots || 0,
       volumeNotional: totals.volumeNotional || 0,
@@ -275,15 +276,13 @@ export const WatchListTradingAccount = ({ setSelectedLogins }) => {
 
 
   const getRowId = useCallback(({ data: { login } }) => login?.toString(), []);
-
-
   // Function to update selected logins whenever selection changes
   const onSelectionChanged = useCallback(() => {
     const selectedRows = gridRef?.current?.api?.getSelectedRows();
-    const selectedLogins = selectedRows?.map(row => row?.login); // Extracting logins
+    const selectedLogins = selectedRows?.map(row => row?.login);
     // console.log('selectedLogins', selectedLogins); // Log the array of logins
-    setSelectedLogins(selectedLogins); // Store selected logins in state if needed
-  }, []);
+    setSelectedLogins(selectedLogins);
+  }, [setSelectedLogins]);
 
   return (
     <div className="ag-theme-balham-dark h-full w-full">
@@ -295,13 +294,28 @@ export const WatchListTradingAccount = ({ setSelectedLogins }) => {
         defaultColDef={defaultColDef}
         rowDragManaged={true}
         rowSelection={"multiple"}
-        rowGroupPanelShow={"always"}
-        suppressAggFuncInHeader
+        // rowGroupPanelShow={"always"}
+        suppressAggFuncInHeader= {false}
         groupDefaultExpanded={-1}
-        sideBar={true}
+        sideBar={{
+            toolPanels: [
+              {
+                id: "columns",
+                labelDefault: "Columns",
+                toolPanel: "agColumnsToolPanel",
+              },
+              {
+                id: "filters",
+                labelDefault: "Filters",
+                toolPanel: "agFiltersToolPanel",
+              },
+            ],
+            hiddenByDefault: false,
+          }}
         rowHeight={19}
         // pinnedTopRowData={pinnedTopRowData}
         onSelectionChanged={onSelectionChanged}
+        suppressRowGroupPanel= {true}
       />
 
       {showNewWindow && (

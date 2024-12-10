@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsHeatmap from 'highcharts/modules/heatmap';
 
@@ -105,8 +105,9 @@ const mtData = {
 };
 
 const categoriesX = [
+    'Limit', 'Stop', 'Market',
     'Markup', 'Spreads', 'Fees', 'Commissions', 'Margins (In.)',
-    'Margins (Ma.)', 'Leverage', 'Limit', 'Stop', 'Market',
+    'Margins (Ma.)', 'Leverage',
     'Price (Multiplier)', 'Contract Size', 'Min. Order Size', 'Max. Order Size'
 ];
 const categoriesY = ['CMC', 'LMAX', 'Match-Prime', 'Finalto', 'Marex'];
@@ -138,6 +139,16 @@ function getColorForValue(value, min, max) {
 //3fff00   best   // 2nd best 87ff2a   //   #ff3700                 4th #ff1919        //5th #ff0000
 //background: rgb(63,255,0); background: linear-gradient(90deg, rgba(63,255,0,0.8071603641456583) 5%, rgba(255,55,0,1) 100%);
 const TradingConditionsChart = () => {
+    const [category, setCategory] = useState("Forex");
+    const [symbol, setSymbol] = useState("EURUSD");
+
+    const categories = ["Forex", "Crypto", "Metals"];
+    const symbols = {
+        Forex: ["EURUSD", "USDJPY", "EURONZ", "USDBTC"],
+        Crypto: ["BTCUSD", "ETHUSD", "LTCUSD"],
+        Metals: ["XAUUSD", "XAGUSD"]
+    };
+
     const chartRef = useRef(null);
 
     useEffect(() => {
@@ -154,7 +165,7 @@ const TradingConditionsChart = () => {
                     // Add icon for Limit, Stop, and Market
                     if (term === 'Limit' || term === 'Stop' || term === 'Market') {
                         icon = value ? '✅' : '❌';
-                        color = 'white';
+                        color = 'rgba(98, 98, 98, 0.42)';
                         value = icon;
                     }
 
@@ -251,8 +262,13 @@ const TradingConditionsChart = () => {
                 data: data,
                 dataLabels: {
                     enabled: true,
-                    color: '#000000',
-                    format: '{point.value}'
+                    // color: '#000000',
+                    format: '{point.value}',
+                    style: {
+                        textOutline: 'none',
+                        fontWeight: 'normal',
+                        fontSize: '1rem'
+                    },
                 },
                 states: {
                     hover: {
@@ -263,7 +279,38 @@ const TradingConditionsChart = () => {
         });
     }, []);
 
-    return <div ref={chartRef} style={{ width: '100%', height: '400px' }} />;
+    return <>
+    <div className='w-full h-full'>
+    <div className="flex gap-2 mb-2 items-center">
+                <div className="flex flex-col align-center">
+                    {/* <label className="flex justify-center text-xs font-medium text-gray-600 dark:text-gray-500">Category</label> */}
+                    <select
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                        className="border border-gray-300 dark:border-gray-700 rounded px-1 text-xs bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                        {categories.map((cat) => (
+                            <option key={cat} value={cat}>{cat}</option>
+                        ))}
+                    </select>
+                </div>
+
+                <div className="flex flex-col">
+                    {/* <label className="flex justify-center text-xs font-medium text-gray-600 dark:text-gray-500">Symbol</label> */}
+                    <select
+                        value={symbol}
+                        onChange={(e) => setSymbol(e.target.value)}
+                        className="border border-gray-300 dark:border-gray-700 rounded px-1  text-xs bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                        {symbols[category].map((sym) => (
+                            <option key={sym} value={sym}>{sym}</option>
+                        ))}
+                    </select>
+                </div>
+            </div>
+    <div ref={chartRef} style={{ width: '100%', height: '400px' }} />
+    </div>
+    </>
 };
 
 export default TradingConditionsChart;

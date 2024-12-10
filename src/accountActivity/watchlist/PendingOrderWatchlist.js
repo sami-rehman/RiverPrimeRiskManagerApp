@@ -25,7 +25,7 @@ import React, {
           maxWidth: 50,
         },
         {
-          field: "timeSetup",
+          field: "mtSubmit",
           headerName: "Time Setup",
           minWidth: 160,
           filter: true,
@@ -39,6 +39,7 @@ import React, {
           headerName: "Position ID",
           field: "positionID",
           filter: true,
+          hide: true,
         },
         {
           headerName: "Order ID",
@@ -54,6 +55,7 @@ import React, {
           filter: true,
           cellRenderer: "agAnimateShowChangeCellRenderer",
         },
+        {field: 'type'},
           {
             headerName: "Price Order",
             field: "priceRequested",
@@ -74,8 +76,7 @@ import React, {
             valueFormatter: numberFormatter,
           },
           {
-            headerName: "Price Current",
-            field: "priceCurrent",
+            field: "currentPrice",
             minWidth: 120,
             filter: "agNumberColumnFilter",
             cellDataType: "number",
@@ -214,7 +215,7 @@ import React, {
           // pagination={true}
           rowDragManaged={true}
           rowSelection={"multiple"}
-          rowGroupPanelShow={"always"}
+          // rowGroupPanelShow={"always"}
           suppressAggFuncInHeader
           groupDefaultExpanded={-1}
           sideBar={sideBar}

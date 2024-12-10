@@ -338,7 +338,7 @@ const HoldingByAccount = () => {
       rules: [
         {
           condition: {
-            maxWidth: 500
+            maxWidth: 400
           },
           chartOptions: {
             chart: {

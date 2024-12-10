@@ -2,7 +2,6 @@ import React, {
   useMemo,
   useRef,
   useState,
-  useCallback,
   useEffect,
 } from "react";
 import { AgGridReact } from "ag-grid-react";
@@ -13,10 +12,11 @@ import { StatusRender } from "../../grid/statusRendered";
 import { QuantityRequested } from "../../grid/QuantityRequested";
 import { dateComparator } from "../../common/constant";
 import { numberFormatter } from "../../common/constant";
+import ToggleSwitch from "../../ToggleSwitch";
 
 const AbookWatchList = () => {
 
-  const [selectedStatus, setSelectedStatus] = useState('Live');
+  const [selectedStatus, setSelectedStatus] = useState('Rejected');
   const [selectedDate, setSelectedDate] = useState('Today');
   const [isBroker, setIsBroker] = useState(false);
 
@@ -65,7 +65,7 @@ const AbookWatchList = () => {
             filterParams: {
               comparator: dateComparator,
             },
-            minWidth: 185,
+            // minWidth: 185,
             rowDrag: true,
             colId: "lpSubmit",
           },
@@ -77,7 +77,7 @@ const AbookWatchList = () => {
             filterParams: {
               comparator: selectedStatus !== 'Live' ? dateComparator : null,
             },
-            minWidth: 160,
+            // minWidth: 160,
             colId: "lpExecution",
 
           },
@@ -114,28 +114,31 @@ const AbookWatchList = () => {
                 </span>
               );
             },
-            maxWidth:85
+            maxWidth: 125
           },
           {
             field: "positionId",
             headerName: "OID",
             filter: true,
             // cellRenderer: "agGroupCellRenderer",
-            maxWidth:85
+            columnGroupShow: "open",
+            maxWidth: 85
           },
           {
             field: "positionId",
             headerName: "Deal ID",
             filter: true,
             // cellRenderer: "agGroupCellRenderer",
-            maxWidth:85,
-            hide: !selectedStatus==='Closed'
+            columnGroupShow: "open",
+            maxWidth: 85,
+            hide: !selectedStatus === 'Closed'
           },
           {
             headerName: 'Destination',
             field: "destination",
             filter: true,
-            maxWidth:110
+            columnGroupShow: "open",
+            maxWidth: 110
           },
         ]
       },
@@ -147,19 +150,20 @@ const AbookWatchList = () => {
             field: "positionId",
             headerName: "Broker ID",
             filter: true,
-            maxWidth:99
+            maxWidth: 99
           },
           {
             field: "positionId",
             headerName: "Account",
             filter: true,
-            maxWidth:99
+            columnGroupShow: "open",
+            maxWidth: 99
           },
           {
             headerName: 'Destination',
             field: "destination",
             filter: true,
-            maxWidth:110
+            maxWidth: 110
           },
         ],
       },
@@ -177,24 +181,28 @@ const AbookWatchList = () => {
             field: "rules",
             headerName: "Rules",
             filter: true,
-            hide:true
+            columnGroupShow: "open",
+            hide: true
           },
           {
             field: "prompts",
             headerName: "Prompt",
             filter: true,
-            maxWidth:90
+            columnGroupShow: "open",
+            maxWidth: 90
           },
           {
             field: "orderId",
             headerName: "LP Order ID",
             filter: true,
-            maxWidth:110
+            columnGroupShow: "open",
+            maxWidth: 110
           },
           {
             field: "side",
             filter: true,
-            maxWidth:80
+            columnGroupShow: "open",
+            maxWidth: 80
           },
           {
             field: "requestedQuantity",
@@ -207,7 +215,7 @@ const AbookWatchList = () => {
           {
             field: "symbol",
             filter: true,
-            maxWidth:90
+            maxWidth: 90
           },
           {
             field: "quantityFilled",
@@ -231,7 +239,7 @@ const AbookWatchList = () => {
             filter: "agNumberColumnFilter",
             valueFormatter: currencyFormatter,
             aggFunc: "sum",
-            maxWidth:120
+            maxWidth: 120
           },
           {
             field: "trigger_price",
@@ -240,7 +248,7 @@ const AbookWatchList = () => {
             valueFormatter: currencyFormatter,
             aggFunc: "sum",
             hide: true,
-            maxWidth:120
+            maxWidth: 120
           },
           {
             field: "tif",
@@ -268,8 +276,9 @@ const AbookWatchList = () => {
             headerName: "Avg. Fill Price",
             filter: "agNumberColumnFilter",
             valueFormatter: currencyFormatter,
+            columnGroupShow: "open",
             aggFunc: "sum",
-            maxWidth:120
+            maxWidth: 120
           },
           {
             field: "currentPrice",
@@ -277,7 +286,7 @@ const AbookWatchList = () => {
             filter: "agNumberColumnFilter",
             valueFormatter: currencyFormatter,
             aggFunc: "sum",
-            maxWidth:125
+            maxWidth: 125
           },
           {
             field: "profit",
@@ -285,7 +294,7 @@ const AbookWatchList = () => {
             filter: "agNumberColumnFilter",
             valueFormatter: currencyFormatter,
             aggFunc: "sum",
-            maxWidth:120
+            maxWidth: 120
           },
           {
             field: "currentPrice",
@@ -293,9 +302,15 @@ const AbookWatchList = () => {
             filter: "agNumberColumnFilter",
             valueFormatter: currencyFormatter,
             aggFunc: "sum",
-            maxWidth:120
+            maxWidth: 120
           },
-          { field: "fixId", headerName: "Fix ID", filter: true, maxWidth:120 },
+          {
+            field: "fixId",
+            headerName: "Fix ID",
+            filter: true,
+            columnGroupShow: "open",
+            maxWidth: 120
+          },
           { field: "riskManager", filter: true, hide: true },
           {
             field: "comments",
@@ -362,7 +377,7 @@ const AbookWatchList = () => {
       resizable: true,
       cellClassRules: {
         "ag-strikethrough": params => (selectedStatus === 'Pending') ? params?.data?.rules === "Active" : false,
-    }
+      }
     }),
     [selectedStatus]
   );
@@ -380,55 +395,6 @@ const AbookWatchList = () => {
     return [{ rules: "Summary", ...summary }];
   };
 
-  // const getDetailRowData = (params) => {
-  //   params.successCallback(params.data.associatedOrders || []);
-  // };
-
-  // const detailColDefs = useMemo(() => {
-  //   return colDefs.map((col) => ({
-  //     ...col,
-  //     filter: false
-  //   }));
-  // }, [colDefs]);
-
-  // const detailCellRendererParams = useMemo(
-  //   () => ({
-  //     detailGridOptions: {
-  //       columnDefs: detailColDefs,
-  //       defaultColDef: {
-  //         ...defaultColDef,
-  //         floatingFilter: false,
-  //         filter: false,
-  //       },
-  //     },
-  //     getDetailRowData: getDetailRowData,
-  //   }),
-  //   [detailColDefs, defaultColDef]
-  // );
-
-  // const onFirstDataRendered = useCallback((params) => {
-  //   setTimeout(() => {
-  //     params.api.getDisplayedRowAtIndex(1).setExpanded(false);
-  //   }, 0);
-  // }, []);
-
-  // const onColumnMoved = useCallback(() => {
-  //   const newColDefs = gridRef.current.api.getColumnDefs();
-  //   const newDetailColDefs = newColDefs.map((col) => ({
-  //     ...col,
-  //     floatingFilter: false,
-  //     filter: false,
-  //   }));
-  //   detailCellRendererParams.detailGridOptions.columnDefs = newDetailColDefs;
-
-  //   gridRef.current.api.forEachNode((node) => {
-  //     if (node.detail) {
-  //       node.setData(node.data);
-  //       node.setExpanded(true);
-  //     }
-  //   });
-  // }, [detailCellRendererParams]);
-
   useEffect(() => {
     setPinnedTopRowData(getSummaryRow(rowData));
   }, [rowData]);
@@ -438,48 +404,80 @@ const AbookWatchList = () => {
 
   return (
     <div className="flex flex-col h-full w-full">
-   <h1 class="m-1 text-lg font-bold leading-none tracking-tight text-gray-400">A Book View</h1>
-
-      <div className="flex items-center space-x-4 p-1 border border-gray-300 rounded-sm shadow-lg bg-gray-900">
+      <div className="flex items-center space-x-4 p-1  bg-[#2D2D2D] border-b-4 border-black px-2 h-[40px]">
         <div className="flex items-center space-x-2">
           {statuses.map((status) => (
             <label key={status} className="flex items-center space-x-1">
-              <input
-                type="checkbox"
-                checked={selectedStatus === status}
-                onChange={() => setSelectedStatus(status)}
-                className="form-checkbox h-3 w-3 text-gray-600"
-              />
-              <span className="text-xs text-gray-200">{status}</span>
+              <div className="relative h-5 w-5">
+                <input
+                  type="checkbox"
+                  checked={selectedStatus === status}
+                  onChange={() => setSelectedStatus(status)}
+                  className="absolute h-full w-full opacity-0 cursor-pointer"
+                />
+                <div className="h-full w-full rounded border-2 bg-transparent flex items-center justify-center pointer-events-none">
+                {
+                  selectedStatus === status
+                  ? <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className={`h-4 w-4 text-white transition-colors duration-200 ease-in-out ${selectedStatus === status ? 'text-[#47FFA6]' : ''
+                      }`}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg> : null
+                }
+                </div>
+              </div>
+
+              <span className="text-sm text-gray-300">{status}</span>
             </label>
           ))}
         </div>
 
-        <select
-          value={selectedDate}
-          onChange={(e) => setSelectedDate(e.target.value)}
-          className={`text-xs h-5 text-white bg-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700 ${selectedStatus === 'Live' ? 'opacity-50 cursor-not-allowed' : null} `}
-          disabled={selectedStatus === 'Live'}
-        >
-          {dateOptions.map((date) => (
-            <option key={date} value={date}>
-              {date}
-            </option>
-          ))}
-        </select>
-        
-        <div className="flex items-center text-gray-300 text-xs space-x-2">
-          <span className=" ">Clients</span>
-          <div
-            onClick={() => setIsBroker(!isBroker)}
-            className={`w-8 h-4 flex items-center bg-gray-600 rounded-full p-1 cursor-pointer ${isBroker ? 'justify-end' : ''}`}
+
+        <div className="relative w-28">
+          <select
+            value={selectedDate}
+            onChange={(e) => setSelectedDate(e.target.value)}
+            className={`appearance-none text-sm w-full h-6 text-gray-300 bg-[#2D2D2D] rounded-xl border border-gray-300 focus:outline-none pl-2 pr-4 ${selectedStatus === 'Live' ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
+            disabled={selectedStatus === 'Live'}
           >
-            <div className="bg-white w-3 h-3 rounded-full shadow-md transform transition-transform duration-200" />
+            {dateOptions.map((date) => (
+              <option key={date} value={date}>
+                {date}
+              </option>
+            ))}
+          </select>
+          {/* Custom arrow */}
+          <div className="absolute inset-y-0 right-2 flex items-center pointer-events-none">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4 text-gray-300"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="#47FFA6"
+              strokeWidth="2"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
           </div>
-          <span className="">Broker</span>
         </div>
+
+
+        <ToggleSwitch />
       </div>
-    
+
       <div className="ag-theme-balham-dark w-full h-full">
         <AgGridReact
           ref={gridRef}
@@ -489,9 +487,6 @@ const AbookWatchList = () => {
           rowDragManaged={true}
           rowSelection={"multiple"}
           rowGroupPanelShow={"always"}
-          // masterDetail={true}
-          // detailRowAutoHeight={true}
-          // detailCellRendererParams={detailCellRendererParams}
           sideBar={{
             toolPanels: [
               {
@@ -507,11 +502,9 @@ const AbookWatchList = () => {
             ],
             hiddenByDefault: false,
           }}
-          rowHeight={19}
+          rowHeight={20}
           getRowStyle={getRowStyle}
           pinnedTopRowData={pinnedTopRowData}
-          // onFirstDataRendered={onFirstDataRendered}
-          // onColumnMoved={onColumnMoved}
         />
       </div>
     </div>

@@ -16,162 +16,7 @@ import React, {
   
     const [position, setPosition] = useState();
     const gridRef = useRef(null);
-
-    console.log('positionXX', position)
-  
-    // const colDefs = useMemo(
-    //           () => [
-    //             {
-    //               headerName: "DATE TIME",
-    //               field: "activationTime",
-    //               filter: true,
-    //               headerCheckboxSelection: true,
-    //               checkboxSelection: true,
-    //               minWidth: 160,
-    //               headerCheckboxSelectionFilteredOnly: true,
-    //             },
-    //             {
-    //               headerName: "ACCOUNT ID",
-    //               field: "login",
-    //               hide: true,
-    //             },
-    //             {
-    //               headerName: "POSITION ID",
-    //               field: "positionId",
-    //               minWidth: 110,
-    //               filter: "agNumberColumnFilter",
-    //               cellDataType: "number",
-    //               cellRenderer: "agAnimateShowChangeCellRenderer",
-    //               valueFormatter: numberFormatter,
-    //             },
-    //             {
-    //               headerName: "SYMBOL",
-    //               field: "symbol",
-    //               minWidth: 70,
-    //               cellRenderer: "agAnimateShowChangeCellRenderer",
-    //             },
-    //             {
-    //               headerName: "SIDE",
-    //               field: "side",
-    //               minWidth: 80,
-    //               filter: "agNumberColumnFilter",
-    //               cellRenderer: "agAnimateSlideCellRenderer",
-    //             },
-    //             {
-    //               headerName: "TYPE",
-    //               field: "type",
-    //               minWidth: 80,
-    //             },
-    //             {
-    //               headerName: "REQ. QTY",
-    //               field: "requestedQuantity",
-    //               minWidth: 90,
-    //               filter: "agNumberColumnFilter",
-    //               cellDataType: "number",
-    //               cellRenderer: "agAnimateShowChangeCellRenderer",
-    //               valueFormatter: numberFormatter,
-    //               aggFunc: "sum",
-    //             },
-    //             {
-    //                 headerName: "QTY. FILLED",
-    //                 field: "quantityRemaining",
-    //                 minWidth: 100,
-    //                 filter: "agNumberColumnFilter",
-    //                 cellDataType: "number",
-    //                 cellRenderer: "agAnimateShowChangeCellRenderer",
-    //                 valueFormatter: numberFormatter,
-    //               },
-    //               {
-    //                 headerName: "Requested PRICE",
-    //                 field: "price",
-    //                 hide: true,
-    //                 filter: "agNumberColumnFilter",
-    //                 cellDataType: "number",
-    //                 cellRenderer: "agAnimateShowChangeCellRenderer",
-    //                 valueFormatter: numberFormatter,
-    //               },
-    //               {
-    //                 headerName: "TRIG. PRICE",
-    //                 field: "trigger_price",
-    //                 minWidth: 110,
-    //                 filter: "agNumberColumnFilter",
-    //                 cellDataType: "number",
-    //                 cellRenderer: "agAnimateShowChangeCellRenderer",
-    //                 valueFormatter: numberFormatter,
-    //               },
-    //             {
-    //               headerName: "TIF(expiry)",
-    //               field: "tif",
-    //               minWidth: 100,
-    //             },
-    //             {
-    //               headerName: "SL",
-    //               field: "priceSL",
-    //               filter: "agNumberColumnFilter",
-    //               cellDataType: "number",
-    //               cellRenderer: "agAnimateShowChangeCellRenderer",
-    //               valueFormatter: numberFormatter,
-    //             },
-    //             {
-    //               headerName: "TP",
-    //               field: "priceTP",
-    //               filter: "agNumberColumnFilter",
-    //               cellDataType: "number",
-    //               valueFormatter: numberFormatter,
-    //             },
-    //             {
-    //               headerName: "AVG. FILL PRICE",
-    //               field: "averageFillPrice",
-    //               hide:true,
-    //               filter: "agNumberColumnFilter",
-    //               cellDataType: "number",
-    //               valueFormatter: numberFormatter,
-    //             },
-    //             {
-    //                 headerName: "UNPL",
-    //                 field: "profit",
-    //                 filter: "agNumberColumnFilter",
-    //                 cellDataType: "number",
-    //                 valueFormatter: numberFormatter,
-    //               },
-    //               {
-    //                 headerName: "DESTINATION",
-    //                 field: "destination",
-    //                 hide: true,
-    //               },
-    //               {
-    //                 headerName: "CURRENT PRICE",
-    //                 field: "price",
-    //                 hide: true,
-    //                 filter: "agNumberColumnFilter",
-    //                 cellDataType: "number",
-    //                 valueFormatter: numberFormatter,
-    //               },
-    //               {
-    //                 headerName: "FIXID",
-    //                 field: "fixId",
-    //                 filter: "agNumberColumnFilter",
-    //                 cellDataType: "number",
-    //                 valueFormatter: numberFormatter,
-    //               },
-    //               {
-    //                 headerName: "COMMENTS",
-    //                 field: "comments",
-    //                hide: true,
-    //               },
-    //               {
-    //                 headerName: "MARGIN",
-    //                 field: "margin",
-    //                 hide: true,
-    //                 filter: "agNumberColumnFilter",
-    //                 cellDataType: "number",
-    //                 valueFormatter: numberFormatter,
-    //               },
-    //           ],
-    //           []
-    //         );
-      
-    const colDefs = useMemo(
+   const colDefs = useMemo(
       () => [
         {
           headerCheckboxSelection: true,
@@ -179,8 +24,8 @@ import React, {
           maxWidth: 50,
         },
         {
-          headerName: "Date time",
-          field: "activationTime",
+          headerName: "Activation Time ",
+          field: "mtExecution",
           filter: true,
           minWidth: 160,
         },
@@ -196,7 +41,6 @@ import React, {
           filter: "agNumberColumnFilter",
           cellDataType: "number",
           cellRenderer: "agAnimateShowChangeCellRenderer",
-          // valueFormatter: numberFormatter,
         },
         {
           headerName: "Symbol",
@@ -347,7 +191,7 @@ import React, {
           const requestMessage = {
             type: "request",
             requestType: "positionsActivities",
-            accounts: 10001006,
+            accounts: loginID,
           };
           socket.send(JSON.stringify(requestMessage));
         }
@@ -424,7 +268,6 @@ import React, {
           defaultColDef={defaultColDef}
           rowDragManaged={true}
           rowSelection={"multiple"}
-          rowGroupPanelShow={"always"}
           suppressAggFuncInHeader
           groupDefaultExpanded={-1}
           sideBar={sideBar}
@@ -433,4 +276,3 @@ import React, {
       </div>
     );
   };
-  

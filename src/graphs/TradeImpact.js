@@ -104,26 +104,26 @@ const TradeImpact = ({loginID}) => {
             pieces: [
               {
                 gt: 0,
-                lte: 300,
+                lte: 30,
                 color: '#93CE07'
               },
               {
-                gt: 300,
-                lte: 600,
+                gt: 30,
+                lte: 60,
                 color: '#FBDB0F'
               },
               {
-                gt: 600,
-                lte: 900,
+                gt: 60,
+                lte: 90,
                 color: '#FC7D02'
               },
               {
-                gt: 900,
-                lte: 1200,
+                gt: 90,
+                lte: 120,
                 color: '#FD0100'
               },
               {
-                gt: 1200,
+                gt: 120,
                 color: '#AC3B2A'
               }
             ],
@@ -143,28 +143,28 @@ const TradeImpact = ({loginID}) => {
                     },
                     data: [
                         {
-                            yAxis: 300,
+                            yAxis: 30,
                             label: {
                                 formatter: 'Info',
                                 position: 'end',
                             },
                         },
                         {
-                            yAxis: 600,
+                            yAxis: 60,
                             label: {
                                 formatter: 'Monitor',
                                 position: 'end',
                             },
                         },
                         {
-                            yAxis: 900,
+                            yAxis: 90,
                             label: {
                                 formatter: 'Warning',
                                 position: 'end',
                             },
                         },
                         {
-                            yAxis: 1200,
+                            yAxis: 120,
                             label: {
                                 formatter: 'Critical',
                                 position: 'end',

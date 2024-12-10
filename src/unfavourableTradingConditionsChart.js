@@ -741,7 +741,7 @@ const UnfavourableTradingConditions = () => {
         });
     }, []);
 
-    return <div ref={chartRef} className='h-full w-full' />;
+    return <div ref={chartRef} className=' w-full h-full' />;
 };
 
 export default UnfavourableTradingConditions;
